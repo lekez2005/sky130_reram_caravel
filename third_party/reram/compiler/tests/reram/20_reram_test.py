@@ -15,11 +15,12 @@ address_width = int(math.log2(num_words))
 
 module_name = f"r_{num_words}_w_{word_size}"
 
-generate_reram_gds = False
+generate_reram_gds = True
 skip_ram_lvs = True
 skip_copy = False
 
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+base_dir = "/research/APSEL/ota2/skywater/openlane_workspace/caravel_reram"
 print(base_dir)
 
 gds_dir = os.path.join(base_dir, "gds")
@@ -27,13 +28,17 @@ verilog_dir = os.path.join(base_dir, "verilog", "rtl")
 
 
 gds_file = os.path.join(gds_dir, f"{module_name}.gds")
+output_spice = os.path.join(base_dir, "netgen", f"{module_name}.spice")
 
 
 class ReRamTest(ReRamTestBase):
 
+    # @skipIf(generate_reram_gds, "Skipping reram gds generation")
     def test_wrap_reram(self):
         from caravel_wrapper import wrap_reram
-        wrap_reram(gds_file)
+        a = wrap_reram(gds_file)
+        self.local_drc_check(a)
+
 
     @skipIf(not generate_reram_gds, "Skipping reram gds generation")
     def test_one_bank(self):
@@ -46,6 +51,7 @@ class ReRamTest(ReRamTestBase):
         if not skip_ram_lvs:
             self.local_check(a)
 
+        a.sp_write(output_spice)
         a.gds_write(gds_file)
         self.generate_verilog(a)
 

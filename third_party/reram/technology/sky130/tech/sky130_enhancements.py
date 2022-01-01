@@ -33,11 +33,40 @@ def seal_poly_vias(obj: design):
 
     npc_enclose_poly = drc.get("npc_enclose_poly")
 
+    poly_via_insts = list(sorted(poly_via_insts, key=lambda x: (x.lx(), x.by())))
+
+    span = 1
+
+    via_groups = []
     for via_inst in poly_via_insts:
-        x_offset = via_inst.lx() - npc_enclose_poly - x_extension
-        width = via_inst.rx() + npc_enclose_poly + x_extension - x_offset
-        y_offset = via_inst.by() - npc_enclose_poly - y_extension
-        height = via_inst.uy() + npc_enclose_poly + y_extension - y_offset
+        found = False
+        for via_group in via_groups:
+            (left_x, right_x, bot, top, existing_insts) = via_group
+            span_left = left_x - span
+            span_right = right_x + span
+            span_top = top + span
+            span_bot = bot - span
+
+            if span_left <= via_inst.cx() <= span_right:
+                if span_bot <= via_inst.cy() <= span_top:
+                    existing_insts.append(via_inst)
+                    via_group[0] = min(left_x, via_inst.lx())
+                    via_group[1] = max(right_x, via_inst.rx())
+                    via_group[2] = min(bot, via_inst.by())
+                    via_group[3] = max(top, via_inst.uy())
+                    found = True
+                    break
+
+        if not found:
+            via_groups.append([via_inst.lx(), via_inst.rx(),
+                               via_inst.by(), via_inst.uy(),
+                               [via_inst]])
+
+    for left, right, bot, top, _ in via_groups:
+        x_offset = left - npc_enclose_poly - x_extension
+        width = right + npc_enclose_poly + x_extension - x_offset
+        y_offset = bot - npc_enclose_poly - y_extension
+        height = top + npc_enclose_poly + y_extension - y_offset
         obj.add_rect("npc", vector(x_offset, y_offset), width=width, height=height)
 
 
@@ -57,6 +86,9 @@ def enhance_pgate(obj: design):
                             height=max(pin.height(), obj.m2_width))
 
 
+combine = False
+
+
 def flatten_vias(obj: design):
     """Flatten vias by moving via shapes from via instance to top level
        Also combine multiple rects into encompassing rect
@@ -69,13 +101,17 @@ def flatten_vias(obj: design):
             layers.append(f"{via_inst.mod.implant_type}implant")
         for layer in layers:
             layer_rects = via_inst.get_layer_shapes(layer, recursive=False)
+            if combine:
+                x_sort = list(sorted(layer_rects, key=lambda x: x.lx()))
+                y_sort = list(sorted(layer_rects, key=lambda x: x.by()))
 
-            x_sort = list(sorted(layer_rects, key=lambda x: x.lx()))
-            y_sort = list(sorted(layer_rects, key=lambda x: x.by()))
-
-            ll = vector(x_sort[0].lx(), y_sort[0].by())
-            ur = vector(x_sort[-1].rx(), y_sort[-1].uy())
-            obj.add_rect(layer, ll, width=ur.x - ll.x, height=ur.y - ll.y)
+                ll = vector(x_sort[0].lx(), y_sort[0].by())
+                ur = vector(x_sort[-1].rx(), y_sort[-1].uy())
+                obj.add_rect(layer, ll, width=ur.x - ll.x, height=ur.y - ll.y)
+            else:
+                for rect in layer_rects:
+                    obj.add_rect(layer, rect.ll(), width=rect.rx() - rect.lx(),
+                                 height=rect.uy() - rect.by())
 
     all_via_index = [x[0] for x in all_via_inst]
     obj.insts = [inst for inst_index, inst in enumerate(obj.insts)

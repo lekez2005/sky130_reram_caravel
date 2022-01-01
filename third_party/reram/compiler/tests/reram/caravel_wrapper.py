@@ -48,7 +48,8 @@ class ReRamWrapper(design):
         x_offset = 0.5 * self.width - 0.5 * self.sram.width
         y_offset = 0.5 * self.height - 0.5 * self.sram.height
 
-        self.sram_inst = self.add_inst(self.sram.name, self.sram,
+        module_name = os.path.splitext(os.path.basename(self.gds_file))[0]
+        self.sram_inst = self.add_inst(module_name, self.sram,
                                        vector(x_offset, y_offset))
         self.connect_inst([], check=False)
 
@@ -60,3 +61,4 @@ def wrap_reram(gds_file):
     wrapper = ReRamWrapper(gds_file)
     output_file = os.path.join(gds_dir, f"{wrapper_name}.gds")
     wrapper.gds_write(output_file)
+    return wrapper

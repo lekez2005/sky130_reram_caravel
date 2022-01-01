@@ -16,7 +16,7 @@ class ReRam(BaselineSram):
         if self.num_rows == 16:
             x_offset = -12
         else:
-            x_offset = -14
+            x_offset = -18
         self.row_decoder_inst = self.add_inst(name="row_decoder", mod=self.row_decoder,
                                               offset=vector(x_offset, self.row_decoder_y))
 
@@ -160,7 +160,7 @@ class ReRam(BaselineSram):
 
         space = 0.5 * power_grid_pitch + self.power_grid_width
         # TODO: sky_tapeout: remove duplicated logic
-        self.power_grid_x_forbidden = [(pin.cx() - space,
+        self.power_grid_x_forbidden = [(pin.cx() - space - 15,
                                         pin.cx() + space)]
 
     def get_power_grid_forbidden_regions(self):

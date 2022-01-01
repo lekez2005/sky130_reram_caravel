@@ -2,10 +2,11 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/reram/compiler" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/reram/technology" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/reram/compiler/tests/reram" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/reram/compiler/tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/third_party/reram/compiler" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/third_party/reram/technology" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/third_party/reram/compiler/tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/third_party/reram/compiler/tests/reram" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/third_party/reram/technology/sky130" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (openram)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
