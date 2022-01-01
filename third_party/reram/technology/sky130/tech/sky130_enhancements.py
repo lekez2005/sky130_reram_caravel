@@ -35,7 +35,7 @@ def seal_poly_vias(obj: design):
 
     poly_via_insts = list(sorted(poly_via_insts, key=lambda x: (x.lx(), x.by())))
 
-    span = 1
+    span = 0.5
 
     via_groups = []
     for via_inst in poly_via_insts:

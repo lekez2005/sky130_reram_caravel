@@ -189,7 +189,7 @@ drc["minwidth_metal5"] = 0.3
 drc["metal5_to_metal5"] = 0.3
 drc["metal5_extend_via4"] = 0.065
 drc["metal5_enclosure_via4"] = 0.065
-drc["metal5_enclosure_via5"] = 0.06
+drc["metal5_enclosure_via5"] = 0.19
 drc["metal5_extend_via5"] = 0.06
 drc["minarea_metal5"] = 0.24
 # M6
