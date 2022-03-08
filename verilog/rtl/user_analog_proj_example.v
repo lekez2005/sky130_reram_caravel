@@ -15,7 +15,7 @@
 
 `default_nettype none
 
-`include "r_32_w_64.v"
+`include "sram1.v"
 
 /*
  * I/O mapping for analog
@@ -152,7 +152,7 @@ module user_analog_proj_example (
     // analog pins.  NOTE:  io_analog[4] = mproj_io[18] and is the same
     // pad with io_clamp_high/low[0].
 
-    reram_r_32_w_64 r32w64 (
+    reram_sram1 reram (
         .data(ram_data_in),
         .mask(ram_mask_in),
         .data_out(ram_data_out),

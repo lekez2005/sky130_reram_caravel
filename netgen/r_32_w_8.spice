@@ -1,0 +1,1059 @@
+*FIRST LINE IS A COMMENT
+
+.SUBCKT reram_bitcell_7 bl br wl gnd
+Xaccess be wl br gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=7.0 l=0.15 pd=3.8 ps=3.8 as=0.65625 ad=0.65625
+Xmem bl be sky130_fd_pr__reram_reram_cell
+.ENDS reram_bitcell_7
+.subckt ms_flop_clk_buf din dout dout_bar clk vdd gnd
+xm1 clk_buf clk_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 clk_buf clk_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm2 clk_bar clk gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm3 clk_bar clk vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 din clk_buf vdd gnd lout lout_bar clk_bar dlatch
+x2 lout_bar clk_bar vdd gnd dout_bar dout clk_buf dlatch
+.ends
+.subckt dlatch  din clk vdd gnd dout dout_bar clk_bar
+xm1 dout dout_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.61 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm2 dout_bar int gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.61 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm3 int clk dout gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm5 int clk_bar dout vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm4 int clk_bar din gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm6 int clk din vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm7 dout_bar int vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.22 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 dout dout_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.22 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.SUBCKT flop_array_c8_w8_ms_flop_clk_buf_ms_flop_clk_buf_tap din[0] din[1] din[2] din[3] din[4] din[5] din[6] din[7] dout[0] dout_bar[0] dout[1] dout_bar[1] dout[2] dout_bar[2] dout[3] dout_bar[3] dout[4] dout_bar[4] dout[5] dout_bar[5] dout[6] dout_bar[6] dout[7] dout_bar[7] clk vdd gnd
+Xmod_0 din[0] dout[0] dout_bar[0] clk vdd gnd ms_flop_clk_buf
+Xmod_1 din[1] dout[1] dout_bar[1] clk vdd gnd ms_flop_clk_buf
+Xmod_2 din[2] dout[2] dout_bar[2] clk vdd gnd ms_flop_clk_buf
+Xmod_3 din[3] dout[3] dout_bar[3] clk vdd gnd ms_flop_clk_buf
+Xmod_4 din[4] dout[4] dout_bar[4] clk vdd gnd ms_flop_clk_buf
+Xmod_5 din[5] dout[5] dout_bar[5] clk vdd gnd ms_flop_clk_buf
+Xmod_6 din[6] dout[6] dout_bar[6] clk vdd gnd ms_flop_clk_buf
+Xmod_7 din[7] dout[7] dout_bar[7] clk vdd gnd ms_flop_clk_buf
+.ENDS flop_array_c8_w8_ms_flop_clk_buf_ms_flop_clk_buf_tap
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.16 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=8.1 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=8.64 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=21.6 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+
+.SUBCKT write_driver_1__5_6 data data_bar mask_bar en en_bar bl br vdd gnd
+XM0 gnd data bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+XM1 gnd mask_bar bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+XM2 gnd data_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+XM3 gnd mask_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+XM4 bl_bar data bl_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+XM5 bl_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+XM6 br_bar data_bar br_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+XM7 br_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+XM8 bl bl_bar bl_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+XM9 bl_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+XM10 br br_bar br_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+XM11 br_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+XM12 bl bl_bar bl_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+XM13 bl_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+XM14 br br_bar br_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+XM15 br_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+.ENDS write_driver_1__5_6
+
+.SUBCKT write_driver_array data[0] data_bar[0] data[1] data_bar[1] data[2] data_bar[2] data[3] data_bar[3] data[4] data_bar[4] data[5] data_bar[5] data[6] data_bar[6] data[7] data_bar[7] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] mask_bar[0] mask_bar[1] mask_bar[2] mask_bar[3] mask_bar[4] mask_bar[5] mask_bar[6] mask_bar[7] en en_bar vdd gnd
+Xmod_0 data[0] data_bar[0] mask_bar[0] en en_bar bl[0] br[0] vdd gnd write_driver_1__5_6
+Xmod_1 data[1] data_bar[1] mask_bar[1] en en_bar bl[1] br[1] vdd gnd write_driver_1__5_6
+Xmod_2 data[2] data_bar[2] mask_bar[2] en en_bar bl[2] br[2] vdd gnd write_driver_1__5_6
+Xmod_3 data[3] data_bar[3] mask_bar[3] en en_bar bl[3] br[3] vdd gnd write_driver_1__5_6
+Xmod_4 data[4] data_bar[4] mask_bar[4] en en_bar bl[4] br[4] vdd gnd write_driver_1__5_6
+Xmod_5 data[5] data_bar[5] mask_bar[5] en en_bar bl[5] br[5] vdd gnd write_driver_1__5_6
+Xmod_6 data[6] data_bar[6] mask_bar[6] en en_bar bl[6] br[6] vdd gnd write_driver_1__5_6
+Xmod_7 data[7] data_bar[7] mask_bar[7] en en_bar bl[7] br[7] vdd gnd write_driver_1__5_6
+.ENDS write_driver_array
+
+.SUBCKT bitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] vdd gnd
+Xbit_r0_c0 bl[0] br[0] wl[0] gnd reram_bitcell_7
+Xbit_r1_c0 bl[0] br[0] wl[1] gnd reram_bitcell_7
+Xbit_r2_c0 bl[0] br[0] wl[2] gnd reram_bitcell_7
+Xbit_r3_c0 bl[0] br[0] wl[3] gnd reram_bitcell_7
+Xbit_r4_c0 bl[0] br[0] wl[4] gnd reram_bitcell_7
+Xbit_r5_c0 bl[0] br[0] wl[5] gnd reram_bitcell_7
+Xbit_r6_c0 bl[0] br[0] wl[6] gnd reram_bitcell_7
+Xbit_r7_c0 bl[0] br[0] wl[7] gnd reram_bitcell_7
+Xbit_r8_c0 bl[0] br[0] wl[8] gnd reram_bitcell_7
+Xbit_r9_c0 bl[0] br[0] wl[9] gnd reram_bitcell_7
+Xbit_r10_c0 bl[0] br[0] wl[10] gnd reram_bitcell_7
+Xbit_r11_c0 bl[0] br[0] wl[11] gnd reram_bitcell_7
+Xbit_r12_c0 bl[0] br[0] wl[12] gnd reram_bitcell_7
+Xbit_r13_c0 bl[0] br[0] wl[13] gnd reram_bitcell_7
+Xbit_r14_c0 bl[0] br[0] wl[14] gnd reram_bitcell_7
+Xbit_r15_c0 bl[0] br[0] wl[15] gnd reram_bitcell_7
+Xbit_r16_c0 bl[0] br[0] wl[16] gnd reram_bitcell_7
+Xbit_r17_c0 bl[0] br[0] wl[17] gnd reram_bitcell_7
+Xbit_r18_c0 bl[0] br[0] wl[18] gnd reram_bitcell_7
+Xbit_r19_c0 bl[0] br[0] wl[19] gnd reram_bitcell_7
+Xbit_r20_c0 bl[0] br[0] wl[20] gnd reram_bitcell_7
+Xbit_r21_c0 bl[0] br[0] wl[21] gnd reram_bitcell_7
+Xbit_r22_c0 bl[0] br[0] wl[22] gnd reram_bitcell_7
+Xbit_r23_c0 bl[0] br[0] wl[23] gnd reram_bitcell_7
+Xbit_r24_c0 bl[0] br[0] wl[24] gnd reram_bitcell_7
+Xbit_r25_c0 bl[0] br[0] wl[25] gnd reram_bitcell_7
+Xbit_r26_c0 bl[0] br[0] wl[26] gnd reram_bitcell_7
+Xbit_r27_c0 bl[0] br[0] wl[27] gnd reram_bitcell_7
+Xbit_r28_c0 bl[0] br[0] wl[28] gnd reram_bitcell_7
+Xbit_r29_c0 bl[0] br[0] wl[29] gnd reram_bitcell_7
+Xbit_r30_c0 bl[0] br[0] wl[30] gnd reram_bitcell_7
+Xbit_r31_c0 bl[0] br[0] wl[31] gnd reram_bitcell_7
+Xbit_r0_c1 bl[1] br[1] wl[0] gnd reram_bitcell_7
+Xbit_r1_c1 bl[1] br[1] wl[1] gnd reram_bitcell_7
+Xbit_r2_c1 bl[1] br[1] wl[2] gnd reram_bitcell_7
+Xbit_r3_c1 bl[1] br[1] wl[3] gnd reram_bitcell_7
+Xbit_r4_c1 bl[1] br[1] wl[4] gnd reram_bitcell_7
+Xbit_r5_c1 bl[1] br[1] wl[5] gnd reram_bitcell_7
+Xbit_r6_c1 bl[1] br[1] wl[6] gnd reram_bitcell_7
+Xbit_r7_c1 bl[1] br[1] wl[7] gnd reram_bitcell_7
+Xbit_r8_c1 bl[1] br[1] wl[8] gnd reram_bitcell_7
+Xbit_r9_c1 bl[1] br[1] wl[9] gnd reram_bitcell_7
+Xbit_r10_c1 bl[1] br[1] wl[10] gnd reram_bitcell_7
+Xbit_r11_c1 bl[1] br[1] wl[11] gnd reram_bitcell_7
+Xbit_r12_c1 bl[1] br[1] wl[12] gnd reram_bitcell_7
+Xbit_r13_c1 bl[1] br[1] wl[13] gnd reram_bitcell_7
+Xbit_r14_c1 bl[1] br[1] wl[14] gnd reram_bitcell_7
+Xbit_r15_c1 bl[1] br[1] wl[15] gnd reram_bitcell_7
+Xbit_r16_c1 bl[1] br[1] wl[16] gnd reram_bitcell_7
+Xbit_r17_c1 bl[1] br[1] wl[17] gnd reram_bitcell_7
+Xbit_r18_c1 bl[1] br[1] wl[18] gnd reram_bitcell_7
+Xbit_r19_c1 bl[1] br[1] wl[19] gnd reram_bitcell_7
+Xbit_r20_c1 bl[1] br[1] wl[20] gnd reram_bitcell_7
+Xbit_r21_c1 bl[1] br[1] wl[21] gnd reram_bitcell_7
+Xbit_r22_c1 bl[1] br[1] wl[22] gnd reram_bitcell_7
+Xbit_r23_c1 bl[1] br[1] wl[23] gnd reram_bitcell_7
+Xbit_r24_c1 bl[1] br[1] wl[24] gnd reram_bitcell_7
+Xbit_r25_c1 bl[1] br[1] wl[25] gnd reram_bitcell_7
+Xbit_r26_c1 bl[1] br[1] wl[26] gnd reram_bitcell_7
+Xbit_r27_c1 bl[1] br[1] wl[27] gnd reram_bitcell_7
+Xbit_r28_c1 bl[1] br[1] wl[28] gnd reram_bitcell_7
+Xbit_r29_c1 bl[1] br[1] wl[29] gnd reram_bitcell_7
+Xbit_r30_c1 bl[1] br[1] wl[30] gnd reram_bitcell_7
+Xbit_r31_c1 bl[1] br[1] wl[31] gnd reram_bitcell_7
+Xbit_r0_c2 bl[2] br[2] wl[0] gnd reram_bitcell_7
+Xbit_r1_c2 bl[2] br[2] wl[1] gnd reram_bitcell_7
+Xbit_r2_c2 bl[2] br[2] wl[2] gnd reram_bitcell_7
+Xbit_r3_c2 bl[2] br[2] wl[3] gnd reram_bitcell_7
+Xbit_r4_c2 bl[2] br[2] wl[4] gnd reram_bitcell_7
+Xbit_r5_c2 bl[2] br[2] wl[5] gnd reram_bitcell_7
+Xbit_r6_c2 bl[2] br[2] wl[6] gnd reram_bitcell_7
+Xbit_r7_c2 bl[2] br[2] wl[7] gnd reram_bitcell_7
+Xbit_r8_c2 bl[2] br[2] wl[8] gnd reram_bitcell_7
+Xbit_r9_c2 bl[2] br[2] wl[9] gnd reram_bitcell_7
+Xbit_r10_c2 bl[2] br[2] wl[10] gnd reram_bitcell_7
+Xbit_r11_c2 bl[2] br[2] wl[11] gnd reram_bitcell_7
+Xbit_r12_c2 bl[2] br[2] wl[12] gnd reram_bitcell_7
+Xbit_r13_c2 bl[2] br[2] wl[13] gnd reram_bitcell_7
+Xbit_r14_c2 bl[2] br[2] wl[14] gnd reram_bitcell_7
+Xbit_r15_c2 bl[2] br[2] wl[15] gnd reram_bitcell_7
+Xbit_r16_c2 bl[2] br[2] wl[16] gnd reram_bitcell_7
+Xbit_r17_c2 bl[2] br[2] wl[17] gnd reram_bitcell_7
+Xbit_r18_c2 bl[2] br[2] wl[18] gnd reram_bitcell_7
+Xbit_r19_c2 bl[2] br[2] wl[19] gnd reram_bitcell_7
+Xbit_r20_c2 bl[2] br[2] wl[20] gnd reram_bitcell_7
+Xbit_r21_c2 bl[2] br[2] wl[21] gnd reram_bitcell_7
+Xbit_r22_c2 bl[2] br[2] wl[22] gnd reram_bitcell_7
+Xbit_r23_c2 bl[2] br[2] wl[23] gnd reram_bitcell_7
+Xbit_r24_c2 bl[2] br[2] wl[24] gnd reram_bitcell_7
+Xbit_r25_c2 bl[2] br[2] wl[25] gnd reram_bitcell_7
+Xbit_r26_c2 bl[2] br[2] wl[26] gnd reram_bitcell_7
+Xbit_r27_c2 bl[2] br[2] wl[27] gnd reram_bitcell_7
+Xbit_r28_c2 bl[2] br[2] wl[28] gnd reram_bitcell_7
+Xbit_r29_c2 bl[2] br[2] wl[29] gnd reram_bitcell_7
+Xbit_r30_c2 bl[2] br[2] wl[30] gnd reram_bitcell_7
+Xbit_r31_c2 bl[2] br[2] wl[31] gnd reram_bitcell_7
+Xbit_r0_c3 bl[3] br[3] wl[0] gnd reram_bitcell_7
+Xbit_r1_c3 bl[3] br[3] wl[1] gnd reram_bitcell_7
+Xbit_r2_c3 bl[3] br[3] wl[2] gnd reram_bitcell_7
+Xbit_r3_c3 bl[3] br[3] wl[3] gnd reram_bitcell_7
+Xbit_r4_c3 bl[3] br[3] wl[4] gnd reram_bitcell_7
+Xbit_r5_c3 bl[3] br[3] wl[5] gnd reram_bitcell_7
+Xbit_r6_c3 bl[3] br[3] wl[6] gnd reram_bitcell_7
+Xbit_r7_c3 bl[3] br[3] wl[7] gnd reram_bitcell_7
+Xbit_r8_c3 bl[3] br[3] wl[8] gnd reram_bitcell_7
+Xbit_r9_c3 bl[3] br[3] wl[9] gnd reram_bitcell_7
+Xbit_r10_c3 bl[3] br[3] wl[10] gnd reram_bitcell_7
+Xbit_r11_c3 bl[3] br[3] wl[11] gnd reram_bitcell_7
+Xbit_r12_c3 bl[3] br[3] wl[12] gnd reram_bitcell_7
+Xbit_r13_c3 bl[3] br[3] wl[13] gnd reram_bitcell_7
+Xbit_r14_c3 bl[3] br[3] wl[14] gnd reram_bitcell_7
+Xbit_r15_c3 bl[3] br[3] wl[15] gnd reram_bitcell_7
+Xbit_r16_c3 bl[3] br[3] wl[16] gnd reram_bitcell_7
+Xbit_r17_c3 bl[3] br[3] wl[17] gnd reram_bitcell_7
+Xbit_r18_c3 bl[3] br[3] wl[18] gnd reram_bitcell_7
+Xbit_r19_c3 bl[3] br[3] wl[19] gnd reram_bitcell_7
+Xbit_r20_c3 bl[3] br[3] wl[20] gnd reram_bitcell_7
+Xbit_r21_c3 bl[3] br[3] wl[21] gnd reram_bitcell_7
+Xbit_r22_c3 bl[3] br[3] wl[22] gnd reram_bitcell_7
+Xbit_r23_c3 bl[3] br[3] wl[23] gnd reram_bitcell_7
+Xbit_r24_c3 bl[3] br[3] wl[24] gnd reram_bitcell_7
+Xbit_r25_c3 bl[3] br[3] wl[25] gnd reram_bitcell_7
+Xbit_r26_c3 bl[3] br[3] wl[26] gnd reram_bitcell_7
+Xbit_r27_c3 bl[3] br[3] wl[27] gnd reram_bitcell_7
+Xbit_r28_c3 bl[3] br[3] wl[28] gnd reram_bitcell_7
+Xbit_r29_c3 bl[3] br[3] wl[29] gnd reram_bitcell_7
+Xbit_r30_c3 bl[3] br[3] wl[30] gnd reram_bitcell_7
+Xbit_r31_c3 bl[3] br[3] wl[31] gnd reram_bitcell_7
+Xbit_r0_c4 bl[4] br[4] wl[0] gnd reram_bitcell_7
+Xbit_r1_c4 bl[4] br[4] wl[1] gnd reram_bitcell_7
+Xbit_r2_c4 bl[4] br[4] wl[2] gnd reram_bitcell_7
+Xbit_r3_c4 bl[4] br[4] wl[3] gnd reram_bitcell_7
+Xbit_r4_c4 bl[4] br[4] wl[4] gnd reram_bitcell_7
+Xbit_r5_c4 bl[4] br[4] wl[5] gnd reram_bitcell_7
+Xbit_r6_c4 bl[4] br[4] wl[6] gnd reram_bitcell_7
+Xbit_r7_c4 bl[4] br[4] wl[7] gnd reram_bitcell_7
+Xbit_r8_c4 bl[4] br[4] wl[8] gnd reram_bitcell_7
+Xbit_r9_c4 bl[4] br[4] wl[9] gnd reram_bitcell_7
+Xbit_r10_c4 bl[4] br[4] wl[10] gnd reram_bitcell_7
+Xbit_r11_c4 bl[4] br[4] wl[11] gnd reram_bitcell_7
+Xbit_r12_c4 bl[4] br[4] wl[12] gnd reram_bitcell_7
+Xbit_r13_c4 bl[4] br[4] wl[13] gnd reram_bitcell_7
+Xbit_r14_c4 bl[4] br[4] wl[14] gnd reram_bitcell_7
+Xbit_r15_c4 bl[4] br[4] wl[15] gnd reram_bitcell_7
+Xbit_r16_c4 bl[4] br[4] wl[16] gnd reram_bitcell_7
+Xbit_r17_c4 bl[4] br[4] wl[17] gnd reram_bitcell_7
+Xbit_r18_c4 bl[4] br[4] wl[18] gnd reram_bitcell_7
+Xbit_r19_c4 bl[4] br[4] wl[19] gnd reram_bitcell_7
+Xbit_r20_c4 bl[4] br[4] wl[20] gnd reram_bitcell_7
+Xbit_r21_c4 bl[4] br[4] wl[21] gnd reram_bitcell_7
+Xbit_r22_c4 bl[4] br[4] wl[22] gnd reram_bitcell_7
+Xbit_r23_c4 bl[4] br[4] wl[23] gnd reram_bitcell_7
+Xbit_r24_c4 bl[4] br[4] wl[24] gnd reram_bitcell_7
+Xbit_r25_c4 bl[4] br[4] wl[25] gnd reram_bitcell_7
+Xbit_r26_c4 bl[4] br[4] wl[26] gnd reram_bitcell_7
+Xbit_r27_c4 bl[4] br[4] wl[27] gnd reram_bitcell_7
+Xbit_r28_c4 bl[4] br[4] wl[28] gnd reram_bitcell_7
+Xbit_r29_c4 bl[4] br[4] wl[29] gnd reram_bitcell_7
+Xbit_r30_c4 bl[4] br[4] wl[30] gnd reram_bitcell_7
+Xbit_r31_c4 bl[4] br[4] wl[31] gnd reram_bitcell_7
+Xbit_r0_c5 bl[5] br[5] wl[0] gnd reram_bitcell_7
+Xbit_r1_c5 bl[5] br[5] wl[1] gnd reram_bitcell_7
+Xbit_r2_c5 bl[5] br[5] wl[2] gnd reram_bitcell_7
+Xbit_r3_c5 bl[5] br[5] wl[3] gnd reram_bitcell_7
+Xbit_r4_c5 bl[5] br[5] wl[4] gnd reram_bitcell_7
+Xbit_r5_c5 bl[5] br[5] wl[5] gnd reram_bitcell_7
+Xbit_r6_c5 bl[5] br[5] wl[6] gnd reram_bitcell_7
+Xbit_r7_c5 bl[5] br[5] wl[7] gnd reram_bitcell_7
+Xbit_r8_c5 bl[5] br[5] wl[8] gnd reram_bitcell_7
+Xbit_r9_c5 bl[5] br[5] wl[9] gnd reram_bitcell_7
+Xbit_r10_c5 bl[5] br[5] wl[10] gnd reram_bitcell_7
+Xbit_r11_c5 bl[5] br[5] wl[11] gnd reram_bitcell_7
+Xbit_r12_c5 bl[5] br[5] wl[12] gnd reram_bitcell_7
+Xbit_r13_c5 bl[5] br[5] wl[13] gnd reram_bitcell_7
+Xbit_r14_c5 bl[5] br[5] wl[14] gnd reram_bitcell_7
+Xbit_r15_c5 bl[5] br[5] wl[15] gnd reram_bitcell_7
+Xbit_r16_c5 bl[5] br[5] wl[16] gnd reram_bitcell_7
+Xbit_r17_c5 bl[5] br[5] wl[17] gnd reram_bitcell_7
+Xbit_r18_c5 bl[5] br[5] wl[18] gnd reram_bitcell_7
+Xbit_r19_c5 bl[5] br[5] wl[19] gnd reram_bitcell_7
+Xbit_r20_c5 bl[5] br[5] wl[20] gnd reram_bitcell_7
+Xbit_r21_c5 bl[5] br[5] wl[21] gnd reram_bitcell_7
+Xbit_r22_c5 bl[5] br[5] wl[22] gnd reram_bitcell_7
+Xbit_r23_c5 bl[5] br[5] wl[23] gnd reram_bitcell_7
+Xbit_r24_c5 bl[5] br[5] wl[24] gnd reram_bitcell_7
+Xbit_r25_c5 bl[5] br[5] wl[25] gnd reram_bitcell_7
+Xbit_r26_c5 bl[5] br[5] wl[26] gnd reram_bitcell_7
+Xbit_r27_c5 bl[5] br[5] wl[27] gnd reram_bitcell_7
+Xbit_r28_c5 bl[5] br[5] wl[28] gnd reram_bitcell_7
+Xbit_r29_c5 bl[5] br[5] wl[29] gnd reram_bitcell_7
+Xbit_r30_c5 bl[5] br[5] wl[30] gnd reram_bitcell_7
+Xbit_r31_c5 bl[5] br[5] wl[31] gnd reram_bitcell_7
+Xbit_r0_c6 bl[6] br[6] wl[0] gnd reram_bitcell_7
+Xbit_r1_c6 bl[6] br[6] wl[1] gnd reram_bitcell_7
+Xbit_r2_c6 bl[6] br[6] wl[2] gnd reram_bitcell_7
+Xbit_r3_c6 bl[6] br[6] wl[3] gnd reram_bitcell_7
+Xbit_r4_c6 bl[6] br[6] wl[4] gnd reram_bitcell_7
+Xbit_r5_c6 bl[6] br[6] wl[5] gnd reram_bitcell_7
+Xbit_r6_c6 bl[6] br[6] wl[6] gnd reram_bitcell_7
+Xbit_r7_c6 bl[6] br[6] wl[7] gnd reram_bitcell_7
+Xbit_r8_c6 bl[6] br[6] wl[8] gnd reram_bitcell_7
+Xbit_r9_c6 bl[6] br[6] wl[9] gnd reram_bitcell_7
+Xbit_r10_c6 bl[6] br[6] wl[10] gnd reram_bitcell_7
+Xbit_r11_c6 bl[6] br[6] wl[11] gnd reram_bitcell_7
+Xbit_r12_c6 bl[6] br[6] wl[12] gnd reram_bitcell_7
+Xbit_r13_c6 bl[6] br[6] wl[13] gnd reram_bitcell_7
+Xbit_r14_c6 bl[6] br[6] wl[14] gnd reram_bitcell_7
+Xbit_r15_c6 bl[6] br[6] wl[15] gnd reram_bitcell_7
+Xbit_r16_c6 bl[6] br[6] wl[16] gnd reram_bitcell_7
+Xbit_r17_c6 bl[6] br[6] wl[17] gnd reram_bitcell_7
+Xbit_r18_c6 bl[6] br[6] wl[18] gnd reram_bitcell_7
+Xbit_r19_c6 bl[6] br[6] wl[19] gnd reram_bitcell_7
+Xbit_r20_c6 bl[6] br[6] wl[20] gnd reram_bitcell_7
+Xbit_r21_c6 bl[6] br[6] wl[21] gnd reram_bitcell_7
+Xbit_r22_c6 bl[6] br[6] wl[22] gnd reram_bitcell_7
+Xbit_r23_c6 bl[6] br[6] wl[23] gnd reram_bitcell_7
+Xbit_r24_c6 bl[6] br[6] wl[24] gnd reram_bitcell_7
+Xbit_r25_c6 bl[6] br[6] wl[25] gnd reram_bitcell_7
+Xbit_r26_c6 bl[6] br[6] wl[26] gnd reram_bitcell_7
+Xbit_r27_c6 bl[6] br[6] wl[27] gnd reram_bitcell_7
+Xbit_r28_c6 bl[6] br[6] wl[28] gnd reram_bitcell_7
+Xbit_r29_c6 bl[6] br[6] wl[29] gnd reram_bitcell_7
+Xbit_r30_c6 bl[6] br[6] wl[30] gnd reram_bitcell_7
+Xbit_r31_c6 bl[6] br[6] wl[31] gnd reram_bitcell_7
+Xbit_r0_c7 bl[7] br[7] wl[0] gnd reram_bitcell_7
+Xbit_r1_c7 bl[7] br[7] wl[1] gnd reram_bitcell_7
+Xbit_r2_c7 bl[7] br[7] wl[2] gnd reram_bitcell_7
+Xbit_r3_c7 bl[7] br[7] wl[3] gnd reram_bitcell_7
+Xbit_r4_c7 bl[7] br[7] wl[4] gnd reram_bitcell_7
+Xbit_r5_c7 bl[7] br[7] wl[5] gnd reram_bitcell_7
+Xbit_r6_c7 bl[7] br[7] wl[6] gnd reram_bitcell_7
+Xbit_r7_c7 bl[7] br[7] wl[7] gnd reram_bitcell_7
+Xbit_r8_c7 bl[7] br[7] wl[8] gnd reram_bitcell_7
+Xbit_r9_c7 bl[7] br[7] wl[9] gnd reram_bitcell_7
+Xbit_r10_c7 bl[7] br[7] wl[10] gnd reram_bitcell_7
+Xbit_r11_c7 bl[7] br[7] wl[11] gnd reram_bitcell_7
+Xbit_r12_c7 bl[7] br[7] wl[12] gnd reram_bitcell_7
+Xbit_r13_c7 bl[7] br[7] wl[13] gnd reram_bitcell_7
+Xbit_r14_c7 bl[7] br[7] wl[14] gnd reram_bitcell_7
+Xbit_r15_c7 bl[7] br[7] wl[15] gnd reram_bitcell_7
+Xbit_r16_c7 bl[7] br[7] wl[16] gnd reram_bitcell_7
+Xbit_r17_c7 bl[7] br[7] wl[17] gnd reram_bitcell_7
+Xbit_r18_c7 bl[7] br[7] wl[18] gnd reram_bitcell_7
+Xbit_r19_c7 bl[7] br[7] wl[19] gnd reram_bitcell_7
+Xbit_r20_c7 bl[7] br[7] wl[20] gnd reram_bitcell_7
+Xbit_r21_c7 bl[7] br[7] wl[21] gnd reram_bitcell_7
+Xbit_r22_c7 bl[7] br[7] wl[22] gnd reram_bitcell_7
+Xbit_r23_c7 bl[7] br[7] wl[23] gnd reram_bitcell_7
+Xbit_r24_c7 bl[7] br[7] wl[24] gnd reram_bitcell_7
+Xbit_r25_c7 bl[7] br[7] wl[25] gnd reram_bitcell_7
+Xbit_r26_c7 bl[7] br[7] wl[26] gnd reram_bitcell_7
+Xbit_r27_c7 bl[7] br[7] wl[27] gnd reram_bitcell_7
+Xbit_r28_c7 bl[7] br[7] wl[28] gnd reram_bitcell_7
+Xbit_r29_c7 bl[7] br[7] wl[29] gnd reram_bitcell_7
+Xbit_r30_c7 bl[7] br[7] wl[30] gnd reram_bitcell_7
+Xbit_r31_c7 bl[7] br[7] wl[31] gnd reram_bitcell_7
+.ENDS bitcell_array
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.88 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.2 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT tri_state_4 in_bar out en en_bar vdd gnd
+Xnmos0 gnd en left_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xnmos1 left_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xnmos2 gnd en right_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xnmos3 right_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xpmos0 vdd en_bar left_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xpmos1 left_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xpmos2 vdd en_bar right_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xpmos3 right_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+.ENDS tri_state_4
+
+.SUBCKT tri_gate_array in_bar[0] in_bar[1] in_bar[2] in_bar[3] in_bar[4] in_bar[5] in_bar[6] in_bar[7] out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] en en_bar vdd gnd
+Xmod_0 in_bar[0] out[0] en en_bar vdd gnd tri_state_4
+Xmod_1 in_bar[1] out[1] en en_bar vdd gnd tri_state_4
+Xmod_2 in_bar[2] out[2] en en_bar vdd gnd tri_state_4
+Xmod_3 in_bar[3] out[3] en en_bar vdd gnd tri_state_4
+Xmod_4 in_bar[4] out[4] en en_bar vdd gnd tri_state_4
+Xmod_5 in_bar[5] out[5] en en_bar vdd gnd tri_state_4
+Xmod_6 in_bar[6] out[6] en en_bar vdd gnd tri_state_4
+Xmod_7 in_bar[7] out[7] en en_bar vdd gnd tri_state_4
+.ENDS tri_gate_array
+.subckt re_ram_sense_amp bl br dout dout_bar en gnd sampleb vclamp vclampp vdd vref
+xm1 vdata vclamp bl gnd sky130_fd_pr__nfet_01v8 l=0.15 w=1.44 nf=4
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm2 vdata vclampp net1 vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm3 net1 sampleb vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm4 net3 vdata net2 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm5 dout vref net2 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm6 net2 en gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=1.2 nf=2
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm7 dout net3 vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm8 net3 net3 vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.2 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm9 dout_bar dout gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=2
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm10 dout_bar dout vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.44 nf=2
++   sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.SUBCKT sense_amp_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] dout[0] dout[1] dout[2] dout[3] dout[4] dout[5] dout[6] dout[7] dout_bar[0] dout_bar[1] dout_bar[2] dout_bar[3] dout_bar[4] dout_bar[5] dout_bar[6] dout_bar[7] en gnd sampleb vclamp vclampp vdd vref
+Xmod_0 bl[0] br[0] dout[0] dout_bar[0] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_1 bl[1] br[1] dout[1] dout_bar[1] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_2 bl[2] br[2] dout[2] dout_bar[2] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_3 bl[3] br[3] dout[3] dout_bar[3] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_4 bl[4] br[4] dout[4] dout_bar[4] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_5 bl[5] br[5] dout[5] dout_bar[5] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_6 bl[6] br[6] dout[6] dout_bar[6] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+Xmod_7 bl[7] br[7] dout[7] dout_bar[7] en gnd sampleb vclamp vclampp vdd vref re_ram_sense_amp
+.ENDS sense_amp_array
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+
+.SUBCKT pinv_1_no_p_no_n_align_same_line A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.36 l=0.15 pd=1.02 ps=1.02 as=0.135 ad=0.135
+.ENDS pinv_1_no_p_no_n_align_same_line
+
+.SUBCKT pnand2_1_no_p_no_n_align_same_line A B Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos3 Z B net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xnmos4 net1 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pnand2_1_no_p_no_n_align_same_line
+
+.SUBCKT pnand3_1_no_p_no_n_align_same_line A B C Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos3 Z C vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos4 Z C net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos5 net1 B net2 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos6 net2 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+.ENDS pnand3_1_no_p_no_n_align_same_line
+.subckt ms_flop_horz_pitch din dout dout_bar clk vdd gnd
+xm1 clk_buf clk_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 clk_buf clk_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm2 clk_bar clk gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm3 clk_bar clk vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 din clk_buf vdd gnd lout lout_bar clk_bar dlatch2
+x2 lout_bar clk_bar vdd gnd dout_bar dout clk_buf dlatch2
+.ends
+.subckt dlatch2  din clk vdd gnd dout dout_bar clk_bar
+xm1 dout dout_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.61 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm2 dout_bar int gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.61 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm3 int clk dout gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm5 int clk_bar dout vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm4 int clk_bar din gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.36 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm6 int clk din vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.6 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm7 dout_bar int vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.22 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 dout dout_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.22 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=3.1500000000000004 l=0.15 pd=2.4 ps=2.4 as=0.39375000000000004 ad=0.39375000000000004
+
+.SUBCKT pinv_3__5_h_3__2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=3.1500000000000004 l=0.15 pd=2.4 ps=2.4 as=0.39375000000000004 ad=0.39375000000000004
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.26 l=0.15 pd=1.14 ps=1.14 as=0.1575 ad=0.1575
+.ENDS pinv_3__5_h_3__2
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.8250000000000001 l=0.15 pd=1.9500000000000002 ps=1.9500000000000002 as=0.309375 ad=0.309375
+
+.SUBCKT pnand2_1__02_no_p_no_n_h_3__2 A B Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.8250000000000001 l=0.15 pd=1.9500000000000002 ps=1.9500000000000002 as=0.309375 ad=0.309375
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.8250000000000001 l=0.15 pd=1.9500000000000002 ps=1.9500000000000002 as=0.309375 ad=0.309375
+Xnmos3 Z B net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.66 l=0.15 pd=1.62 ps=1.62 as=0.2475 ad=0.2475
+Xnmos4 net1 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.66 l=0.15 pd=1.62 ps=1.62 as=0.2475 ad=0.2475
+.ENDS pnand2_1__02_no_p_no_n_h_3__2
+
+.SUBCKT buffer_stage_3__5_no_out_h_3__2 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__5_h_3__2
+.ENDS buffer_stage_3__5_no_out_h_3__2
+
+.SUBCKT pinv_3__5_h_3__2_fake_c A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=3.1500000000000004 l=0.15 pd=2.4 ps=2.4 as=0.39375000000000004 ad=0.39375000000000004
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.26 l=0.15 pd=1.14 ps=1.14 as=0.1575 ad=0.1575
+.ENDS pinv_3__5_h_3__2_fake_c
+
+.SUBCKT buffer_stage_3__5_no_out_h_3__2_fake_c in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__5_h_3__2_fake_c
+.ENDS buffer_stage_3__5_no_out_h_3__2_fake_c
+
+.SUBCKT pre2x4_no_top_flops flop_in[0] flop_in[1] out[0] out[1] out[2] out[3] clk vdd gnd
+Xflop_0 flop_in[0] in[0] inbar[0] clk vdd gnd ms_flop_horz_pitch
+Xflop_1 flop_in[1] in[1] inbar[1] clk vdd gnd ms_flop_horz_pitch
+Xpre_nand_inv_0 Z[0] out[0] Z[0] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_1 Z[1] out[1] Z[1] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_2 Z[2] out[2] Z[2] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_3 Z[3] out[3] Z[3] vdd gnd buffer_stage_3__5_no_out_h_3__2_fake_c
+Xpre2x4_nand_0 inbar[0] inbar[1] Z[0] vdd gnd pnand2_1__02_no_p_no_n_h_3__2
+Xpre2x4_nand_1 in[0] inbar[1] Z[1] vdd gnd pnand2_1__02_no_p_no_n_h_3__2
+Xpre2x4_nand_2 inbar[0] in[1] Z[2] vdd gnd pnand2_1__02_no_p_no_n_h_3__2
+Xpre2x4_nand_3 in[0] in[1] Z[3] vdd gnd pnand2_1__02_no_p_no_n_h_3__2
+.ENDS pre2x4_no_top_flops
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+
+.SUBCKT pnand3_1_no_p_no_n_h_3__2 A B C Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+Xpmos3 Z C vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+Xnmos4 Z C net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+Xnmos5 net1 B net2 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+Xnmos6 net2 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+.ENDS pnand3_1_no_p_no_n_h_3__2
+
+.SUBCKT pre3x8_no_top_flops flop_in[0] flop_in[1] flop_in[2] out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] clk vdd gnd
+Xflop_0 flop_in[0] in[0] inbar[0] clk vdd gnd ms_flop_horz_pitch
+Xflop_1 flop_in[1] in[1] inbar[1] clk vdd gnd ms_flop_horz_pitch
+Xflop_2 flop_in[2] in[2] inbar[2] clk vdd gnd ms_flop_horz_pitch
+Xpre_nand_inv_0 Z[0] out[0] Z[0] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_1 Z[1] out[1] Z[1] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_2 Z[2] out[2] Z[2] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_3 Z[3] out[3] Z[3] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_4 Z[4] out[4] Z[4] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_5 Z[5] out[5] Z[5] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_6 Z[6] out[6] Z[6] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_7 Z[7] out[7] Z[7] vdd gnd buffer_stage_3__5_no_out_h_3__2_fake_c
+Xpre3x8_nand_0 inbar[0] inbar[1] inbar[2] Z[0] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_1 in[0] inbar[1] inbar[2] Z[1] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_2 inbar[0] in[1] inbar[2] Z[2] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_3 in[0] in[1] inbar[2] Z[3] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_4 inbar[0] inbar[1] in[2] Z[4] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_5 in[0] inbar[1] in[2] Z[5] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_6 inbar[0] in[1] in[2] Z[6] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_7 in[0] in[1] in[2] Z[7] vdd gnd pnand3_1_no_p_no_n_h_3__2
+.ENDS pre3x8_no_top_flops
+
+.SUBCKT pre3x8_flops flop_in[0] flop_in[1] flop_in[2] out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] clk vdd gnd
+Xflop_0 flop_in[0] in[0] inbar[0] clk vdd gnd ms_flop_horz_pitch
+Xflop_1 flop_in[1] in[1] inbar[1] clk vdd gnd ms_flop_horz_pitch
+Xflop_2 flop_in[2] in[2] inbar[2] clk vdd gnd ms_flop_horz_pitch
+Xpre_nand_inv_0 Z[0] out[0] Z[0] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_1 Z[1] out[1] Z[1] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_2 Z[2] out[2] Z[2] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_3 Z[3] out[3] Z[3] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_4 Z[4] out[4] Z[4] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_5 Z[5] out[5] Z[5] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_6 Z[6] out[6] Z[6] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre_nand_inv_7 Z[7] out[7] Z[7] vdd gnd buffer_stage_3__5_no_out_h_3__2
+Xpre3x8_nand_0 inbar[0] inbar[1] inbar[2] Z[0] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_1 in[0] inbar[1] inbar[2] Z[1] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_2 inbar[0] in[1] inbar[2] Z[2] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_3 in[0] in[1] inbar[2] Z[3] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_4 inbar[0] inbar[1] in[2] Z[4] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_5 in[0] inbar[1] in[2] Z[5] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_6 inbar[0] in[1] in[2] Z[6] vdd gnd pnand3_1_no_p_no_n_h_3__2
+Xpre3x8_nand_7 in[0] in[1] in[2] Z[7] vdd gnd pnand3_1_no_p_no_n_h_3__2
+.ENDS pre3x8_flops
+
+.SUBCKT hierarchical_decoder_32rows A[0] A[1] A[2] A[3] A[4] decode[0] decode[1] decode[2] decode[3] decode[4] decode[5] decode[6] decode[7] decode[8] decode[9] decode[10] decode[11] decode[12] decode[13] decode[14] decode[15] decode[16] decode[17] decode[18] decode[19] decode[20] decode[21] decode[22] decode[23] decode[24] decode[25] decode[26] decode[27] decode[28] decode[29] decode[30] decode[31] clk vdd gnd
+Xpre_0 A[0] A[1] out[0] out[1] out[2] out[3] clk vdd gnd pre2x4_no_top_flops
+Xpre_1 A[2] A[3] A[4] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] clk vdd gnd pre3x8_flops
+XDEC_NAND[0] out[0] out[4] Z[0] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[1] out[1] out[4] Z[1] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[2] out[2] out[4] Z[2] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[3] out[3] out[4] Z[3] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[4] out[0] out[5] Z[4] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[5] out[1] out[5] Z[5] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[6] out[2] out[5] Z[6] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[7] out[3] out[5] Z[7] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[8] out[0] out[6] Z[8] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[9] out[1] out[6] Z[9] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[10] out[2] out[6] Z[10] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[11] out[3] out[6] Z[11] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[12] out[0] out[7] Z[12] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[13] out[1] out[7] Z[13] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[14] out[2] out[7] Z[14] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[15] out[3] out[7] Z[15] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[16] out[0] out[8] Z[16] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[17] out[1] out[8] Z[17] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[18] out[2] out[8] Z[18] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[19] out[3] out[8] Z[19] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[20] out[0] out[9] Z[20] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[21] out[1] out[9] Z[21] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[22] out[2] out[9] Z[22] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[23] out[3] out[9] Z[23] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[24] out[0] out[10] Z[24] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[25] out[1] out[10] Z[25] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[26] out[2] out[10] Z[26] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[27] out[3] out[10] Z[27] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[28] out[0] out[11] Z[28] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[29] out[1] out[11] Z[29] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[30] out[2] out[11] Z[30] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_NAND[31] out[3] out[11] Z[31] vdd gnd pnand2_1_no_p_no_n_align_same_line
+XDEC_INV_[0] Z[0] decode[0] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[1] Z[1] decode[1] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[2] Z[2] decode[2] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[3] Z[3] decode[3] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[4] Z[4] decode[4] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[5] Z[5] decode[5] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[6] Z[6] decode[6] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[7] Z[7] decode[7] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[8] Z[8] decode[8] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[9] Z[9] decode[9] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[10] Z[10] decode[10] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[11] Z[11] decode[11] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[12] Z[12] decode[12] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[13] Z[13] decode[13] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[14] Z[14] decode[14] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[15] Z[15] decode[15] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[16] Z[16] decode[16] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[17] Z[17] decode[17] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[18] Z[18] decode[18] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[19] Z[19] decode[19] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[20] Z[20] decode[20] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[21] Z[21] decode[21] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[22] Z[22] decode[22] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[23] Z[23] decode[23] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[24] Z[24] decode[24] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[25] Z[25] decode[25] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[26] Z[26] decode[26] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[27] Z[27] decode[27] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[28] Z[28] decode[28] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[29] Z[29] decode[29] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[30] Z[30] decode[30] vdd gnd pinv_1_no_p_no_n_align_same_line
+XDEC_INV_[31] Z[31] decode[31] vdd gnd pinv_1_no_p_no_n_align_same_line
+.ENDS hierarchical_decoder_32rows
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.12 l=0.15 pd=3.42 ps=3.42 as=0.585 ad=0.585
+
+.SUBCKT pinv_3__46_no_p_no_n_align A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.12 l=0.15 pd=3.42 ps=3.42 as=0.585 ad=0.585
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.25 l=0.15 pd=1.55 ps=1.55 as=0.234375 ad=0.234375
+.ENDS pinv_3__46_no_p_no_n_align
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=6.9750000000000005 l=0.15 pd=4.95 ps=4.95 as=0.8718750000000001 ad=0.8718750000000001
+
+.SUBCKT pinv_7__75_no_p_no_n_align A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=6.9750000000000005 l=0.15 pd=4.95 ps=4.95 as=0.8718750000000001 ad=0.8718750000000001
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=2.79 l=0.15 pd=2.16 ps=2.16 as=0.34875 ad=0.34875
+.ENDS pinv_7__75_no_p_no_n_align
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=5 w=11.225000000000001 l=0.15 pd=4.79 ps=4.79 as=0.841875 ad=0.841875
+
+.SUBCKT pinv_12__5_no_p_no_n_align A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=5 w=11.225000000000001 l=0.15 pd=4.79 ps=4.79 as=0.841875 ad=0.841875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=5 w=4.5 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+.ENDS pinv_12__5_no_p_no_n_align
+
+.SUBCKT buffer_stage_3__46_7__75_12__5_no_out_no_nwell_cont_no_pwell_cont_h_5_align in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_3__46_no_p_no_n_align
+Xinv1 out_1 out vdd gnd pinv_7__75_no_p_no_n_align
+Xinv2 out out_inv vdd gnd pinv_12__5_no_p_no_n_align
+.ENDS buffer_stage_3__46_7__75_12__5_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+
+.SUBCKT logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align A B out_inv out vdd gnd
+Xlogic A B logic_out vdd gnd pnand2_1_no_p_no_n_align_same_line
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__46_7__75_12__5_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+.ENDS logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+
+.SUBCKT wordline_driver_array in[0] in[1] in[2] in[3] in[4] in[5] in[6] in[7] in[8] in[9] in[10] in[11] in[12] in[13] in[14] in[15] in[16] in[17] in[18] in[19] in[20] in[21] in[22] in[23] in[24] in[25] in[26] in[27] in[28] in[29] in[30] in[31] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] en vdd gnd
+Xdriver0 en in[0] wl_bar[0] wl[0] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver1 en in[1] wl_bar[1] wl[1] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver2 en in[2] wl_bar[2] wl[2] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver3 en in[3] wl_bar[3] wl[3] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver4 en in[4] wl_bar[4] wl[4] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver5 en in[5] wl_bar[5] wl[5] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver6 en in[6] wl_bar[6] wl[6] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver7 en in[7] wl_bar[7] wl[7] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver8 en in[8] wl_bar[8] wl[8] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver9 en in[9] wl_bar[9] wl[9] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver10 en in[10] wl_bar[10] wl[10] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver11 en in[11] wl_bar[11] wl[11] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver12 en in[12] wl_bar[12] wl[12] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver13 en in[13] wl_bar[13] wl[13] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver14 en in[14] wl_bar[14] wl[14] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver15 en in[15] wl_bar[15] wl[15] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver16 en in[16] wl_bar[16] wl[16] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver17 en in[17] wl_bar[17] wl[17] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver18 en in[18] wl_bar[18] wl[18] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver19 en in[19] wl_bar[19] wl[19] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver20 en in[20] wl_bar[20] wl[20] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver21 en in[21] wl_bar[21] wl[21] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver22 en in[22] wl_bar[22] wl[22] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver23 en in[23] wl_bar[23] wl[23] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver24 en in[24] wl_bar[24] wl[24] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver25 en in[25] wl_bar[25] wl[25] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver26 en in[26] wl_bar[26] wl[26] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver27 en in[27] wl_bar[27] wl[27] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver28 en in[28] wl_bar[28] wl[28] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver29 en in[29] wl_bar[29] wl[29] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver30 en in[30] wl_bar[30] wl[30] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+Xdriver31 en in[31] wl_bar[31] wl[31] vdd gnd logic_buffer_pnand2_3_46_7_75_12_5_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
+.ENDS wordline_driver_array
+
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT discharge_10 bl br bl_reset br_reset gnd
+Xbl_inst bl bl_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xbr_inst br br_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+.ENDS discharge_10
+
+.SUBCKT precharge_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] bl_reset br_reset gnd
+Xmod_0 bl[0] br[0] bl_reset br_reset gnd discharge_10
+Xmod_1 bl[1] br[1] bl_reset br_reset gnd discharge_10
+Xmod_2 bl[2] br[2] bl_reset br_reset gnd discharge_10
+Xmod_3 bl[3] br[3] bl_reset br_reset gnd discharge_10
+Xmod_4 bl[4] br[4] bl_reset br_reset gnd discharge_10
+Xmod_5 bl[5] br[5] bl_reset br_reset gnd discharge_10
+Xmod_6 bl[6] br[6] bl_reset br_reset gnd discharge_10
+Xmod_7 bl[7] br[7] bl_reset br_reset gnd discharge_10
+.ENDS precharge_array
+
+.SUBCKT pnand2_1 A B Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos3 Z B net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+Xnmos4 net1 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pnand2_1
+
+.SUBCKT pnand3_1 A B C Z vdd gnd
+Xpmos1 vdd A Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos2 Z B vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xpmos3 Z C vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos4 Z C net1 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos5 net1 B net2 gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos6 net2 A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+.ENDS pnand3_1
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT pnor2_1 A B Z vdd gnd
+Xpmos1 vdd A net1 vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xpmos2 net1 B Z vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xnmos3 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.36 l=0.15 pd=1.02 ps=1.02 as=0.135 ad=0.135
+Xnmos4 Z B gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.36 l=0.15 pd=1.02 ps=1.02 as=0.135 ad=0.135
+.ENDS pnor2_1
+
+.SUBCKT pinv_1 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=0.9 l=0.15 pd=2.1 ps=2.1 as=0.3375 ad=0.3375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.36 l=0.15 pd=1.02 ps=1.02 as=0.135 ad=0.135
+.ENDS pinv_1
+
+.SUBCKT pinv_2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pinv_2
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.06 l=0.15 pd=2.36 ps=2.36 as=0.38625 ad=0.38625
+
+.SUBCKT pinv_2__29 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.06 l=0.15 pd=2.36 ps=2.36 as=0.38625 ad=0.38625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=0.8300000000000001 l=0.15 pd=1.1300000000000001 ps=1.1300000000000001 as=0.155625 ad=0.155625
+.ENDS pinv_2__29
+
+.SUBCKT buffer_stage_2__29_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_2__29
+.ENDS buffer_stage_2__29_no_out_h_4
+
+.SUBCKT logic_buffer_pnand2_2_29_no_in_no_out_h_4 A B out_inv out vdd gnd
+Xlogic A B out_inv vdd gnd pnand2_1
+Xbuffer out_inv out out_inv vdd gnd buffer_stage_2__29_no_out_h_4
+.ENDS logic_buffer_pnand2_2_29_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.48 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
+
+.SUBCKT pinv_3__86 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.48 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.3900000000000001 l=0.15 pd=1.6900000000000002 ps=1.6900000000000002 as=0.260625 ad=0.260625
+.ENDS pinv_3__86
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.57 l=0.15 pd=3.4899999999999998 ps=3.4899999999999998 as=0.598125 ad=0.598125
+
+.SUBCKT pinv_10__6 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.57 l=0.15 pd=3.4899999999999998 ps=3.4899999999999998 as=0.598125 ad=0.598125
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=3.81 l=0.15 pd=1.57 ps=1.57 as=0.238125 ad=0.238125
+.ENDS pinv_10__6
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=7 w=11.795 l=0.15 pd=3.67 ps=3.67 as=0.631875 ad=0.631875
+
+.SUBCKT pinv_13__1 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=7 w=11.795 l=0.15 pd=3.67 ps=3.67 as=0.631875 ad=0.631875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=7 w=4.7250000000000005 l=0.15 pd=1.6500000000000001 ps=1.6500000000000001 as=0.25312500000000004 ad=0.25312500000000004
+.ENDS pinv_13__1
+
+.SUBCKT buffer_stage_3__86_10__6_13__1_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_3__86
+Xinv1 out_1 out vdd gnd pinv_10__6
+Xinv2 out out_inv vdd gnd pinv_13__1
+.ENDS buffer_stage_3__86_10__6_13__1_no_out_h_4
+
+.SUBCKT logic_buffer_pnand2_3_86_10_6_13_1_no_in_no_out_h_4 A B out_inv out vdd gnd
+Xlogic A B logic_out vdd gnd pnand2_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__86_10__6_13__1_no_out_h_4
+.ENDS logic_buffer_pnand2_3_86_10_6_13_1_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.35 l=0.15 pd=3.65 ps=3.65 as=0.628125 ad=0.628125
+
+.SUBCKT pinv_3__72 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.35 l=0.15 pd=3.65 ps=3.65 as=0.628125 ad=0.628125
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.34 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
+.ENDS pinv_3__72
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=10.290000000000001 l=0.15 pd=3.73 ps=3.73 as=0.6431250000000001 ad=0.6431250000000001
+
+.SUBCKT pinv_11__4 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=10.290000000000001 l=0.15 pd=3.73 ps=3.73 as=0.6431250000000001 ad=0.6431250000000001
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=4.11 l=0.15 pd=1.6700000000000002 ps=1.6700000000000002 as=0.256875 ad=0.256875
+.ENDS pinv_11__4
+
+.SUBCKT buffer_stage_3__72_11__4_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__72
+Xinv1 out_inv out vdd gnd pinv_11__4
+.ENDS buffer_stage_3__72_11__4_no_out_h_4
+
+.SUBCKT logic_buffer_pnor2_3_72_11_4_no_in_no_out_h_4 A B out_inv out vdd gnd
+Xlogic A B logic_out vdd gnd pnor2_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__72_11__4_no_out_h_4
+.ENDS logic_buffer_pnor2_3_72_11_4_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.365 l=0.15 pd=3.21 ps=3.21 as=0.545625 ad=0.545625
+
+.SUBCKT pinv_4__85 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.365 l=0.15 pd=3.21 ps=3.21 as=0.545625 ad=0.545625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.7399999999999998 l=0.15 pd=1.46 ps=1.46 as=0.21749999999999997 ad=0.21749999999999997
+.ENDS pinv_4__85
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT pinv_20 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.199999999999999 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pinv_20
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT pinv_40 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=20 w=14.399999999999999 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pinv_40
+
+.SUBCKT buffer_stage_4__85_20_40_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_4__85
+Xinv1 out_1 out vdd gnd pinv_20
+Xinv2 out out_inv vdd gnd pinv_40
+.ENDS buffer_stage_4__85_20_40_no_out_h_4
+
+.SUBCKT logic_buffer_pnor2_4_85_20_40_no_in_no_out_h_4 A B out_inv out vdd gnd
+Xlogic A B logic_out vdd gnd pnor2_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__85_20_40_no_out_h_4
+.ENDS logic_buffer_pnor2_4_85_20_40_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.77 l=0.15 pd=3.07 ps=3.07 as=0.519375 ad=0.519375
+
+.SUBCKT pinv_3__08 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.77 l=0.15 pd=3.07 ps=3.07 as=0.519375 ad=0.519375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.11 l=0.15 pd=1.4100000000000001 ps=1.4100000000000001 as=0.208125 ad=0.208125
+.ENDS pinv_3__08
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.68 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
+
+.SUBCKT pinv_7__42 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.68 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.68 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
+.ENDS pinv_7__42
+
+.SUBCKT buffer_stage_3__08_7__42_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__08
+Xinv1 out_inv out vdd gnd pinv_7__42
+.ENDS buffer_stage_3__08_7__42_no_out_h_4
+
+.SUBCKT logic_buffer_pnor2_3_08_7_42_no_in_no_out_h_4 A B out_inv out vdd gnd
+Xlogic A B logic_out vdd gnd pnor2_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__08_7__42_no_out_h_4
+.ENDS logic_buffer_pnor2_3_08_7_42_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.73 l=0.15 pd=4.03 ps=4.03 as=0.699375 ad=0.699375
+
+.SUBCKT pinv_4__14 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.73 l=0.15 pd=4.03 ps=4.03 as=0.699375 ad=0.699375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.49 l=0.15 pd=1.79 ps=1.79 as=0.279375 ad=0.279375
+.ENDS pinv_4__14
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=10.71 l=0.15 pd=3.87 ps=3.87 as=0.669375 ad=0.669375
+
+.SUBCKT pinv_11__9 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=10.71 l=0.15 pd=3.87 ps=3.87 as=0.669375 ad=0.669375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=4.29 l=0.15 pd=1.73 ps=1.73 as=0.268125 ad=0.268125
+.ENDS pinv_11__9
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.8 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
+
+.SUBCKT pinv_19__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.8 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.1499999999999995 l=0.15 pd=1.73 ps=1.73 as=0.268125 ad=0.268125
+.ENDS pinv_19__8
+
+.SUBCKT buffer_stage_4__14_11__9_19__8_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_4__14
+Xinv1 out_1 out vdd gnd pinv_11__9
+Xinv2 out out_inv vdd gnd pinv_19__8
+.ENDS buffer_stage_4__14_11__9_19__8_no_out_h_4
+
+.SUBCKT logic_buffer_pnand3_4_14_11_9_19_8_no_in_no_out_h_4 A B C out_inv out vdd gnd
+Xlogic A B C logic_out vdd gnd pnand3_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__14_11__9_19__8_no_out_h_4
+.ENDS logic_buffer_pnand3_4_14_11_9_19_8_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.5100000000000002 l=0.15 pd=2.81 ps=2.81 as=0.47062500000000007 ad=0.47062500000000007
+
+.SUBCKT pinv_2__79 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=2.5100000000000002 l=0.15 pd=2.81 ps=2.81 as=0.47062500000000007 ad=0.47062500000000007
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.01 l=0.15 pd=1.31 ps=1.31 as=0.18937500000000002 ad=0.18937500000000002
+.ENDS pinv_2__79
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.35 l=0.15 pd=3.1999999999999997 ps=3.1999999999999997 as=0.54375 ad=0.54375
+
+.SUBCKT pinv_4__83 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.35 l=0.15 pd=3.1999999999999997 ps=3.1999999999999997 as=0.54375 ad=0.54375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.7399999999999998 l=0.15 pd=1.46 ps=1.46 as=0.21749999999999997 ad=0.21749999999999997
+.ENDS pinv_4__83
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.8 l=0.15 pd=3.1999999999999997 ps=3.1999999999999997 as=0.54375 ad=0.54375
+
+.SUBCKT pinv_6__45 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.8 l=0.15 pd=3.1999999999999997 ps=3.1999999999999997 as=0.54375 ad=0.54375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.32 l=0.15 pd=1.46 ps=1.46 as=0.21749999999999997 ad=0.21749999999999997
+.ENDS pinv_6__45
+
+.SUBCKT buffer_stage_2__79_4__83_6__45_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_2__79
+Xinv1 out_1 out vdd gnd pinv_4__83
+Xinv2 out out_inv vdd gnd pinv_6__45
+.ENDS buffer_stage_2__79_4__83_6__45_no_out_h_4
+
+.SUBCKT logic_buffer_pnand3_2_79_4_83_6_45_no_in_no_out_h_4 A B C out_inv out vdd gnd
+Xlogic A B C logic_out vdd gnd pnand3_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_2__79_4__83_6__45_no_out_h_4
+.ENDS logic_buffer_pnand3_2_79_4_83_6_45_no_in_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.635 l=0.15 pd=3.3899999999999997 ps=3.3899999999999997 as=0.579375 ad=0.579375
+
+.SUBCKT pinv_5__15 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.635 l=0.15 pd=3.3899999999999997 ps=3.3899999999999997 as=0.579375 ad=0.579375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.8599999999999999 l=0.15 pd=1.54 ps=1.54 as=0.23249999999999998 ad=0.23249999999999998
+.ENDS pinv_5__15
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.605 l=0.15 pd=3.37 ps=3.37 as=0.575625 ad=0.575625
+
+.SUBCKT pinv_5__11 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.605 l=0.15 pd=3.37 ps=3.37 as=0.575625 ad=0.575625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.845 l=0.15 pd=1.53 ps=1.53 as=0.230625 ad=0.230625
+.ENDS pinv_5__11
+
+.SUBCKT buffer_stage_5__15_5__11_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_5__15
+Xinv1 out_inv out vdd gnd pinv_5__11
+.ENDS buffer_stage_5__15_5__11_no_out_h_4
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.7700000000000005 l=0.15 pd=3.48 ps=3.48 as=0.5962500000000001 ad=0.5962500000000001
+
+.SUBCKT pinv_5__3 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.7700000000000005 l=0.15 pd=3.48 ps=3.48 as=0.5962500000000001 ad=0.5962500000000001
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.905 l=0.15 pd=1.57 ps=1.57 as=0.238125 ad=0.238125
+.ENDS pinv_5__3
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.12 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
+
+.SUBCKT pinv_16__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.12 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=9 w=6.03 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
+.ENDS pinv_16__8
+
+.SUBCKT buffer_stage_5__3_16__8_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_5__3
+Xinv1 out_inv out vdd gnd pinv_16__8
+.ENDS buffer_stage_5__3_16__8_no_out_h_4
+
+.SUBCKT logic_buffer_pnand3_5_3_16_8_no_in_no_out_h_4 A B C out_inv out vdd gnd
+Xlogic A B C logic_out vdd gnd pnand3_1
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__3_16__8_no_out_h_4
+.ENDS logic_buffer_pnand3_5_3_16_8_no_in_no_out_h_4
+
+.SUBCKT control_buffers bank_sel read clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd
+Xdecoder_clk bank_sel clk decoder_clk_bar decoder_clk vdd gnd logic_buffer_pnand2_2_29_no_in_no_out_h_4
+Xnor_read_clk read clk nor_read_clk vdd gnd pnor2_1
+Xbr_reset nor_read_clk bank_sel_bar br_reset br_reset_bar vdd gnd logic_buffer_pnor2_3_08_7_42_no_in_no_out_h_4
+Xclk_buf bank_sel clk clk_bar clk_buf vdd gnd logic_buffer_pnand2_3_86_10_6_13_1_no_in_no_out_h_4
+Xwrite_buf read bank_sel_cbar write_en write_en_bar vdd gnd logic_buffer_pnor2_4_85_20_40_no_in_no_out_h_4
+Xsense_amp_buf sample_bar_int sense_trig bank_sel sense_en_bar sense_en vdd gnd logic_buffer_pnand3_2_79_4_83_6_45_no_in_no_out_h_4
+Xtri_en_buf sample_bar_int sense_trig bank_sel tri_en_bar tri_en vdd gnd logic_buffer_pnand3_5_3_16_8_no_in_no_out_h_4
+Xsense_trig_bar sense_trig sense_trig_bar vdd gnd pinv_1
+Xsample_bar_int bank_sel read sense_trig_bar sample_bar_int vdd gnd pnand3_1
+Xsample_bar sample_bar_int sample_en_buf sample_en_bar vdd gnd buffer_stage_5__15_5__11_no_out_h_4
+Xclk_bar clk clk_bar_int vdd gnd pinv_1
+Xbank_sel_cbar bank_sel clk_bar_int bank_sel_cbar vdd gnd pnand2_1
+Xwordline_buf sense_trig bank_sel_cbar wordline_en wordline_en_bar vdd gnd logic_buffer_pnor2_3_72_11_4_no_in_no_out_h_4
+Xread_bar read read_bar vdd gnd pinv_1
+Xbl_reset bank_sel clk read_bar bl_reset_bar bl_reset vdd gnd logic_buffer_pnand3_4_14_11_9_19_8_no_in_no_out_h_4
+Xbank_sel_bar bank_sel bank_sel_bar vdd gnd pinv_1
+.ENDS control_buffers
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.8 l=0.15 pd=2.6999999999999997 ps=2.6999999999999997 as=0.44999999999999996 ad=0.44999999999999996
+
+.SUBCKT pinv_5__32_no_p_no_n_h_3__2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.8 l=0.15 pd=2.6999999999999997 ps=2.6999999999999997 as=0.44999999999999996 ad=0.44999999999999996
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=1.92 l=0.15 pd=1.26 ps=1.26 as=0.18 ad=0.18
+.ENDS pinv_5__32_no_p_no_n_h_3__2
+
+.SUBCKT buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_5__32_no_p_no_n_h_3__2
+.ENDS buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+
+.SUBCKT flop_buffer_5__32_neg din clk dout vdd gnd
+Xflop din flop_out flop_out_bar clk vdd gnd ms_flop_horz_pitch
+Xbuffer flop_out dout dout_bar vdd gnd buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.ENDS flop_buffer_5__32_neg
+
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.955 l=0.15 pd=2.27 ps=2.27 as=0.369375 ad=0.369375
+
+.SUBCKT pinv_3__28_no_p_no_n_h_3__2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.955 l=0.15 pd=2.27 ps=2.27 as=0.369375 ad=0.369375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.185 l=0.15 pd=1.09 ps=1.09 as=0.148125 ad=0.148125
+.ENDS pinv_3__28_no_p_no_n_h_3__2
+
+.SUBCKT buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__28_no_p_no_n_h_3__2
+.ENDS buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+
+.SUBCKT flop_buffer_3__28 din clk dout vdd gnd
+Xflop din flop_out flop_out_bar clk vdd gnd ms_flop_horz_pitch
+Xbuffer flop_out_bar dout dout_bar vdd gnd buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.ENDS flop_buffer_3__28
+
+.SUBCKT bank DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb read clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] vdd_write vdd_wordline
+Xcontrol_buffers bank_sel_buf read_buf clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd control_buffers
+Xtri_gate_array sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] tri_en tri_en_bar vdd gnd tri_gate_array
+Xmask_in MASK[0] MASK[1] MASK[2] MASK[3] MASK[4] MASK[5] MASK[6] MASK[7] mask_in[0] mask_in_bar[0] mask_in[1] mask_in_bar[1] mask_in[2] mask_in_bar[2] mask_in[3] mask_in_bar[3] mask_in[4] mask_in_bar[4] mask_in[5] mask_in_bar[5] mask_in[6] mask_in_bar[6] mask_in[7] mask_in_bar[7] clk_buf vdd gnd flop_array_c8_w8_ms_flop_clk_buf_ms_flop_clk_buf_tap
+Xdata_in DATA[0] DATA[1] DATA[2] DATA[3] DATA[4] DATA[5] DATA[6] DATA[7] data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] clk_bar vdd gnd flop_array_c8_w8_ms_flop_clk_buf_ms_flop_clk_buf_tap
+Xwrite_driver_array data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] mask_in_bar[0] mask_in_bar[1] mask_in_bar[2] mask_in_bar[3] mask_in_bar[4] mask_in_bar[5] mask_in_bar[6] mask_in_bar[7] write_en write_en_bar vdd_write gnd write_driver_array
+Xsense_amp_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] sense_out[0] sense_out[1] sense_out[2] sense_out[3] sense_out[4] sense_out[5] sense_out[6] sense_out[7] sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] sense_en gnd sample_en_bar vclamp vclampp vdd vref sense_amp_array
+Xprecharge_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] bl_reset br_reset gnd precharge_array
+Xbitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] vdd gnd bitcell_array
+Xwordline_driver dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] wordline_en vdd_wordline gnd wordline_driver_array
+Xbank_sel_buf Csb clk bank_sel_buf vdd gnd flop_buffer_5__32_neg
+Xread_buf read clk read_buf vdd gnd flop_buffer_3__28
+.ENDS bank
+
+.SUBCKT r_32_w_8 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] Csb Web clk sense_trig vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] vdd_write vdd_wordline ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] vdd gnd
+Xbank0 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb Web clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] vdd_write vdd_wordline bank
+Xrow_decoder ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] decoder_clk vdd gnd hierarchical_decoder_32rows
+.ENDS r_32_w_8
