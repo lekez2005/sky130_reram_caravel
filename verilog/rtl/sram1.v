@@ -2,13 +2,13 @@
 
 module reram_sram1 (
     INPUT [6:0] addr,
+    INPUT [3:0] bank_sel,
     INPUT clk,
-    INPUT csb,
-    INPUT [6:0] data,
+    INPUT [4:0] data,
     INPUT data_others,
-    OUTPUT [6:0] data_out,
+    OUTPUT [4:0] data_out,
     INOUT gnd,
-    INPUT [6:0] mask,
+    INPUT [4:0] mask,
     INPUT mask_others,
     INPUT sense_trig,
     INPUT vclamp,
