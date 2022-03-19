@@ -15,7 +15,8 @@ module reram_sram1 (
     INPUT vclampp,
     INOUT vdd,
     INOUT vdd_wordline,
-    INOUT vdd_write,
+    INOUT vdd_write_bl,
+    INOUT vdd_write_br,
     INPUT vref,
     INPUT web,
 );
