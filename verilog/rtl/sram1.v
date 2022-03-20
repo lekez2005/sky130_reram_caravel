@@ -2,7 +2,7 @@
 
 module reram_sram1 (
     INPUT [6:0] addr,
-    INPUT [3:0] bank_sel,
+    INPUT [3:0] bank_sel_b,
     INPUT clk,
     INPUT [4:0] data,
     INPUT data_others,
