@@ -69,75 +69,102 @@ Xmod_29 din[29] dout[29] dout_bar[29] clk vdd gnd ms_flop_clk_buf
 Xmod_30 din[30] dout[30] dout_bar[30] clk vdd gnd ms_flop_clk_buf
 Xmod_31 din[31] dout[31] dout_bar[31] clk vdd gnd ms_flop_clk_buf
 .ENDS flop_array_c32_w32_ms_flop_clk_buf_ms_flop_clk_buf_tap
+.subckt write_driver_mux_logic mask en data data_bar bl_p bl_n br_p br_n gnd vdd
+xm4 mask_en_bar en net1 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm1 net1 mask gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm2 mask_en_bar en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm3 mask_en_bar mask vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm5 mask_en mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm7 br_p data_bar net2 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 net2 mask_en gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm9 br_p data_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm10 br_p mask_en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm11 bl_p data net3 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm12 net3 mask_en gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm13 bl_p data vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm14 bl_p mask_en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm16 br_n mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm18 br_n data_bar net4 vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm15 br_n data_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm17 net4 mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm19 bl_n mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm20 bl_n data net5 vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm21 bl_n data gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm22 net5 mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm6 mask_en mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.5 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+.ends
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.16 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=8.1 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=8.64 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=21.6 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+.SUBCKT write_driver_sep_vdd_10 data data_bar mask en bl br vdd vdd_write_bl vdd_write_br gnd
+Xlogic mask en data data_bar bl_p bl_n br_p br_n gnd vdd write_driver_mux_logic
+Xbl_nmos bl bl_n gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xbr_nmos br br_n gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xbl_pmos bl bl_p vdd_write_bl vdd_write_bl sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
+Xbr_pmos br br_p vdd_write_br vdd_write_bl sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
+.ENDS write_driver_sep_vdd_10
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-
-.SUBCKT write_driver_1__5_6 data data_bar mask_bar en en_bar bl br vdd gnd
-XM0 gnd data bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM1 gnd mask_bar bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM2 gnd data_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM3 gnd mask_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM4 bl_bar data bl_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM5 bl_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM6 br_bar data_bar br_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM7 br_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM8 bl bl_bar bl_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM9 bl_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM10 br br_bar br_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM11 br_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM12 bl bl_bar bl_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM13 bl_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM14 br br_bar br_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM15 br_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-.ENDS write_driver_1__5_6
-
-.SUBCKT write_driver_array data[0] data_bar[0] data[1] data_bar[1] data[2] data_bar[2] data[3] data_bar[3] data[4] data_bar[4] data[5] data_bar[5] data[6] data_bar[6] data[7] data_bar[7] data[8] data_bar[8] data[9] data_bar[9] data[10] data_bar[10] data[11] data_bar[11] data[12] data_bar[12] data[13] data_bar[13] data[14] data_bar[14] data[15] data_bar[15] data[16] data_bar[16] data[17] data_bar[17] data[18] data_bar[18] data[19] data_bar[19] data[20] data_bar[20] data[21] data_bar[21] data[22] data_bar[22] data[23] data_bar[23] data[24] data_bar[24] data[25] data_bar[25] data[26] data_bar[26] data[27] data_bar[27] data[28] data_bar[28] data[29] data_bar[29] data[30] data_bar[30] data[31] data_bar[31] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] mask_bar[0] mask_bar[1] mask_bar[2] mask_bar[3] mask_bar[4] mask_bar[5] mask_bar[6] mask_bar[7] mask_bar[8] mask_bar[9] mask_bar[10] mask_bar[11] mask_bar[12] mask_bar[13] mask_bar[14] mask_bar[15] mask_bar[16] mask_bar[17] mask_bar[18] mask_bar[19] mask_bar[20] mask_bar[21] mask_bar[22] mask_bar[23] mask_bar[24] mask_bar[25] mask_bar[26] mask_bar[27] mask_bar[28] mask_bar[29] mask_bar[30] mask_bar[31] en en_bar vdd gnd
-Xmod_0 data[0] data_bar[0] mask_bar[0] en en_bar bl[0] br[0] vdd gnd write_driver_1__5_6
-Xmod_1 data[1] data_bar[1] mask_bar[1] en en_bar bl[1] br[1] vdd gnd write_driver_1__5_6
-Xmod_2 data[2] data_bar[2] mask_bar[2] en en_bar bl[2] br[2] vdd gnd write_driver_1__5_6
-Xmod_3 data[3] data_bar[3] mask_bar[3] en en_bar bl[3] br[3] vdd gnd write_driver_1__5_6
-Xmod_4 data[4] data_bar[4] mask_bar[4] en en_bar bl[4] br[4] vdd gnd write_driver_1__5_6
-Xmod_5 data[5] data_bar[5] mask_bar[5] en en_bar bl[5] br[5] vdd gnd write_driver_1__5_6
-Xmod_6 data[6] data_bar[6] mask_bar[6] en en_bar bl[6] br[6] vdd gnd write_driver_1__5_6
-Xmod_7 data[7] data_bar[7] mask_bar[7] en en_bar bl[7] br[7] vdd gnd write_driver_1__5_6
-Xmod_8 data[8] data_bar[8] mask_bar[8] en en_bar bl[8] br[8] vdd gnd write_driver_1__5_6
-Xmod_9 data[9] data_bar[9] mask_bar[9] en en_bar bl[9] br[9] vdd gnd write_driver_1__5_6
-Xmod_10 data[10] data_bar[10] mask_bar[10] en en_bar bl[10] br[10] vdd gnd write_driver_1__5_6
-Xmod_11 data[11] data_bar[11] mask_bar[11] en en_bar bl[11] br[11] vdd gnd write_driver_1__5_6
-Xmod_12 data[12] data_bar[12] mask_bar[12] en en_bar bl[12] br[12] vdd gnd write_driver_1__5_6
-Xmod_13 data[13] data_bar[13] mask_bar[13] en en_bar bl[13] br[13] vdd gnd write_driver_1__5_6
-Xmod_14 data[14] data_bar[14] mask_bar[14] en en_bar bl[14] br[14] vdd gnd write_driver_1__5_6
-Xmod_15 data[15] data_bar[15] mask_bar[15] en en_bar bl[15] br[15] vdd gnd write_driver_1__5_6
-Xmod_16 data[16] data_bar[16] mask_bar[16] en en_bar bl[16] br[16] vdd gnd write_driver_1__5_6
-Xmod_17 data[17] data_bar[17] mask_bar[17] en en_bar bl[17] br[17] vdd gnd write_driver_1__5_6
-Xmod_18 data[18] data_bar[18] mask_bar[18] en en_bar bl[18] br[18] vdd gnd write_driver_1__5_6
-Xmod_19 data[19] data_bar[19] mask_bar[19] en en_bar bl[19] br[19] vdd gnd write_driver_1__5_6
-Xmod_20 data[20] data_bar[20] mask_bar[20] en en_bar bl[20] br[20] vdd gnd write_driver_1__5_6
-Xmod_21 data[21] data_bar[21] mask_bar[21] en en_bar bl[21] br[21] vdd gnd write_driver_1__5_6
-Xmod_22 data[22] data_bar[22] mask_bar[22] en en_bar bl[22] br[22] vdd gnd write_driver_1__5_6
-Xmod_23 data[23] data_bar[23] mask_bar[23] en en_bar bl[23] br[23] vdd gnd write_driver_1__5_6
-Xmod_24 data[24] data_bar[24] mask_bar[24] en en_bar bl[24] br[24] vdd gnd write_driver_1__5_6
-Xmod_25 data[25] data_bar[25] mask_bar[25] en en_bar bl[25] br[25] vdd gnd write_driver_1__5_6
-Xmod_26 data[26] data_bar[26] mask_bar[26] en en_bar bl[26] br[26] vdd gnd write_driver_1__5_6
-Xmod_27 data[27] data_bar[27] mask_bar[27] en en_bar bl[27] br[27] vdd gnd write_driver_1__5_6
-Xmod_28 data[28] data_bar[28] mask_bar[28] en en_bar bl[28] br[28] vdd gnd write_driver_1__5_6
-Xmod_29 data[29] data_bar[29] mask_bar[29] en en_bar bl[29] br[29] vdd gnd write_driver_1__5_6
-Xmod_30 data[30] data_bar[30] mask_bar[30] en en_bar bl[30] br[30] vdd gnd write_driver_1__5_6
-Xmod_31 data[31] data_bar[31] mask_bar[31] en en_bar bl[31] br[31] vdd gnd write_driver_1__5_6
+.SUBCKT write_driver_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] data[0] data[1] data[2] data[3] data[4] data[5] data[6] data[7] data[8] data[9] data[10] data[11] data[12] data[13] data[14] data[15] data[16] data[17] data[18] data[19] data[20] data[21] data[22] data[23] data[24] data[25] data[26] data[27] data[28] data[29] data[30] data[31] data_bar[0] data_bar[1] data_bar[2] data_bar[3] data_bar[4] data_bar[5] data_bar[6] data_bar[7] data_bar[8] data_bar[9] data_bar[10] data_bar[11] data_bar[12] data_bar[13] data_bar[14] data_bar[15] data_bar[16] data_bar[17] data_bar[18] data_bar[19] data_bar[20] data_bar[21] data_bar[22] data_bar[23] data_bar[24] data_bar[25] data_bar[26] data_bar[27] data_bar[28] data_bar[29] data_bar[30] data_bar[31] mask[0] mask[1] mask[2] mask[3] mask[4] mask[5] mask[6] mask[7] mask[8] mask[9] mask[10] mask[11] mask[12] mask[13] mask[14] mask[15] mask[16] mask[17] mask[18] mask[19] mask[20] mask[21] mask[22] mask[23] mask[24] mask[25] mask[26] mask[27] mask[28] mask[29] mask[30] mask[31] en vdd vdd_write_bl vdd_write_br gnd
+Xmod_0 data[0] data_bar[0] mask[0] en bl[0] br[0] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_1 data[1] data_bar[1] mask[1] en bl[1] br[1] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_2 data[2] data_bar[2] mask[2] en bl[2] br[2] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_3 data[3] data_bar[3] mask[3] en bl[3] br[3] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_4 data[4] data_bar[4] mask[4] en bl[4] br[4] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_5 data[5] data_bar[5] mask[5] en bl[5] br[5] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_6 data[6] data_bar[6] mask[6] en bl[6] br[6] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_7 data[7] data_bar[7] mask[7] en bl[7] br[7] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_8 data[8] data_bar[8] mask[8] en bl[8] br[8] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_9 data[9] data_bar[9] mask[9] en bl[9] br[9] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_10 data[10] data_bar[10] mask[10] en bl[10] br[10] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_11 data[11] data_bar[11] mask[11] en bl[11] br[11] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_12 data[12] data_bar[12] mask[12] en bl[12] br[12] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_13 data[13] data_bar[13] mask[13] en bl[13] br[13] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_14 data[14] data_bar[14] mask[14] en bl[14] br[14] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_15 data[15] data_bar[15] mask[15] en bl[15] br[15] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_16 data[16] data_bar[16] mask[16] en bl[16] br[16] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_17 data[17] data_bar[17] mask[17] en bl[17] br[17] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_18 data[18] data_bar[18] mask[18] en bl[18] br[18] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_19 data[19] data_bar[19] mask[19] en bl[19] br[19] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_20 data[20] data_bar[20] mask[20] en bl[20] br[20] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_21 data[21] data_bar[21] mask[21] en bl[21] br[21] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_22 data[22] data_bar[22] mask[22] en bl[22] br[22] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_23 data[23] data_bar[23] mask[23] en bl[23] br[23] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_24 data[24] data_bar[24] mask[24] en bl[24] br[24] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_25 data[25] data_bar[25] mask[25] en bl[25] br[25] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_26 data[26] data_bar[26] mask[26] en bl[26] br[26] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_27 data[27] data_bar[27] mask[27] en bl[27] br[27] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_28 data[28] data_bar[28] mask[28] en bl[28] br[28] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_29 data[29] data_bar[29] mask[29] en bl[29] br[29] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_30 data[30] data_bar[30] mask[30] en bl[30] br[30] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_31 data[31] data_bar[31] mask[31] en bl[31] br[31] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
 .ENDS write_driver_array
 
 .SUBCKT bitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] vdd gnd
@@ -1167,58 +1194,58 @@ Xbit_r30_c31 bl[31] br[31] wl[30] gnd reram_bitcell_7
 Xbit_r31_c31 bl[31] br[31] wl[31] gnd reram_bitcell_7
 .ENDS bitcell_array
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.88 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=4.32 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.2 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=10.8 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
 
-.SUBCKT tri_state_4 in_bar out en en_bar vdd gnd
-Xnmos0 gnd en left_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos1 left_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos2 gnd en right_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos3 right_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xpmos0 vdd en_bar left_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos1 left_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos2 vdd en_bar right_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos3 right_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-.ENDS tri_state_4
+.SUBCKT tri_state_6 in_bar out en en_bar vdd gnd
+Xnmos0 gnd en left_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos1 left_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos2 gnd en right_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos3 right_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xpmos0 vdd en_bar left_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos1 left_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos2 vdd en_bar right_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos3 right_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+.ENDS tri_state_6
 
 .SUBCKT tri_gate_array in_bar[0] in_bar[1] in_bar[2] in_bar[3] in_bar[4] in_bar[5] in_bar[6] in_bar[7] in_bar[8] in_bar[9] in_bar[10] in_bar[11] in_bar[12] in_bar[13] in_bar[14] in_bar[15] in_bar[16] in_bar[17] in_bar[18] in_bar[19] in_bar[20] in_bar[21] in_bar[22] in_bar[23] in_bar[24] in_bar[25] in_bar[26] in_bar[27] in_bar[28] in_bar[29] in_bar[30] in_bar[31] out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14] out[15] out[16] out[17] out[18] out[19] out[20] out[21] out[22] out[23] out[24] out[25] out[26] out[27] out[28] out[29] out[30] out[31] en en_bar vdd gnd
-Xmod_0 in_bar[0] out[0] en en_bar vdd gnd tri_state_4
-Xmod_1 in_bar[1] out[1] en en_bar vdd gnd tri_state_4
-Xmod_2 in_bar[2] out[2] en en_bar vdd gnd tri_state_4
-Xmod_3 in_bar[3] out[3] en en_bar vdd gnd tri_state_4
-Xmod_4 in_bar[4] out[4] en en_bar vdd gnd tri_state_4
-Xmod_5 in_bar[5] out[5] en en_bar vdd gnd tri_state_4
-Xmod_6 in_bar[6] out[6] en en_bar vdd gnd tri_state_4
-Xmod_7 in_bar[7] out[7] en en_bar vdd gnd tri_state_4
-Xmod_8 in_bar[8] out[8] en en_bar vdd gnd tri_state_4
-Xmod_9 in_bar[9] out[9] en en_bar vdd gnd tri_state_4
-Xmod_10 in_bar[10] out[10] en en_bar vdd gnd tri_state_4
-Xmod_11 in_bar[11] out[11] en en_bar vdd gnd tri_state_4
-Xmod_12 in_bar[12] out[12] en en_bar vdd gnd tri_state_4
-Xmod_13 in_bar[13] out[13] en en_bar vdd gnd tri_state_4
-Xmod_14 in_bar[14] out[14] en en_bar vdd gnd tri_state_4
-Xmod_15 in_bar[15] out[15] en en_bar vdd gnd tri_state_4
-Xmod_16 in_bar[16] out[16] en en_bar vdd gnd tri_state_4
-Xmod_17 in_bar[17] out[17] en en_bar vdd gnd tri_state_4
-Xmod_18 in_bar[18] out[18] en en_bar vdd gnd tri_state_4
-Xmod_19 in_bar[19] out[19] en en_bar vdd gnd tri_state_4
-Xmod_20 in_bar[20] out[20] en en_bar vdd gnd tri_state_4
-Xmod_21 in_bar[21] out[21] en en_bar vdd gnd tri_state_4
-Xmod_22 in_bar[22] out[22] en en_bar vdd gnd tri_state_4
-Xmod_23 in_bar[23] out[23] en en_bar vdd gnd tri_state_4
-Xmod_24 in_bar[24] out[24] en en_bar vdd gnd tri_state_4
-Xmod_25 in_bar[25] out[25] en en_bar vdd gnd tri_state_4
-Xmod_26 in_bar[26] out[26] en en_bar vdd gnd tri_state_4
-Xmod_27 in_bar[27] out[27] en en_bar vdd gnd tri_state_4
-Xmod_28 in_bar[28] out[28] en en_bar vdd gnd tri_state_4
-Xmod_29 in_bar[29] out[29] en en_bar vdd gnd tri_state_4
-Xmod_30 in_bar[30] out[30] en en_bar vdd gnd tri_state_4
-Xmod_31 in_bar[31] out[31] en en_bar vdd gnd tri_state_4
+Xmod_0 in_bar[0] out[0] en en_bar vdd gnd tri_state_6
+Xmod_1 in_bar[1] out[1] en en_bar vdd gnd tri_state_6
+Xmod_2 in_bar[2] out[2] en en_bar vdd gnd tri_state_6
+Xmod_3 in_bar[3] out[3] en en_bar vdd gnd tri_state_6
+Xmod_4 in_bar[4] out[4] en en_bar vdd gnd tri_state_6
+Xmod_5 in_bar[5] out[5] en en_bar vdd gnd tri_state_6
+Xmod_6 in_bar[6] out[6] en en_bar vdd gnd tri_state_6
+Xmod_7 in_bar[7] out[7] en en_bar vdd gnd tri_state_6
+Xmod_8 in_bar[8] out[8] en en_bar vdd gnd tri_state_6
+Xmod_9 in_bar[9] out[9] en en_bar vdd gnd tri_state_6
+Xmod_10 in_bar[10] out[10] en en_bar vdd gnd tri_state_6
+Xmod_11 in_bar[11] out[11] en en_bar vdd gnd tri_state_6
+Xmod_12 in_bar[12] out[12] en en_bar vdd gnd tri_state_6
+Xmod_13 in_bar[13] out[13] en en_bar vdd gnd tri_state_6
+Xmod_14 in_bar[14] out[14] en en_bar vdd gnd tri_state_6
+Xmod_15 in_bar[15] out[15] en en_bar vdd gnd tri_state_6
+Xmod_16 in_bar[16] out[16] en en_bar vdd gnd tri_state_6
+Xmod_17 in_bar[17] out[17] en en_bar vdd gnd tri_state_6
+Xmod_18 in_bar[18] out[18] en en_bar vdd gnd tri_state_6
+Xmod_19 in_bar[19] out[19] en en_bar vdd gnd tri_state_6
+Xmod_20 in_bar[20] out[20] en en_bar vdd gnd tri_state_6
+Xmod_21 in_bar[21] out[21] en en_bar vdd gnd tri_state_6
+Xmod_22 in_bar[22] out[22] en en_bar vdd gnd tri_state_6
+Xmod_23 in_bar[23] out[23] en en_bar vdd gnd tri_state_6
+Xmod_24 in_bar[24] out[24] en en_bar vdd gnd tri_state_6
+Xmod_25 in_bar[25] out[25] en en_bar vdd gnd tri_state_6
+Xmod_26 in_bar[26] out[26] en en_bar vdd gnd tri_state_6
+Xmod_27 in_bar[27] out[27] en en_bar vdd gnd tri_state_6
+Xmod_28 in_bar[28] out[28] en en_bar vdd gnd tri_state_6
+Xmod_29 in_bar[29] out[29] en en_bar vdd gnd tri_state_6
+Xmod_30 in_bar[30] out[30] en en_bar vdd gnd tri_state_6
+Xmod_31 in_bar[31] out[31] en en_bar vdd gnd tri_state_6
 .ENDS tri_gate_array
 .subckt re_ram_sense_amp bl br dout dout_bar en gnd sampleb vclamp vclampp vdd vref
 xm1 vdata vclamp bl gnd sky130_fd_pr__nfet_01v8 l=0.15 w=1.44 nf=4
@@ -1564,8 +1591,6 @@ Xdriver30 en in[30] wl_bar[30] wl[30] vdd gnd logic_buffer_pnand2_4_31_12_5_20_n
 Xdriver31 en in[31] wl_bar[31] wl[31] vdd gnd logic_buffer_pnand2_4_31_12_5_20_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
 .ENDS wordline_driver_array
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-
 .SUBCKT discharge_10 bl br bl_reset br_reset gnd
 Xbl_inst bl bl_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 Xbr_inst br br_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
@@ -1657,43 +1682,43 @@ Xlogic A B out_inv vdd gnd pnand2_1
 Xbuffer out_inv out out_inv vdd gnd buffer_stage_2__29_no_out_h_4
 .ENDS logic_buffer_pnand2_2_29_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.59 l=0.15 pd=3.36 ps=3.36 as=0.57375 ad=0.57375
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.635 l=0.15 pd=3.3899999999999997 ps=3.3899999999999997 as=0.579375 ad=0.579375
 
-.SUBCKT pinv_5__11 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.59 l=0.15 pd=3.36 ps=3.36 as=0.57375 ad=0.57375
+.SUBCKT pinv_5__14 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.635 l=0.15 pd=3.3899999999999997 ps=3.3899999999999997 as=0.579375 ad=0.579375
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.845 l=0.15 pd=1.53 ps=1.53 as=0.230625 ad=0.230625
-.ENDS pinv_5__11
+.ENDS pinv_5__14
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.35 l=0.15 pd=3.9699999999999998 ps=3.9699999999999998 as=0.688125 ad=0.688125
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.65 l=0.15 pd=4.03 ps=4.03 as=0.699375 ad=0.699375
 
-.SUBCKT pinv_20__4 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.35 l=0.15 pd=3.9699999999999998 ps=3.9699999999999998 as=0.688125 ad=0.688125
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.35 l=0.15 pd=1.77 ps=1.77 as=0.275625 ad=0.275625
-.ENDS pinv_20__4
+.SUBCKT pinv_20__7 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.65 l=0.15 pd=4.03 ps=4.03 as=0.699375 ad=0.699375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.45 l=0.15 pd=1.79 ps=1.79 as=0.279375 ad=0.279375
+.ENDS pinv_20__7
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=17 w=30.26 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=17 w=30.94 l=0.15 pd=3.94 ps=3.94 as=0.6825 ad=0.6825
 
-.SUBCKT pinv_33__6 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=17 w=30.26 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=17 w=12.07 l=0.15 pd=1.72 ps=1.72 as=0.26625 ad=0.26625
-.ENDS pinv_33__6
+.SUBCKT pinv_34__4 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=17 w=30.94 l=0.15 pd=3.94 ps=3.94 as=0.6825 ad=0.6825
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=17 w=12.41 l=0.15 pd=1.76 ps=1.76 as=0.27375 ad=0.27375
+.ENDS pinv_34__4
 
-.SUBCKT buffer_stage_5__11_20__4_33__6_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_1 vdd gnd pinv_5__11
-Xinv1 out_1 out vdd gnd pinv_20__4
-Xinv2 out out_inv vdd gnd pinv_33__6
-.ENDS buffer_stage_5__11_20__4_33__6_no_out_h_4
+.SUBCKT buffer_stage_5__14_20__7_34__4_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_5__14
+Xinv1 out_1 out vdd gnd pinv_20__7
+Xinv2 out out_inv vdd gnd pinv_34__4
+.ENDS buffer_stage_5__14_20__7_34__4_no_out_h_4
 
-.SUBCKT logic_buffer_pnand2_5_11_20_4_33_6_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand2_5_14_20_7_34_4_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnand2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__11_20__4_33__6_no_out_h_4
-.ENDS logic_buffer_pnand2_5_11_20_4_33_6_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__14_20__7_34__4_no_out_h_4
+.ENDS logic_buffer_pnand2_5_14_20_7_34_4_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.36 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
 
 .SUBCKT pinv_3__73 A Z vdd gnd
 Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.36 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.34 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.35 l=0.15 pd=1.6500000000000001 ps=1.6500000000000001 as=0.25312500000000004 ad=0.25312500000000004
 .ENDS pinv_3__73
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=10.350000000000001 l=0.15 pd=3.75 ps=3.75 as=0.6468750000000001 ad=0.6468750000000001
@@ -1713,54 +1738,54 @@ Xlogic A B logic_out vdd gnd pnor2_1
 Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__73_11__5_no_out_h_4
 .ENDS logic_buffer_pnor2_3_73_11_5_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.9 l=0.15 pd=3.25 ps=3.25 as=0.5531250000000001 ad=0.5531250000000001
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.69 l=0.15 pd=3.9899999999999998 ps=3.9899999999999998 as=0.691875 ad=0.691875
 
-.SUBCKT pinv_6__56 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.9 l=0.15 pd=3.25 ps=3.25 as=0.5531250000000001 ad=0.5531250000000001
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.36 l=0.15 pd=1.48 ps=1.48 as=0.22125 ad=0.22125
-.ENDS pinv_6__56
+.SUBCKT pinv_4__09 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.69 l=0.15 pd=3.9899999999999998 ps=3.9899999999999998 as=0.691875 ad=0.691875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.48 l=0.15 pd=1.78 ps=1.78 as=0.27749999999999997 ad=0.27749999999999997
+.ENDS pinv_4__09
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.530000000000001 l=0.15 pd=3.88 ps=3.88 as=0.67125 ad=0.67125
 
-.SUBCKT pinv_40 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=20 w=14.399999999999999 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-.ENDS pinv_40
+.SUBCKT pinv_13__9 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.530000000000001 l=0.15 pd=3.88 ps=3.88 as=0.67125 ad=0.67125
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=7 w=5.005 l=0.15 pd=1.73 ps=1.73 as=0.268125 ad=0.268125
+.ENDS pinv_13__9
 
-.SUBCKT buffer_stage_6__56_40_40_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_1 vdd gnd pinv_6__56
-Xinv1 out_1 out vdd gnd pinv_40
-Xinv2 out out_inv vdd gnd pinv_40
-.ENDS buffer_stage_6__56_40_40_no_out_h_4
+.SUBCKT buffer_stage_4__09_13__9_1_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_4__09
+Xinv1 out_1 out vdd gnd pinv_13__9
+Xinv2 out out_inv vdd gnd pinv_1
+.ENDS buffer_stage_4__09_13__9_1_no_out_h_4
 
-.SUBCKT logic_buffer_pnor2_6_56_40_40_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT logic_buffer_pnor2_4_09_13_9_1_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnor2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_6__56_40_40_no_out_h_4
-.ENDS logic_buffer_pnor2_6_56_40_40_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__09_13__9_1_no_out_h_4
+.ENDS logic_buffer_pnor2_4_09_13_9_1_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=3.945 l=0.15 pd=2.9299999999999997 ps=2.9299999999999997 as=0.493125 ad=0.493125
 
-.SUBCKT pinv_4__38 A Z vdd gnd
+.SUBCKT pinv_4__39 A Z vdd gnd
 Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=3.945 l=0.15 pd=2.9299999999999997 ps=2.9299999999999997 as=0.493125 ad=0.493125
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.5750000000000002 l=0.15 pd=1.35 ps=1.35 as=0.19687500000000002 ad=0.19687500000000002
-.ENDS pinv_4__38
+.ENDS pinv_4__39
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.03 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.12 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
 
-.SUBCKT pinv_16__7 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.03 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
+.SUBCKT pinv_16__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.12 l=0.15 pd=3.6599999999999997 ps=3.6599999999999997 as=0.63 ad=0.63
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=9 w=6.03 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
-.ENDS pinv_16__7
+.ENDS pinv_16__8
 
-.SUBCKT buffer_stage_4__38_16__7_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_4__38
-Xinv1 out_inv out vdd gnd pinv_16__7
-.ENDS buffer_stage_4__38_16__7_no_out_h_4
+.SUBCKT buffer_stage_4__39_16__8_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_4__39
+Xinv1 out_inv out vdd gnd pinv_16__8
+.ENDS buffer_stage_4__39_16__8_no_out_h_4
 
-.SUBCKT logic_buffer_pnor2_4_38_16_7_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT logic_buffer_pnor2_4_39_16_8_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnor2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__38_16__7_no_out_h_4
-.ENDS logic_buffer_pnor2_4_38_16_7_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__39_16__8_no_out_h_4
+.ENDS logic_buffer_pnor2_4_39_16_8_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.605 l=0.15 pd=3.37 ps=3.37 as=0.575625 ad=0.575625
 
@@ -1776,6 +1801,13 @@ Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.75 l=0.15 pd=3.85 ps=3
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.1 l=0.15 pd=1.72 ps=1.72 as=0.26625 ad=0.26625
 .ENDS pinv_19__7
 
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+
+.SUBCKT pinv_40 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=20 w=36.0 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=20 w=14.399999999999999 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+.ENDS pinv_40
+
 .SUBCKT buffer_stage_5__12_19__7_40_no_out_h_4 in out_inv out vdd gnd
 Xinv0 in out_1 vdd gnd pinv_5__12
 Xinv1 out_1 out vdd gnd pinv_19__7
@@ -1787,85 +1819,85 @@ Xlogic A B C logic_out vdd gnd pnand3_1
 Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__12_19__7_40_no_out_h_4
 .ENDS logic_buffer_pnand3_5_12_19_7_40_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.0500000000000003 l=0.15 pd=3.35 ps=3.35 as=0.571875 ad=0.571875
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.08 l=0.15 pd=3.38 ps=3.38 as=0.5775 ad=0.5775
 
-.SUBCKT pinv_3__38 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.0500000000000003 l=0.15 pd=3.35 ps=3.35 as=0.571875 ad=0.571875
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.22 l=0.15 pd=1.52 ps=1.52 as=0.22875 ad=0.22875
-.ENDS pinv_3__38
+.SUBCKT pinv_3__42 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.08 l=0.15 pd=3.38 ps=3.38 as=0.5775 ad=0.5775
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.23 l=0.15 pd=1.53 ps=1.53 as=0.230625 ad=0.230625
+.ENDS pinv_3__42
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.84 l=0.15 pd=3.7199999999999998 ps=3.7199999999999998 as=0.64125 ad=0.64125
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.0 l=0.15 pd=3.8 ps=3.8 as=0.65625 ad=0.65625
 
-.SUBCKT pinv_7__6 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.84 l=0.15 pd=3.7199999999999998 ps=3.7199999999999998 as=0.64125 ad=0.64125
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.74 l=0.15 pd=1.6700000000000002 ps=1.6700000000000002 as=0.256875 ad=0.256875
-.ENDS pinv_7__6
+.SUBCKT pinv_7__78 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.0 l=0.15 pd=3.8 ps=3.8 as=0.65625 ad=0.65625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.8000000000000003 l=0.15 pd=1.7000000000000002 ps=1.7000000000000002 as=0.2625 ad=0.2625
+.ENDS pinv_7__78
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=11.16 l=0.15 pd=4.0200000000000005 ps=4.0200000000000005 as=0.6975 ad=0.6975
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=7 w=11.55 l=0.15 pd=3.6 ps=3.6 as=0.61875 ad=0.61875
 
-.SUBCKT pinv_12__4 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=11.16 l=0.15 pd=4.0200000000000005 ps=4.0200000000000005 as=0.6975 ad=0.6975
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=4.47 l=0.15 pd=1.79 ps=1.79 as=0.279375 ad=0.279375
-.ENDS pinv_12__4
+.SUBCKT pinv_12__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=7 w=11.55 l=0.15 pd=3.6 ps=3.6 as=0.61875 ad=0.61875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=7 w=4.62 l=0.15 pd=1.62 ps=1.62 as=0.2475 ad=0.2475
+.ENDS pinv_12__8
 
-.SUBCKT buffer_stage_3__38_7__6_12__4_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_1 vdd gnd pinv_3__38
-Xinv1 out_1 out vdd gnd pinv_7__6
-Xinv2 out out_inv vdd gnd pinv_12__4
-.ENDS buffer_stage_3__38_7__6_12__4_no_out_h_4
+.SUBCKT buffer_stage_3__42_7__78_12__8_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_3__42
+Xinv1 out_1 out vdd gnd pinv_7__78
+Xinv2 out out_inv vdd gnd pinv_12__8
+.ENDS buffer_stage_3__42_7__78_12__8_no_out_h_4
 
-.SUBCKT logic_buffer_pnand3_3_38_7_6_12_4_no_in_no_out_h_4 A B C out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand3_3_42_7_78_12_8_no_in_no_out_h_4 A B C out_inv out vdd gnd
 Xlogic A B C logic_out vdd gnd pnand3_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__38_7__6_12__4_no_out_h_4
-.ENDS logic_buffer_pnand3_3_38_7_6_12_4_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__42_7__78_12__8_no_out_h_4
+.ENDS logic_buffer_pnand3_3_42_7_78_12_8_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.68 l=0.15 pd=3.1399999999999997 ps=3.1399999999999997 as=0.5325 ad=0.5325
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.0 l=0.15 pd=3.3 ps=3.3 as=0.5625 ad=0.5625
 
-.SUBCKT pinv_6__3 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=5.68 l=0.15 pd=3.1399999999999997 ps=3.1399999999999997 as=0.5325 ad=0.5325
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.2800000000000002 l=0.15 pd=1.4400000000000002 ps=1.4400000000000002 as=0.21375000000000002 ad=0.21375000000000002
-.ENDS pinv_6__3
+.SUBCKT pinv_6__65 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.0 l=0.15 pd=3.3 ps=3.3 as=0.5625 ad=0.5625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.4 l=0.15 pd=1.5 ps=1.5 as=0.22499999999999998 ad=0.22499999999999998
+.ENDS pinv_6__65
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.35 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.45 l=0.15 pd=3.6799999999999997 ps=3.6799999999999997 as=0.63375 ad=0.63375
 
-.SUBCKT pinv_9__27 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.35 l=0.15 pd=3.6399999999999997 ps=3.6399999999999997 as=0.62625 ad=0.62625
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=5 w=3.35 l=0.15 pd=1.6400000000000001 ps=1.6400000000000001 as=0.25125000000000003 ad=0.25125000000000003
-.ENDS pinv_9__27
+.SUBCKT pinv_9__39 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.45 l=0.15 pd=3.6799999999999997 ps=3.6799999999999997 as=0.63375 ad=0.63375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=5 w=3.375 l=0.15 pd=1.6500000000000001 ps=1.6500000000000001 as=0.25312500000000004 ad=0.25312500000000004
+.ENDS pinv_9__39
 
-.SUBCKT buffer_stage_6__3_9__27_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_6__3
-Xinv1 out_inv out vdd gnd pinv_9__27
-.ENDS buffer_stage_6__3_9__27_no_out_h_4
+.SUBCKT buffer_stage_6__65_9__39_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_6__65
+Xinv1 out_inv out vdd gnd pinv_9__39
+.ENDS buffer_stage_6__65_9__39_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.18 l=0.15 pd=3.8899999999999997 ps=3.8899999999999997 as=0.673125 ad=0.673125
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=5 w=7.925 l=0.15 pd=3.4699999999999998 ps=3.4699999999999998 as=0.594375 ad=0.594375
 
-.SUBCKT pinv_7__97 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.18 l=0.15 pd=3.8899999999999997 ps=3.8899999999999997 as=0.673125 ad=0.673125
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.88 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-.ENDS pinv_7__97
+.SUBCKT pinv_8__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=5 w=7.925 l=0.15 pd=3.4699999999999998 ps=3.4699999999999998 as=0.594375 ad=0.594375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=5 w=3.175 l=0.15 pd=1.57 ps=1.57 as=0.238125 ad=0.238125
+.ENDS pinv_8__8
 
-.SUBCKT buffer_stage_7__97_40_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_7__97
+.SUBCKT buffer_stage_8__8_40_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_8__8
 Xinv1 out_inv out vdd gnd pinv_40
-.ENDS buffer_stage_7__97_40_no_out_h_4
+.ENDS buffer_stage_8__8_40_no_out_h_4
 
-.SUBCKT logic_buffer_pnand3_7_97_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand3_8_8_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
 Xlogic A B C logic_out vdd gnd pnand3_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_7__97_40_no_out_h_4
-.ENDS logic_buffer_pnand3_7_97_40_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_8__8_40_no_out_h_4
+.ENDS logic_buffer_pnand3_8_8_40_no_in_no_out_h_4
 
-.SUBCKT control_buffers bank_sel read clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd
+.SUBCKT control_buffers bank_sel read clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd
 Xdecoder_clk bank_sel clk decoder_clk_bar decoder_clk vdd gnd logic_buffer_pnand2_2_29_no_in_no_out_h_4
 Xnor_read_clk read clk nor_read_clk vdd gnd pnor2_1
-Xbr_reset nor_read_clk bank_sel_bar br_reset br_reset_bar vdd gnd logic_buffer_pnor2_4_38_16_7_no_in_no_out_h_4
-Xclk_buf bank_sel clk clk_bar clk_buf vdd gnd logic_buffer_pnand2_5_11_20_4_33_6_no_in_no_out_h_4
-Xwrite_buf read bank_sel_cbar write_en write_en_bar vdd gnd logic_buffer_pnor2_6_56_40_40_no_in_no_out_h_4
-Xsense_amp_buf sample_bar_int sense_trig bank_sel sense_en_bar sense_en vdd gnd logic_buffer_pnand3_3_38_7_6_12_4_no_in_no_out_h_4
-Xtri_en_buf sample_bar_int sense_trig bank_sel tri_en_bar tri_en vdd gnd logic_buffer_pnand3_7_97_40_no_in_no_out_h_4
+Xbr_reset nor_read_clk bank_sel_bar br_reset br_reset_bar vdd gnd logic_buffer_pnor2_4_39_16_8_no_in_no_out_h_4
+Xclk_buf bank_sel clk clk_bar clk_buf vdd gnd logic_buffer_pnand2_5_14_20_7_34_4_no_in_no_out_h_4
+Xwrite_buf read bank_sel_cbar write_en write_en_bar vdd gnd logic_buffer_pnor2_4_09_13_9_1_no_in_no_out_h_4
+Xsense_amp_buf sample_bar_int sense_trig bank_sel sense_en_bar sense_en vdd gnd logic_buffer_pnand3_3_42_7_78_12_8_no_in_no_out_h_4
+Xtri_en_buf sample_bar_int sense_trig bank_sel tri_en_bar tri_en vdd gnd logic_buffer_pnand3_8_8_40_no_in_no_out_h_4
 Xsense_trig_bar sense_trig sense_trig_bar vdd gnd pinv_1
 Xsample_bar_int bank_sel read sense_trig_bar sample_bar_int vdd gnd pnand3_1
-Xsample_bar sample_bar_int sample_en_buf sample_en_bar vdd gnd buffer_stage_6__3_9__27_no_out_h_4
+Xsample_bar sample_bar_int sample_en_buf sample_en_bar vdd gnd buffer_stage_6__65_9__39_no_out_h_4
 Xclk_bar clk clk_bar_int vdd gnd pinv_1
 Xbank_sel_cbar bank_sel clk_bar_int bank_sel_cbar vdd gnd pnand2_1
 Xwordline_buf sense_trig bank_sel_cbar wordline_en wordline_en_bar vdd gnd logic_buffer_pnor2_3_73_11_5_no_in_no_out_h_4
@@ -1874,53 +1906,53 @@ Xbl_reset bank_sel clk read_bar bl_reset_bar bl_reset vdd gnd logic_buffer_pnand
 Xbank_sel_bar bank_sel bank_sel_bar vdd gnd pinv_1
 .ENDS control_buffers
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.58 l=0.15 pd=2.59 ps=2.59 as=0.429375 ad=0.429375
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.8 l=0.15 pd=2.6999999999999997 ps=2.6999999999999997 as=0.44999999999999996 ad=0.44999999999999996
 
-.SUBCKT pinv_5__08_no_p_no_n_h_3__2 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.58 l=0.15 pd=2.59 ps=2.59 as=0.429375 ad=0.429375
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=1.82 l=0.15 pd=1.21 ps=1.21 as=0.170625 ad=0.170625
-.ENDS pinv_5__08_no_p_no_n_h_3__2
+.SUBCKT pinv_5__32_no_p_no_n_h_3__2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=4.8 l=0.15 pd=2.6999999999999997 ps=2.6999999999999997 as=0.44999999999999996 ad=0.44999999999999996
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=1.92 l=0.15 pd=1.26 ps=1.26 as=0.18 ad=0.18
+.ENDS pinv_5__32_no_p_no_n_h_3__2
 
-.SUBCKT buffer_stage_5__08_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_5__08_no_p_no_n_h_3__2
-.ENDS buffer_stage_5__08_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.SUBCKT buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_5__32_no_p_no_n_h_3__2
+.ENDS buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2
 
-.SUBCKT flop_buffer_5__08_neg din clk dout vdd gnd
+.SUBCKT flop_buffer_5__32_neg din clk dout vdd gnd
 Xflop din flop_out flop_out_bar clk vdd gnd ms_flop_horz_pitch
-Xbuffer flop_out dout dout_bar vdd gnd buffer_stage_5__08_no_out_no_nwell_cont_no_pwell_cont_h_3__2
-.ENDS flop_buffer_5__08_neg
+Xbuffer flop_out dout dout_bar vdd gnd buffer_stage_5__32_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.ENDS flop_buffer_5__32_neg
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.805 l=0.15 pd=2.17 ps=2.17 as=0.350625 ad=0.350625
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.955 l=0.15 pd=2.27 ps=2.27 as=0.369375 ad=0.369375
 
-.SUBCKT pinv_3__12_no_p_no_n_h_3__2 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.805 l=0.15 pd=2.17 ps=2.17 as=0.350625 ad=0.350625
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.125 l=0.15 pd=1.05 ps=1.05 as=0.140625 ad=0.140625
-.ENDS pinv_3__12_no_p_no_n_h_3__2
+.SUBCKT pinv_3__28_no_p_no_n_h_3__2 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=2.955 l=0.15 pd=2.27 ps=2.27 as=0.369375 ad=0.369375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.185 l=0.15 pd=1.09 ps=1.09 as=0.148125 ad=0.148125
+.ENDS pinv_3__28_no_p_no_n_h_3__2
 
-.SUBCKT buffer_stage_3__12_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_3__12_no_p_no_n_h_3__2
-.ENDS buffer_stage_3__12_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.SUBCKT buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_3__28_no_p_no_n_h_3__2
+.ENDS buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2
 
-.SUBCKT flop_buffer_3__12 din clk dout vdd gnd
+.SUBCKT flop_buffer_3__28 din clk dout vdd gnd
 Xflop din flop_out flop_out_bar clk vdd gnd ms_flop_horz_pitch
-Xbuffer flop_out_bar dout dout_bar vdd gnd buffer_stage_3__12_no_out_no_nwell_cont_no_pwell_cont_h_3__2
-.ENDS flop_buffer_3__12
+Xbuffer flop_out_bar dout dout_bar vdd gnd buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2
+.ENDS flop_buffer_3__28
 
-.SUBCKT bank DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb read clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write vdd_wordline
-Xcontrol_buffers bank_sel_buf read_buf clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd control_buffers
+.SUBCKT bank DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb read clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write_bl vdd_write_br vdd_wordline
+Xcontrol_buffers bank_sel_buf read_buf clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd control_buffers
 Xtri_gate_array sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] sense_out_bar[8] sense_out_bar[9] sense_out_bar[10] sense_out_bar[11] sense_out_bar[12] sense_out_bar[13] sense_out_bar[14] sense_out_bar[15] sense_out_bar[16] sense_out_bar[17] sense_out_bar[18] sense_out_bar[19] sense_out_bar[20] sense_out_bar[21] sense_out_bar[22] sense_out_bar[23] sense_out_bar[24] sense_out_bar[25] sense_out_bar[26] sense_out_bar[27] sense_out_bar[28] sense_out_bar[29] sense_out_bar[30] sense_out_bar[31] DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] tri_en tri_en_bar vdd gnd tri_gate_array
 Xmask_in MASK[0] MASK[1] MASK[2] MASK[3] MASK[4] MASK[5] MASK[6] MASK[7] MASK[8] MASK[9] MASK[10] MASK[11] MASK[12] MASK[13] MASK[14] MASK[15] MASK[16] MASK[17] MASK[18] MASK[19] MASK[20] MASK[21] MASK[22] MASK[23] MASK[24] MASK[25] MASK[26] MASK[27] MASK[28] MASK[29] MASK[30] MASK[31] mask_in[0] mask_in_bar[0] mask_in[1] mask_in_bar[1] mask_in[2] mask_in_bar[2] mask_in[3] mask_in_bar[3] mask_in[4] mask_in_bar[4] mask_in[5] mask_in_bar[5] mask_in[6] mask_in_bar[6] mask_in[7] mask_in_bar[7] mask_in[8] mask_in_bar[8] mask_in[9] mask_in_bar[9] mask_in[10] mask_in_bar[10] mask_in[11] mask_in_bar[11] mask_in[12] mask_in_bar[12] mask_in[13] mask_in_bar[13] mask_in[14] mask_in_bar[14] mask_in[15] mask_in_bar[15] mask_in[16] mask_in_bar[16] mask_in[17] mask_in_bar[17] mask_in[18] mask_in_bar[18] mask_in[19] mask_in_bar[19] mask_in[20] mask_in_bar[20] mask_in[21] mask_in_bar[21] mask_in[22] mask_in_bar[22] mask_in[23] mask_in_bar[23] mask_in[24] mask_in_bar[24] mask_in[25] mask_in_bar[25] mask_in[26] mask_in_bar[26] mask_in[27] mask_in_bar[27] mask_in[28] mask_in_bar[28] mask_in[29] mask_in_bar[29] mask_in[30] mask_in_bar[30] mask_in[31] mask_in_bar[31] clk_buf vdd gnd flop_array_c32_w32_ms_flop_clk_buf_ms_flop_clk_buf_tap
 Xdata_in DATA[0] DATA[1] DATA[2] DATA[3] DATA[4] DATA[5] DATA[6] DATA[7] DATA[8] DATA[9] DATA[10] DATA[11] DATA[12] DATA[13] DATA[14] DATA[15] DATA[16] DATA[17] DATA[18] DATA[19] DATA[20] DATA[21] DATA[22] DATA[23] DATA[24] DATA[25] DATA[26] DATA[27] DATA[28] DATA[29] DATA[30] DATA[31] data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] data_in[8] data_in_bar[8] data_in[9] data_in_bar[9] data_in[10] data_in_bar[10] data_in[11] data_in_bar[11] data_in[12] data_in_bar[12] data_in[13] data_in_bar[13] data_in[14] data_in_bar[14] data_in[15] data_in_bar[15] data_in[16] data_in_bar[16] data_in[17] data_in_bar[17] data_in[18] data_in_bar[18] data_in[19] data_in_bar[19] data_in[20] data_in_bar[20] data_in[21] data_in_bar[21] data_in[22] data_in_bar[22] data_in[23] data_in_bar[23] data_in[24] data_in_bar[24] data_in[25] data_in_bar[25] data_in[26] data_in_bar[26] data_in[27] data_in_bar[27] data_in[28] data_in_bar[28] data_in[29] data_in_bar[29] data_in[30] data_in_bar[30] data_in[31] data_in_bar[31] clk_bar vdd gnd flop_array_c32_w32_ms_flop_clk_buf_ms_flop_clk_buf_tap
-Xwrite_driver_array data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] data_in[8] data_in_bar[8] data_in[9] data_in_bar[9] data_in[10] data_in_bar[10] data_in[11] data_in_bar[11] data_in[12] data_in_bar[12] data_in[13] data_in_bar[13] data_in[14] data_in_bar[14] data_in[15] data_in_bar[15] data_in[16] data_in_bar[16] data_in[17] data_in_bar[17] data_in[18] data_in_bar[18] data_in[19] data_in_bar[19] data_in[20] data_in_bar[20] data_in[21] data_in_bar[21] data_in[22] data_in_bar[22] data_in[23] data_in_bar[23] data_in[24] data_in_bar[24] data_in[25] data_in_bar[25] data_in[26] data_in_bar[26] data_in[27] data_in_bar[27] data_in[28] data_in_bar[28] data_in[29] data_in_bar[29] data_in[30] data_in_bar[30] data_in[31] data_in_bar[31] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] mask_in_bar[0] mask_in_bar[1] mask_in_bar[2] mask_in_bar[3] mask_in_bar[4] mask_in_bar[5] mask_in_bar[6] mask_in_bar[7] mask_in_bar[8] mask_in_bar[9] mask_in_bar[10] mask_in_bar[11] mask_in_bar[12] mask_in_bar[13] mask_in_bar[14] mask_in_bar[15] mask_in_bar[16] mask_in_bar[17] mask_in_bar[18] mask_in_bar[19] mask_in_bar[20] mask_in_bar[21] mask_in_bar[22] mask_in_bar[23] mask_in_bar[24] mask_in_bar[25] mask_in_bar[26] mask_in_bar[27] mask_in_bar[28] mask_in_bar[29] mask_in_bar[30] mask_in_bar[31] write_en write_en_bar vdd_write gnd write_driver_array
+Xwrite_driver_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] data_in[0] data_in[1] data_in[2] data_in[3] data_in[4] data_in[5] data_in[6] data_in[7] data_in[8] data_in[9] data_in[10] data_in[11] data_in[12] data_in[13] data_in[14] data_in[15] data_in[16] data_in[17] data_in[18] data_in[19] data_in[20] data_in[21] data_in[22] data_in[23] data_in[24] data_in[25] data_in[26] data_in[27] data_in[28] data_in[29] data_in[30] data_in[31] data_in_bar[0] data_in_bar[1] data_in_bar[2] data_in_bar[3] data_in_bar[4] data_in_bar[5] data_in_bar[6] data_in_bar[7] data_in_bar[8] data_in_bar[9] data_in_bar[10] data_in_bar[11] data_in_bar[12] data_in_bar[13] data_in_bar[14] data_in_bar[15] data_in_bar[16] data_in_bar[17] data_in_bar[18] data_in_bar[19] data_in_bar[20] data_in_bar[21] data_in_bar[22] data_in_bar[23] data_in_bar[24] data_in_bar[25] data_in_bar[26] data_in_bar[27] data_in_bar[28] data_in_bar[29] data_in_bar[30] data_in_bar[31] mask_in[0] mask_in[1] mask_in[2] mask_in[3] mask_in[4] mask_in[5] mask_in[6] mask_in[7] mask_in[8] mask_in[9] mask_in[10] mask_in[11] mask_in[12] mask_in[13] mask_in[14] mask_in[15] mask_in[16] mask_in[17] mask_in[18] mask_in[19] mask_in[20] mask_in[21] mask_in[22] mask_in[23] mask_in[24] mask_in[25] mask_in[26] mask_in[27] mask_in[28] mask_in[29] mask_in[30] mask_in[31] write_en vdd vdd_write_bl vdd_write_br gnd write_driver_array
 Xsense_amp_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] sense_out[0] sense_out[1] sense_out[2] sense_out[3] sense_out[4] sense_out[5] sense_out[6] sense_out[7] sense_out[8] sense_out[9] sense_out[10] sense_out[11] sense_out[12] sense_out[13] sense_out[14] sense_out[15] sense_out[16] sense_out[17] sense_out[18] sense_out[19] sense_out[20] sense_out[21] sense_out[22] sense_out[23] sense_out[24] sense_out[25] sense_out[26] sense_out[27] sense_out[28] sense_out[29] sense_out[30] sense_out[31] sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] sense_out_bar[8] sense_out_bar[9] sense_out_bar[10] sense_out_bar[11] sense_out_bar[12] sense_out_bar[13] sense_out_bar[14] sense_out_bar[15] sense_out_bar[16] sense_out_bar[17] sense_out_bar[18] sense_out_bar[19] sense_out_bar[20] sense_out_bar[21] sense_out_bar[22] sense_out_bar[23] sense_out_bar[24] sense_out_bar[25] sense_out_bar[26] sense_out_bar[27] sense_out_bar[28] sense_out_bar[29] sense_out_bar[30] sense_out_bar[31] sense_en gnd sample_en_bar vclamp vclampp vdd vref sense_amp_array
 Xprecharge_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] bl_reset br_reset gnd precharge_array
 Xbitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] vdd gnd bitcell_array
 Xwordline_driver dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] wordline_en vdd_wordline gnd wordline_driver_array
-Xbank_sel_buf Csb clk bank_sel_buf vdd gnd flop_buffer_5__08_neg
-Xread_buf read clk read_buf vdd gnd flop_buffer_3__12
+Xbank_sel_buf Csb clk bank_sel_buf vdd gnd flop_buffer_5__32_neg
+Xread_buf read clk read_buf vdd gnd flop_buffer_3__28
 .ENDS bank
 
-.SUBCKT r_32_w_32 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] Csb Web clk sense_trig vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write vdd_wordline ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] vdd gnd
-Xbank0 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb Web clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write vdd_wordline bank
+.SUBCKT r_32_w_32 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] Csb Web clk sense_trig vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write_bl vdd_write_br vdd_wordline ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] vdd gnd
+Xbank0 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] Csb Web clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] vdd_write_bl vdd_write_br vdd_wordline bank
 Xrow_decoder ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] decoder_clk vdd gnd hierarchical_decoder_32rows
 .ENDS r_32_w_32

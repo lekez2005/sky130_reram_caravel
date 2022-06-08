@@ -101,107 +101,134 @@ Xmod_61 din[61] dout[61] dout_bar[61] clk vdd gnd ms_flop_clk_buf
 Xmod_62 din[62] dout[62] dout_bar[62] clk vdd gnd ms_flop_clk_buf
 Xmod_63 din[63] dout[63] dout_bar[63] clk vdd gnd ms_flop_clk_buf
 .ENDS flop_array_c64_w64_ms_flop_clk_buf_ms_flop_clk_buf_tap
+.subckt write_driver_mux_logic mask en data data_bar bl_p bl_n br_p br_n gnd vdd
+xm4 mask_en_bar en net1 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm1 net1 mask gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm2 mask_en_bar en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm3 mask_en_bar mask vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm5 mask_en mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm7 br_p data_bar net2 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm8 net2 mask_en gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm9 br_p data_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm10 br_p mask_en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm11 bl_p data net3 gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm12 net3 mask_en gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm13 bl_p data vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm14 bl_p mask_en vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=0.9 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm16 br_n mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm18 br_n data_bar net4 vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm15 br_n data_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm17 net4 mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm19 bl_n mask_en_bar gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm20 bl_n data net5 vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm21 bl_n data gnd gnd sky130_fd_pr__nfet_01v8 l=0.15 w=0.72 nf=1
++ sa=0 sb=0 sd=0 mult=1 m=1
+xm22 net5 mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.8 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+xm6 mask_en mask_en_bar vdd vdd sky130_fd_pr__pfet_01v8 l=0.15 w=1.5 nf=1
++   sa=0 sb=0 sd=0 mult=1 m=1
+.ends
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.16 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=8.1 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=8.64 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=21.6 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
+.SUBCKT write_driver_sep_vdd_10 data data_bar mask en bl br vdd vdd_write_bl vdd_write_br gnd
+Xlogic mask en data data_bar bl_p bl_n br_p br_n gnd vdd write_driver_mux_logic
+Xbl_nmos bl bl_n gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xbr_nmos br br_n gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+Xbl_pmos bl bl_p vdd_write_bl vdd_write_bl sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
+Xbr_pmos br br_p vdd_write_br vdd_write_bl sky130_fd_pr__pfet_01v8 m=1 nf=2 w=9.0 l=0.15 pd=9.3 ps=9.3 as=1.6875 ad=1.6875
+.ENDS write_driver_sep_vdd_10
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-
-.SUBCKT write_driver_1__5_6 data data_bar mask_bar en en_bar bl br vdd gnd
-XM0 gnd data bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM1 gnd mask_bar bl_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM2 gnd data_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM3 gnd mask_bar br_bar gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.54 l=0.15 pd=1.3800000000000001 ps=1.3800000000000001 as=0.2025 ad=0.2025
-XM4 bl_bar data bl_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM5 bl_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM6 br_bar data_bar br_log_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM7 br_log_mid mask_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.025 l=0.15 pd=4.35 ps=4.35 as=0.7593749999999999 ad=0.7593749999999999
-XM8 bl bl_bar bl_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM9 bl_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM10 br br_bar br_n_mid gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM11 br_n_mid en gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=2.16 l=0.15 pd=4.62 ps=4.62 as=0.81 ad=0.81
-XM12 bl bl_bar bl_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM13 bl_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM14 br br_bar br_p_mid vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-XM15 br_p_mid en_bar vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=5.4 l=0.15 pd=11.100000000000001 ps=11.100000000000001 as=2.0250000000000004 ad=2.0250000000000004
-.ENDS write_driver_1__5_6
-
-.SUBCKT write_driver_array data[0] data_bar[0] data[1] data_bar[1] data[2] data_bar[2] data[3] data_bar[3] data[4] data_bar[4] data[5] data_bar[5] data[6] data_bar[6] data[7] data_bar[7] data[8] data_bar[8] data[9] data_bar[9] data[10] data_bar[10] data[11] data_bar[11] data[12] data_bar[12] data[13] data_bar[13] data[14] data_bar[14] data[15] data_bar[15] data[16] data_bar[16] data[17] data_bar[17] data[18] data_bar[18] data[19] data_bar[19] data[20] data_bar[20] data[21] data_bar[21] data[22] data_bar[22] data[23] data_bar[23] data[24] data_bar[24] data[25] data_bar[25] data[26] data_bar[26] data[27] data_bar[27] data[28] data_bar[28] data[29] data_bar[29] data[30] data_bar[30] data[31] data_bar[31] data[32] data_bar[32] data[33] data_bar[33] data[34] data_bar[34] data[35] data_bar[35] data[36] data_bar[36] data[37] data_bar[37] data[38] data_bar[38] data[39] data_bar[39] data[40] data_bar[40] data[41] data_bar[41] data[42] data_bar[42] data[43] data_bar[43] data[44] data_bar[44] data[45] data_bar[45] data[46] data_bar[46] data[47] data_bar[47] data[48] data_bar[48] data[49] data_bar[49] data[50] data_bar[50] data[51] data_bar[51] data[52] data_bar[52] data[53] data_bar[53] data[54] data_bar[54] data[55] data_bar[55] data[56] data_bar[56] data[57] data_bar[57] data[58] data_bar[58] data[59] data_bar[59] data[60] data_bar[60] data[61] data_bar[61] data[62] data_bar[62] data[63] data_bar[63] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] bl[32] br[32] bl[33] br[33] bl[34] br[34] bl[35] br[35] bl[36] br[36] bl[37] br[37] bl[38] br[38] bl[39] br[39] bl[40] br[40] bl[41] br[41] bl[42] br[42] bl[43] br[43] bl[44] br[44] bl[45] br[45] bl[46] br[46] bl[47] br[47] bl[48] br[48] bl[49] br[49] bl[50] br[50] bl[51] br[51] bl[52] br[52] bl[53] br[53] bl[54] br[54] bl[55] br[55] bl[56] br[56] bl[57] br[57] bl[58] br[58] bl[59] br[59] bl[60] br[60] bl[61] br[61] bl[62] br[62] bl[63] br[63] mask_bar[0] mask_bar[1] mask_bar[2] mask_bar[3] mask_bar[4] mask_bar[5] mask_bar[6] mask_bar[7] mask_bar[8] mask_bar[9] mask_bar[10] mask_bar[11] mask_bar[12] mask_bar[13] mask_bar[14] mask_bar[15] mask_bar[16] mask_bar[17] mask_bar[18] mask_bar[19] mask_bar[20] mask_bar[21] mask_bar[22] mask_bar[23] mask_bar[24] mask_bar[25] mask_bar[26] mask_bar[27] mask_bar[28] mask_bar[29] mask_bar[30] mask_bar[31] mask_bar[32] mask_bar[33] mask_bar[34] mask_bar[35] mask_bar[36] mask_bar[37] mask_bar[38] mask_bar[39] mask_bar[40] mask_bar[41] mask_bar[42] mask_bar[43] mask_bar[44] mask_bar[45] mask_bar[46] mask_bar[47] mask_bar[48] mask_bar[49] mask_bar[50] mask_bar[51] mask_bar[52] mask_bar[53] mask_bar[54] mask_bar[55] mask_bar[56] mask_bar[57] mask_bar[58] mask_bar[59] mask_bar[60] mask_bar[61] mask_bar[62] mask_bar[63] en en_bar vdd gnd
-Xmod_0 data[0] data_bar[0] mask_bar[0] en en_bar bl[0] br[0] vdd gnd write_driver_1__5_6
-Xmod_1 data[1] data_bar[1] mask_bar[1] en en_bar bl[1] br[1] vdd gnd write_driver_1__5_6
-Xmod_2 data[2] data_bar[2] mask_bar[2] en en_bar bl[2] br[2] vdd gnd write_driver_1__5_6
-Xmod_3 data[3] data_bar[3] mask_bar[3] en en_bar bl[3] br[3] vdd gnd write_driver_1__5_6
-Xmod_4 data[4] data_bar[4] mask_bar[4] en en_bar bl[4] br[4] vdd gnd write_driver_1__5_6
-Xmod_5 data[5] data_bar[5] mask_bar[5] en en_bar bl[5] br[5] vdd gnd write_driver_1__5_6
-Xmod_6 data[6] data_bar[6] mask_bar[6] en en_bar bl[6] br[6] vdd gnd write_driver_1__5_6
-Xmod_7 data[7] data_bar[7] mask_bar[7] en en_bar bl[7] br[7] vdd gnd write_driver_1__5_6
-Xmod_8 data[8] data_bar[8] mask_bar[8] en en_bar bl[8] br[8] vdd gnd write_driver_1__5_6
-Xmod_9 data[9] data_bar[9] mask_bar[9] en en_bar bl[9] br[9] vdd gnd write_driver_1__5_6
-Xmod_10 data[10] data_bar[10] mask_bar[10] en en_bar bl[10] br[10] vdd gnd write_driver_1__5_6
-Xmod_11 data[11] data_bar[11] mask_bar[11] en en_bar bl[11] br[11] vdd gnd write_driver_1__5_6
-Xmod_12 data[12] data_bar[12] mask_bar[12] en en_bar bl[12] br[12] vdd gnd write_driver_1__5_6
-Xmod_13 data[13] data_bar[13] mask_bar[13] en en_bar bl[13] br[13] vdd gnd write_driver_1__5_6
-Xmod_14 data[14] data_bar[14] mask_bar[14] en en_bar bl[14] br[14] vdd gnd write_driver_1__5_6
-Xmod_15 data[15] data_bar[15] mask_bar[15] en en_bar bl[15] br[15] vdd gnd write_driver_1__5_6
-Xmod_16 data[16] data_bar[16] mask_bar[16] en en_bar bl[16] br[16] vdd gnd write_driver_1__5_6
-Xmod_17 data[17] data_bar[17] mask_bar[17] en en_bar bl[17] br[17] vdd gnd write_driver_1__5_6
-Xmod_18 data[18] data_bar[18] mask_bar[18] en en_bar bl[18] br[18] vdd gnd write_driver_1__5_6
-Xmod_19 data[19] data_bar[19] mask_bar[19] en en_bar bl[19] br[19] vdd gnd write_driver_1__5_6
-Xmod_20 data[20] data_bar[20] mask_bar[20] en en_bar bl[20] br[20] vdd gnd write_driver_1__5_6
-Xmod_21 data[21] data_bar[21] mask_bar[21] en en_bar bl[21] br[21] vdd gnd write_driver_1__5_6
-Xmod_22 data[22] data_bar[22] mask_bar[22] en en_bar bl[22] br[22] vdd gnd write_driver_1__5_6
-Xmod_23 data[23] data_bar[23] mask_bar[23] en en_bar bl[23] br[23] vdd gnd write_driver_1__5_6
-Xmod_24 data[24] data_bar[24] mask_bar[24] en en_bar bl[24] br[24] vdd gnd write_driver_1__5_6
-Xmod_25 data[25] data_bar[25] mask_bar[25] en en_bar bl[25] br[25] vdd gnd write_driver_1__5_6
-Xmod_26 data[26] data_bar[26] mask_bar[26] en en_bar bl[26] br[26] vdd gnd write_driver_1__5_6
-Xmod_27 data[27] data_bar[27] mask_bar[27] en en_bar bl[27] br[27] vdd gnd write_driver_1__5_6
-Xmod_28 data[28] data_bar[28] mask_bar[28] en en_bar bl[28] br[28] vdd gnd write_driver_1__5_6
-Xmod_29 data[29] data_bar[29] mask_bar[29] en en_bar bl[29] br[29] vdd gnd write_driver_1__5_6
-Xmod_30 data[30] data_bar[30] mask_bar[30] en en_bar bl[30] br[30] vdd gnd write_driver_1__5_6
-Xmod_31 data[31] data_bar[31] mask_bar[31] en en_bar bl[31] br[31] vdd gnd write_driver_1__5_6
-Xmod_32 data[32] data_bar[32] mask_bar[32] en en_bar bl[32] br[32] vdd gnd write_driver_1__5_6
-Xmod_33 data[33] data_bar[33] mask_bar[33] en en_bar bl[33] br[33] vdd gnd write_driver_1__5_6
-Xmod_34 data[34] data_bar[34] mask_bar[34] en en_bar bl[34] br[34] vdd gnd write_driver_1__5_6
-Xmod_35 data[35] data_bar[35] mask_bar[35] en en_bar bl[35] br[35] vdd gnd write_driver_1__5_6
-Xmod_36 data[36] data_bar[36] mask_bar[36] en en_bar bl[36] br[36] vdd gnd write_driver_1__5_6
-Xmod_37 data[37] data_bar[37] mask_bar[37] en en_bar bl[37] br[37] vdd gnd write_driver_1__5_6
-Xmod_38 data[38] data_bar[38] mask_bar[38] en en_bar bl[38] br[38] vdd gnd write_driver_1__5_6
-Xmod_39 data[39] data_bar[39] mask_bar[39] en en_bar bl[39] br[39] vdd gnd write_driver_1__5_6
-Xmod_40 data[40] data_bar[40] mask_bar[40] en en_bar bl[40] br[40] vdd gnd write_driver_1__5_6
-Xmod_41 data[41] data_bar[41] mask_bar[41] en en_bar bl[41] br[41] vdd gnd write_driver_1__5_6
-Xmod_42 data[42] data_bar[42] mask_bar[42] en en_bar bl[42] br[42] vdd gnd write_driver_1__5_6
-Xmod_43 data[43] data_bar[43] mask_bar[43] en en_bar bl[43] br[43] vdd gnd write_driver_1__5_6
-Xmod_44 data[44] data_bar[44] mask_bar[44] en en_bar bl[44] br[44] vdd gnd write_driver_1__5_6
-Xmod_45 data[45] data_bar[45] mask_bar[45] en en_bar bl[45] br[45] vdd gnd write_driver_1__5_6
-Xmod_46 data[46] data_bar[46] mask_bar[46] en en_bar bl[46] br[46] vdd gnd write_driver_1__5_6
-Xmod_47 data[47] data_bar[47] mask_bar[47] en en_bar bl[47] br[47] vdd gnd write_driver_1__5_6
-Xmod_48 data[48] data_bar[48] mask_bar[48] en en_bar bl[48] br[48] vdd gnd write_driver_1__5_6
-Xmod_49 data[49] data_bar[49] mask_bar[49] en en_bar bl[49] br[49] vdd gnd write_driver_1__5_6
-Xmod_50 data[50] data_bar[50] mask_bar[50] en en_bar bl[50] br[50] vdd gnd write_driver_1__5_6
-Xmod_51 data[51] data_bar[51] mask_bar[51] en en_bar bl[51] br[51] vdd gnd write_driver_1__5_6
-Xmod_52 data[52] data_bar[52] mask_bar[52] en en_bar bl[52] br[52] vdd gnd write_driver_1__5_6
-Xmod_53 data[53] data_bar[53] mask_bar[53] en en_bar bl[53] br[53] vdd gnd write_driver_1__5_6
-Xmod_54 data[54] data_bar[54] mask_bar[54] en en_bar bl[54] br[54] vdd gnd write_driver_1__5_6
-Xmod_55 data[55] data_bar[55] mask_bar[55] en en_bar bl[55] br[55] vdd gnd write_driver_1__5_6
-Xmod_56 data[56] data_bar[56] mask_bar[56] en en_bar bl[56] br[56] vdd gnd write_driver_1__5_6
-Xmod_57 data[57] data_bar[57] mask_bar[57] en en_bar bl[57] br[57] vdd gnd write_driver_1__5_6
-Xmod_58 data[58] data_bar[58] mask_bar[58] en en_bar bl[58] br[58] vdd gnd write_driver_1__5_6
-Xmod_59 data[59] data_bar[59] mask_bar[59] en en_bar bl[59] br[59] vdd gnd write_driver_1__5_6
-Xmod_60 data[60] data_bar[60] mask_bar[60] en en_bar bl[60] br[60] vdd gnd write_driver_1__5_6
-Xmod_61 data[61] data_bar[61] mask_bar[61] en en_bar bl[61] br[61] vdd gnd write_driver_1__5_6
-Xmod_62 data[62] data_bar[62] mask_bar[62] en en_bar bl[62] br[62] vdd gnd write_driver_1__5_6
-Xmod_63 data[63] data_bar[63] mask_bar[63] en en_bar bl[63] br[63] vdd gnd write_driver_1__5_6
+.SUBCKT write_driver_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] bl[32] bl[33] bl[34] bl[35] bl[36] bl[37] bl[38] bl[39] bl[40] bl[41] bl[42] bl[43] bl[44] bl[45] bl[46] bl[47] bl[48] bl[49] bl[50] bl[51] bl[52] bl[53] bl[54] bl[55] bl[56] bl[57] bl[58] bl[59] bl[60] bl[61] bl[62] bl[63] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] br[32] br[33] br[34] br[35] br[36] br[37] br[38] br[39] br[40] br[41] br[42] br[43] br[44] br[45] br[46] br[47] br[48] br[49] br[50] br[51] br[52] br[53] br[54] br[55] br[56] br[57] br[58] br[59] br[60] br[61] br[62] br[63] data[0] data[1] data[2] data[3] data[4] data[5] data[6] data[7] data[8] data[9] data[10] data[11] data[12] data[13] data[14] data[15] data[16] data[17] data[18] data[19] data[20] data[21] data[22] data[23] data[24] data[25] data[26] data[27] data[28] data[29] data[30] data[31] data[32] data[33] data[34] data[35] data[36] data[37] data[38] data[39] data[40] data[41] data[42] data[43] data[44] data[45] data[46] data[47] data[48] data[49] data[50] data[51] data[52] data[53] data[54] data[55] data[56] data[57] data[58] data[59] data[60] data[61] data[62] data[63] data_bar[0] data_bar[1] data_bar[2] data_bar[3] data_bar[4] data_bar[5] data_bar[6] data_bar[7] data_bar[8] data_bar[9] data_bar[10] data_bar[11] data_bar[12] data_bar[13] data_bar[14] data_bar[15] data_bar[16] data_bar[17] data_bar[18] data_bar[19] data_bar[20] data_bar[21] data_bar[22] data_bar[23] data_bar[24] data_bar[25] data_bar[26] data_bar[27] data_bar[28] data_bar[29] data_bar[30] data_bar[31] data_bar[32] data_bar[33] data_bar[34] data_bar[35] data_bar[36] data_bar[37] data_bar[38] data_bar[39] data_bar[40] data_bar[41] data_bar[42] data_bar[43] data_bar[44] data_bar[45] data_bar[46] data_bar[47] data_bar[48] data_bar[49] data_bar[50] data_bar[51] data_bar[52] data_bar[53] data_bar[54] data_bar[55] data_bar[56] data_bar[57] data_bar[58] data_bar[59] data_bar[60] data_bar[61] data_bar[62] data_bar[63] mask[0] mask[1] mask[2] mask[3] mask[4] mask[5] mask[6] mask[7] mask[8] mask[9] mask[10] mask[11] mask[12] mask[13] mask[14] mask[15] mask[16] mask[17] mask[18] mask[19] mask[20] mask[21] mask[22] mask[23] mask[24] mask[25] mask[26] mask[27] mask[28] mask[29] mask[30] mask[31] mask[32] mask[33] mask[34] mask[35] mask[36] mask[37] mask[38] mask[39] mask[40] mask[41] mask[42] mask[43] mask[44] mask[45] mask[46] mask[47] mask[48] mask[49] mask[50] mask[51] mask[52] mask[53] mask[54] mask[55] mask[56] mask[57] mask[58] mask[59] mask[60] mask[61] mask[62] mask[63] en vdd vdd_write_bl vdd_write_br gnd
+Xmod_0 data[0] data_bar[0] mask[0] en bl[0] br[0] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_1 data[1] data_bar[1] mask[1] en bl[1] br[1] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_2 data[2] data_bar[2] mask[2] en bl[2] br[2] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_3 data[3] data_bar[3] mask[3] en bl[3] br[3] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_4 data[4] data_bar[4] mask[4] en bl[4] br[4] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_5 data[5] data_bar[5] mask[5] en bl[5] br[5] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_6 data[6] data_bar[6] mask[6] en bl[6] br[6] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_7 data[7] data_bar[7] mask[7] en bl[7] br[7] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_8 data[8] data_bar[8] mask[8] en bl[8] br[8] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_9 data[9] data_bar[9] mask[9] en bl[9] br[9] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_10 data[10] data_bar[10] mask[10] en bl[10] br[10] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_11 data[11] data_bar[11] mask[11] en bl[11] br[11] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_12 data[12] data_bar[12] mask[12] en bl[12] br[12] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_13 data[13] data_bar[13] mask[13] en bl[13] br[13] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_14 data[14] data_bar[14] mask[14] en bl[14] br[14] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_15 data[15] data_bar[15] mask[15] en bl[15] br[15] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_16 data[16] data_bar[16] mask[16] en bl[16] br[16] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_17 data[17] data_bar[17] mask[17] en bl[17] br[17] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_18 data[18] data_bar[18] mask[18] en bl[18] br[18] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_19 data[19] data_bar[19] mask[19] en bl[19] br[19] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_20 data[20] data_bar[20] mask[20] en bl[20] br[20] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_21 data[21] data_bar[21] mask[21] en bl[21] br[21] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_22 data[22] data_bar[22] mask[22] en bl[22] br[22] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_23 data[23] data_bar[23] mask[23] en bl[23] br[23] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_24 data[24] data_bar[24] mask[24] en bl[24] br[24] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_25 data[25] data_bar[25] mask[25] en bl[25] br[25] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_26 data[26] data_bar[26] mask[26] en bl[26] br[26] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_27 data[27] data_bar[27] mask[27] en bl[27] br[27] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_28 data[28] data_bar[28] mask[28] en bl[28] br[28] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_29 data[29] data_bar[29] mask[29] en bl[29] br[29] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_30 data[30] data_bar[30] mask[30] en bl[30] br[30] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_31 data[31] data_bar[31] mask[31] en bl[31] br[31] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_32 data[32] data_bar[32] mask[32] en bl[32] br[32] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_33 data[33] data_bar[33] mask[33] en bl[33] br[33] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_34 data[34] data_bar[34] mask[34] en bl[34] br[34] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_35 data[35] data_bar[35] mask[35] en bl[35] br[35] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_36 data[36] data_bar[36] mask[36] en bl[36] br[36] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_37 data[37] data_bar[37] mask[37] en bl[37] br[37] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_38 data[38] data_bar[38] mask[38] en bl[38] br[38] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_39 data[39] data_bar[39] mask[39] en bl[39] br[39] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_40 data[40] data_bar[40] mask[40] en bl[40] br[40] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_41 data[41] data_bar[41] mask[41] en bl[41] br[41] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_42 data[42] data_bar[42] mask[42] en bl[42] br[42] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_43 data[43] data_bar[43] mask[43] en bl[43] br[43] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_44 data[44] data_bar[44] mask[44] en bl[44] br[44] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_45 data[45] data_bar[45] mask[45] en bl[45] br[45] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_46 data[46] data_bar[46] mask[46] en bl[46] br[46] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_47 data[47] data_bar[47] mask[47] en bl[47] br[47] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_48 data[48] data_bar[48] mask[48] en bl[48] br[48] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_49 data[49] data_bar[49] mask[49] en bl[49] br[49] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_50 data[50] data_bar[50] mask[50] en bl[50] br[50] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_51 data[51] data_bar[51] mask[51] en bl[51] br[51] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_52 data[52] data_bar[52] mask[52] en bl[52] br[52] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_53 data[53] data_bar[53] mask[53] en bl[53] br[53] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_54 data[54] data_bar[54] mask[54] en bl[54] br[54] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_55 data[55] data_bar[55] mask[55] en bl[55] br[55] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_56 data[56] data_bar[56] mask[56] en bl[56] br[56] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_57 data[57] data_bar[57] mask[57] en bl[57] br[57] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_58 data[58] data_bar[58] mask[58] en bl[58] br[58] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_59 data[59] data_bar[59] mask[59] en bl[59] br[59] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_60 data[60] data_bar[60] mask[60] en bl[60] br[60] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_61 data[61] data_bar[61] mask[61] en bl[61] br[61] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_62 data[62] data_bar[62] mask[62] en bl[62] br[62] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
+Xmod_63 data[63] data_bar[63] mask[63] en bl[63] br[63] vdd vdd_write_bl vdd_write_br gnd write_driver_sep_vdd_10
 .ENDS write_driver_array
 
 .SUBCKT bitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] bl[32] br[32] bl[33] br[33] bl[34] br[34] bl[35] br[35] bl[36] br[36] bl[37] br[37] bl[38] br[38] bl[39] br[39] bl[40] br[40] bl[41] br[41] bl[42] br[42] bl[43] br[43] bl[44] br[44] bl[45] br[45] bl[46] br[46] bl[47] br[47] bl[48] br[48] bl[49] br[49] bl[50] br[50] bl[51] br[51] bl[52] br[52] bl[53] br[53] bl[54] br[54] bl[55] br[55] bl[56] br[56] bl[57] br[57] bl[58] br[58] bl[59] br[59] bl[60] br[60] bl[61] br[61] bl[62] br[62] bl[63] br[63] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] wl[32] wl[33] wl[34] wl[35] wl[36] wl[37] wl[38] wl[39] wl[40] wl[41] wl[42] wl[43] wl[44] wl[45] wl[46] wl[47] wl[48] wl[49] wl[50] wl[51] wl[52] wl[53] wl[54] wl[55] wl[56] wl[57] wl[58] wl[59] wl[60] wl[61] wl[62] wl[63] vdd gnd
@@ -4303,90 +4330,90 @@ Xbit_r62_c63 bl[63] br[63] wl[62] gnd reram_bitcell_7
 Xbit_r63_c63 bl[63] br[63] wl[63] gnd reram_bitcell_7
 .ENDS bitcell_array
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.88 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=4 w=4.32 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
+* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=7.2 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=10.8 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
 
-.SUBCKT tri_state_4 in_bar out en en_bar vdd gnd
-Xnmos0 gnd en left_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos1 left_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos2 gnd en right_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xnmos3 right_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=0.72 l=0.15 pd=1.74 ps=1.74 as=0.27 ad=0.27
-Xpmos0 vdd en_bar left_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos1 left_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos2 vdd en_bar right_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-Xpmos3 right_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=1.8 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-.ENDS tri_state_4
+.SUBCKT tri_state_6 in_bar out en en_bar vdd gnd
+Xnmos0 gnd en left_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos1 left_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos2 gnd en right_mid_n gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xnmos3 right_mid_n in_bar out gnd sky130_fd_pr__nfet_01v8 m=1 nf=1 w=1.08 l=0.15 pd=2.46 ps=2.46 as=0.405 ad=0.405
+Xpmos0 vdd en_bar left_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos1 left_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos2 vdd en_bar right_mid_p vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+Xpmos3 right_mid_p in_bar out vdd sky130_fd_pr__pfet_01v8 m=1 nf=1 w=2.7 l=0.15 pd=5.7 ps=5.7 as=1.0125000000000002 ad=1.0125000000000002
+.ENDS tri_state_6
 
 .SUBCKT tri_gate_array in_bar[0] in_bar[1] in_bar[2] in_bar[3] in_bar[4] in_bar[5] in_bar[6] in_bar[7] in_bar[8] in_bar[9] in_bar[10] in_bar[11] in_bar[12] in_bar[13] in_bar[14] in_bar[15] in_bar[16] in_bar[17] in_bar[18] in_bar[19] in_bar[20] in_bar[21] in_bar[22] in_bar[23] in_bar[24] in_bar[25] in_bar[26] in_bar[27] in_bar[28] in_bar[29] in_bar[30] in_bar[31] in_bar[32] in_bar[33] in_bar[34] in_bar[35] in_bar[36] in_bar[37] in_bar[38] in_bar[39] in_bar[40] in_bar[41] in_bar[42] in_bar[43] in_bar[44] in_bar[45] in_bar[46] in_bar[47] in_bar[48] in_bar[49] in_bar[50] in_bar[51] in_bar[52] in_bar[53] in_bar[54] in_bar[55] in_bar[56] in_bar[57] in_bar[58] in_bar[59] in_bar[60] in_bar[61] in_bar[62] in_bar[63] out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14] out[15] out[16] out[17] out[18] out[19] out[20] out[21] out[22] out[23] out[24] out[25] out[26] out[27] out[28] out[29] out[30] out[31] out[32] out[33] out[34] out[35] out[36] out[37] out[38] out[39] out[40] out[41] out[42] out[43] out[44] out[45] out[46] out[47] out[48] out[49] out[50] out[51] out[52] out[53] out[54] out[55] out[56] out[57] out[58] out[59] out[60] out[61] out[62] out[63] en en_bar vdd gnd
-Xmod_0 in_bar[0] out[0] en en_bar vdd gnd tri_state_4
-Xmod_1 in_bar[1] out[1] en en_bar vdd gnd tri_state_4
-Xmod_2 in_bar[2] out[2] en en_bar vdd gnd tri_state_4
-Xmod_3 in_bar[3] out[3] en en_bar vdd gnd tri_state_4
-Xmod_4 in_bar[4] out[4] en en_bar vdd gnd tri_state_4
-Xmod_5 in_bar[5] out[5] en en_bar vdd gnd tri_state_4
-Xmod_6 in_bar[6] out[6] en en_bar vdd gnd tri_state_4
-Xmod_7 in_bar[7] out[7] en en_bar vdd gnd tri_state_4
-Xmod_8 in_bar[8] out[8] en en_bar vdd gnd tri_state_4
-Xmod_9 in_bar[9] out[9] en en_bar vdd gnd tri_state_4
-Xmod_10 in_bar[10] out[10] en en_bar vdd gnd tri_state_4
-Xmod_11 in_bar[11] out[11] en en_bar vdd gnd tri_state_4
-Xmod_12 in_bar[12] out[12] en en_bar vdd gnd tri_state_4
-Xmod_13 in_bar[13] out[13] en en_bar vdd gnd tri_state_4
-Xmod_14 in_bar[14] out[14] en en_bar vdd gnd tri_state_4
-Xmod_15 in_bar[15] out[15] en en_bar vdd gnd tri_state_4
-Xmod_16 in_bar[16] out[16] en en_bar vdd gnd tri_state_4
-Xmod_17 in_bar[17] out[17] en en_bar vdd gnd tri_state_4
-Xmod_18 in_bar[18] out[18] en en_bar vdd gnd tri_state_4
-Xmod_19 in_bar[19] out[19] en en_bar vdd gnd tri_state_4
-Xmod_20 in_bar[20] out[20] en en_bar vdd gnd tri_state_4
-Xmod_21 in_bar[21] out[21] en en_bar vdd gnd tri_state_4
-Xmod_22 in_bar[22] out[22] en en_bar vdd gnd tri_state_4
-Xmod_23 in_bar[23] out[23] en en_bar vdd gnd tri_state_4
-Xmod_24 in_bar[24] out[24] en en_bar vdd gnd tri_state_4
-Xmod_25 in_bar[25] out[25] en en_bar vdd gnd tri_state_4
-Xmod_26 in_bar[26] out[26] en en_bar vdd gnd tri_state_4
-Xmod_27 in_bar[27] out[27] en en_bar vdd gnd tri_state_4
-Xmod_28 in_bar[28] out[28] en en_bar vdd gnd tri_state_4
-Xmod_29 in_bar[29] out[29] en en_bar vdd gnd tri_state_4
-Xmod_30 in_bar[30] out[30] en en_bar vdd gnd tri_state_4
-Xmod_31 in_bar[31] out[31] en en_bar vdd gnd tri_state_4
-Xmod_32 in_bar[32] out[32] en en_bar vdd gnd tri_state_4
-Xmod_33 in_bar[33] out[33] en en_bar vdd gnd tri_state_4
-Xmod_34 in_bar[34] out[34] en en_bar vdd gnd tri_state_4
-Xmod_35 in_bar[35] out[35] en en_bar vdd gnd tri_state_4
-Xmod_36 in_bar[36] out[36] en en_bar vdd gnd tri_state_4
-Xmod_37 in_bar[37] out[37] en en_bar vdd gnd tri_state_4
-Xmod_38 in_bar[38] out[38] en en_bar vdd gnd tri_state_4
-Xmod_39 in_bar[39] out[39] en en_bar vdd gnd tri_state_4
-Xmod_40 in_bar[40] out[40] en en_bar vdd gnd tri_state_4
-Xmod_41 in_bar[41] out[41] en en_bar vdd gnd tri_state_4
-Xmod_42 in_bar[42] out[42] en en_bar vdd gnd tri_state_4
-Xmod_43 in_bar[43] out[43] en en_bar vdd gnd tri_state_4
-Xmod_44 in_bar[44] out[44] en en_bar vdd gnd tri_state_4
-Xmod_45 in_bar[45] out[45] en en_bar vdd gnd tri_state_4
-Xmod_46 in_bar[46] out[46] en en_bar vdd gnd tri_state_4
-Xmod_47 in_bar[47] out[47] en en_bar vdd gnd tri_state_4
-Xmod_48 in_bar[48] out[48] en en_bar vdd gnd tri_state_4
-Xmod_49 in_bar[49] out[49] en en_bar vdd gnd tri_state_4
-Xmod_50 in_bar[50] out[50] en en_bar vdd gnd tri_state_4
-Xmod_51 in_bar[51] out[51] en en_bar vdd gnd tri_state_4
-Xmod_52 in_bar[52] out[52] en en_bar vdd gnd tri_state_4
-Xmod_53 in_bar[53] out[53] en en_bar vdd gnd tri_state_4
-Xmod_54 in_bar[54] out[54] en en_bar vdd gnd tri_state_4
-Xmod_55 in_bar[55] out[55] en en_bar vdd gnd tri_state_4
-Xmod_56 in_bar[56] out[56] en en_bar vdd gnd tri_state_4
-Xmod_57 in_bar[57] out[57] en en_bar vdd gnd tri_state_4
-Xmod_58 in_bar[58] out[58] en en_bar vdd gnd tri_state_4
-Xmod_59 in_bar[59] out[59] en en_bar vdd gnd tri_state_4
-Xmod_60 in_bar[60] out[60] en en_bar vdd gnd tri_state_4
-Xmod_61 in_bar[61] out[61] en en_bar vdd gnd tri_state_4
-Xmod_62 in_bar[62] out[62] en en_bar vdd gnd tri_state_4
-Xmod_63 in_bar[63] out[63] en en_bar vdd gnd tri_state_4
+Xmod_0 in_bar[0] out[0] en en_bar vdd gnd tri_state_6
+Xmod_1 in_bar[1] out[1] en en_bar vdd gnd tri_state_6
+Xmod_2 in_bar[2] out[2] en en_bar vdd gnd tri_state_6
+Xmod_3 in_bar[3] out[3] en en_bar vdd gnd tri_state_6
+Xmod_4 in_bar[4] out[4] en en_bar vdd gnd tri_state_6
+Xmod_5 in_bar[5] out[5] en en_bar vdd gnd tri_state_6
+Xmod_6 in_bar[6] out[6] en en_bar vdd gnd tri_state_6
+Xmod_7 in_bar[7] out[7] en en_bar vdd gnd tri_state_6
+Xmod_8 in_bar[8] out[8] en en_bar vdd gnd tri_state_6
+Xmod_9 in_bar[9] out[9] en en_bar vdd gnd tri_state_6
+Xmod_10 in_bar[10] out[10] en en_bar vdd gnd tri_state_6
+Xmod_11 in_bar[11] out[11] en en_bar vdd gnd tri_state_6
+Xmod_12 in_bar[12] out[12] en en_bar vdd gnd tri_state_6
+Xmod_13 in_bar[13] out[13] en en_bar vdd gnd tri_state_6
+Xmod_14 in_bar[14] out[14] en en_bar vdd gnd tri_state_6
+Xmod_15 in_bar[15] out[15] en en_bar vdd gnd tri_state_6
+Xmod_16 in_bar[16] out[16] en en_bar vdd gnd tri_state_6
+Xmod_17 in_bar[17] out[17] en en_bar vdd gnd tri_state_6
+Xmod_18 in_bar[18] out[18] en en_bar vdd gnd tri_state_6
+Xmod_19 in_bar[19] out[19] en en_bar vdd gnd tri_state_6
+Xmod_20 in_bar[20] out[20] en en_bar vdd gnd tri_state_6
+Xmod_21 in_bar[21] out[21] en en_bar vdd gnd tri_state_6
+Xmod_22 in_bar[22] out[22] en en_bar vdd gnd tri_state_6
+Xmod_23 in_bar[23] out[23] en en_bar vdd gnd tri_state_6
+Xmod_24 in_bar[24] out[24] en en_bar vdd gnd tri_state_6
+Xmod_25 in_bar[25] out[25] en en_bar vdd gnd tri_state_6
+Xmod_26 in_bar[26] out[26] en en_bar vdd gnd tri_state_6
+Xmod_27 in_bar[27] out[27] en en_bar vdd gnd tri_state_6
+Xmod_28 in_bar[28] out[28] en en_bar vdd gnd tri_state_6
+Xmod_29 in_bar[29] out[29] en en_bar vdd gnd tri_state_6
+Xmod_30 in_bar[30] out[30] en en_bar vdd gnd tri_state_6
+Xmod_31 in_bar[31] out[31] en en_bar vdd gnd tri_state_6
+Xmod_32 in_bar[32] out[32] en en_bar vdd gnd tri_state_6
+Xmod_33 in_bar[33] out[33] en en_bar vdd gnd tri_state_6
+Xmod_34 in_bar[34] out[34] en en_bar vdd gnd tri_state_6
+Xmod_35 in_bar[35] out[35] en en_bar vdd gnd tri_state_6
+Xmod_36 in_bar[36] out[36] en en_bar vdd gnd tri_state_6
+Xmod_37 in_bar[37] out[37] en en_bar vdd gnd tri_state_6
+Xmod_38 in_bar[38] out[38] en en_bar vdd gnd tri_state_6
+Xmod_39 in_bar[39] out[39] en en_bar vdd gnd tri_state_6
+Xmod_40 in_bar[40] out[40] en en_bar vdd gnd tri_state_6
+Xmod_41 in_bar[41] out[41] en en_bar vdd gnd tri_state_6
+Xmod_42 in_bar[42] out[42] en en_bar vdd gnd tri_state_6
+Xmod_43 in_bar[43] out[43] en en_bar vdd gnd tri_state_6
+Xmod_44 in_bar[44] out[44] en en_bar vdd gnd tri_state_6
+Xmod_45 in_bar[45] out[45] en en_bar vdd gnd tri_state_6
+Xmod_46 in_bar[46] out[46] en en_bar vdd gnd tri_state_6
+Xmod_47 in_bar[47] out[47] en en_bar vdd gnd tri_state_6
+Xmod_48 in_bar[48] out[48] en en_bar vdd gnd tri_state_6
+Xmod_49 in_bar[49] out[49] en en_bar vdd gnd tri_state_6
+Xmod_50 in_bar[50] out[50] en en_bar vdd gnd tri_state_6
+Xmod_51 in_bar[51] out[51] en en_bar vdd gnd tri_state_6
+Xmod_52 in_bar[52] out[52] en en_bar vdd gnd tri_state_6
+Xmod_53 in_bar[53] out[53] en en_bar vdd gnd tri_state_6
+Xmod_54 in_bar[54] out[54] en en_bar vdd gnd tri_state_6
+Xmod_55 in_bar[55] out[55] en en_bar vdd gnd tri_state_6
+Xmod_56 in_bar[56] out[56] en en_bar vdd gnd tri_state_6
+Xmod_57 in_bar[57] out[57] en en_bar vdd gnd tri_state_6
+Xmod_58 in_bar[58] out[58] en en_bar vdd gnd tri_state_6
+Xmod_59 in_bar[59] out[59] en en_bar vdd gnd tri_state_6
+Xmod_60 in_bar[60] out[60] en en_bar vdd gnd tri_state_6
+Xmod_61 in_bar[61] out[61] en en_bar vdd gnd tri_state_6
+Xmod_62 in_bar[62] out[62] en en_bar vdd gnd tri_state_6
+Xmod_63 in_bar[63] out[63] en en_bar vdd gnd tri_state_6
 .ENDS tri_gate_array
 .subckt re_ram_sense_amp bl br dout dout_bar en gnd sampleb vclamp vclampp vdd vref
 xm1 vdata vclamp bl gnd sky130_fd_pr__nfet_01v8 l=0.15 w=1.44 nf=4
@@ -4852,8 +4879,6 @@ Xdriver62 en in[62] wl_bar[62] wl[62] vdd gnd logic_buffer_pnand2_4_71_14_6_20_n
 Xdriver63 en in[63] wl_bar[63] wl[63] vdd gnd logic_buffer_pnand2_4_71_14_6_20_no_in_no_out_no_nwell_cont_no_pwell_cont_h_5_align
 .ENDS wordline_driver_array
 
-* ptx X{0} {1} sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
-
 .SUBCKT discharge_10 bl br bl_reset br_reset gnd
 Xbl_inst bl bl_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
 Xbr_inst br br_reset gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=3.6 l=0.15 pd=3.9 ps=3.9 as=0.675 ad=0.675
@@ -5011,45 +5036,52 @@ Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__94_28__8_40_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.0200000000000005 l=0.15 pd=2.98 ps=2.98 as=0.5025000000000001 ad=0.5025000000000001
 
-.SUBCKT pinv_4__46 A Z vdd gnd
+.SUBCKT pinv_4__47 A Z vdd gnd
 Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.0200000000000005 l=0.15 pd=2.98 ps=2.98 as=0.5025000000000001 ad=0.5025000000000001
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.605 l=0.15 pd=1.37 ps=1.37 as=0.200625 ad=0.200625
-.ENDS pinv_4__46
+.ENDS pinv_4__47
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.66 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.705000000000002 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
 
-.SUBCKT pinv_17__4 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.66 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=9 w=6.255000000000001 l=0.15 pd=1.6900000000000002 ps=1.6900000000000002 as=0.260625 ad=0.260625
-.ENDS pinv_17__4
+.SUBCKT pinv_17__5 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=9 w=15.705000000000002 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=9 w=6.300000000000001 l=0.15 pd=1.7000000000000002 ps=1.7000000000000002 as=0.2625 ad=0.2625
+.ENDS pinv_17__5
 
-.SUBCKT buffer_stage_4__46_17__4_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_4__46
-Xinv1 out_inv out vdd gnd pinv_17__4
-.ENDS buffer_stage_4__46_17__4_no_out_h_4
+.SUBCKT buffer_stage_4__47_17__5_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_4__47
+Xinv1 out_inv out vdd gnd pinv_17__5
+.ENDS buffer_stage_4__47_17__5_no_out_h_4
 
-.SUBCKT logic_buffer_pnor2_4_46_17_4_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT logic_buffer_pnor2_4_47_17_5_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnor2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__46_17__4_no_out_h_4
-.ENDS logic_buffer_pnor2_4_46_17_4_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__47_17__5_no_out_h_4
+.ENDS logic_buffer_pnor2_4_47_17_5_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.4 l=0.15 pd=3.5 ps=3.5 as=0.6000000000000001 ad=0.6000000000000001
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.365 l=0.15 pd=3.21 ps=3.21 as=0.545625 ad=0.545625
 
-.SUBCKT pinv_7__11 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.4 l=0.15 pd=3.5 ps=3.5 as=0.6000000000000001 ad=0.6000000000000001
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.56 l=0.15 pd=1.58 ps=1.58 as=0.24 ad=0.24
-.ENDS pinv_7__11
+.SUBCKT pinv_4__85 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.365 l=0.15 pd=3.21 ps=3.21 as=0.545625 ad=0.545625
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.7399999999999998 l=0.15 pd=1.46 ps=1.46 as=0.21749999999999997 ad=0.21749999999999997
+.ENDS pinv_4__85
 
-.SUBCKT buffer_stage_7__11_40_40_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_1 vdd gnd pinv_7__11
-Xinv1 out_1 out vdd gnd pinv_40
-Xinv2 out out_inv vdd gnd pinv_40
-.ENDS buffer_stage_7__11_40_40_no_out_h_4
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.6 l=0.15 pd=4.0200000000000005 ps=4.0200000000000005 as=0.6975 ad=0.6975
 
-.SUBCKT logic_buffer_pnor2_7_11_40_40_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT pinv_20__6 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=18.6 l=0.15 pd=4.0200000000000005 ps=4.0200000000000005 as=0.6975 ad=0.6975
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.45 l=0.15 pd=1.79 ps=1.79 as=0.279375 ad=0.279375
+.ENDS pinv_20__6
+
+.SUBCKT buffer_stage_4__85_20__6_1_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_4__85
+Xinv1 out_1 out vdd gnd pinv_20__6
+Xinv2 out out_inv vdd gnd pinv_1
+.ENDS buffer_stage_4__85_20__6_1_no_out_h_4
+
+.SUBCKT logic_buffer_pnor2_4_85_20_6_1_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnor2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_7__11_40_40_no_out_h_4
-.ENDS logic_buffer_pnor2_7_11_40_40_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_4__85_20__6_1_no_out_h_4
+.ENDS logic_buffer_pnor2_4_85_20_6_1_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.755 l=0.15 pd=3.4699999999999998 ps=3.4699999999999998 as=0.594375 ad=0.594375
 
@@ -5058,29 +5090,29 @@ Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=4.755 l=0.15 pd=3.46999999
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=1.905 l=0.15 pd=1.57 ps=1.57 as=0.238125 ad=0.238125
 .ENDS pinv_5__28
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=13 w=23.14 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=13 w=23.205000000000002 l=0.15 pd=3.87 ps=3.87 as=0.669375 ad=0.669375
 
-.SUBCKT pinv_25__7 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=13 w=23.14 l=0.15 pd=3.86 ps=3.86 as=0.6675 ad=0.6675
+.SUBCKT pinv_25__8 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=13 w=23.205000000000002 l=0.15 pd=3.87 ps=3.87 as=0.669375 ad=0.669375
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=13 w=9.295 l=0.15 pd=1.73 ps=1.73 as=0.268125 ad=0.268125
-.ENDS pinv_25__7
+.ENDS pinv_25__8
 
-.SUBCKT buffer_stage_5__28_25__7_no_out_h_4 in out_inv out vdd gnd
+.SUBCKT buffer_stage_5__28_25__8_no_out_h_4 in out_inv out vdd gnd
 Xinv0 in out_inv vdd gnd pinv_5__28
-Xinv1 out_inv out vdd gnd pinv_25__7
-.ENDS buffer_stage_5__28_25__7_no_out_h_4
+Xinv1 out_inv out vdd gnd pinv_25__8
+.ENDS buffer_stage_5__28_25__8_no_out_h_4
 
-.SUBCKT logic_buffer_pnor2_5_28_25_7_no_in_no_out_h_4 A B out_inv out vdd gnd
+.SUBCKT logic_buffer_pnor2_5_28_25_8_no_in_no_out_h_4 A B out_inv out vdd gnd
 Xlogic A B logic_out vdd gnd pnor2_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__28_25__7_no_out_h_4
-.ENDS logic_buffer_pnor2_5_28_25_7_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__28_25__8_no_out_h_4
+.ENDS logic_buffer_pnor2_5_28_25_8_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=3 w=5.16 l=0.15 pd=3.7399999999999998 ps=3.7399999999999998 as=0.645 ad=0.645
 
-.SUBCKT pinv_5__73 A Z vdd gnd
+.SUBCKT pinv_5__74 A Z vdd gnd
 Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=3 w=5.16 l=0.15 pd=3.7399999999999998 ps=3.7399999999999998 as=0.645 ad=0.645
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=3 w=2.0700000000000003 l=0.15 pd=1.6800000000000002 ps=1.6800000000000002 as=0.25875000000000004 ad=0.25875000000000004
-.ENDS pinv_5__73
+.ENDS pinv_5__74
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=12 w=21.96 l=0.15 pd=3.96 ps=3.96 as=0.68625 ad=0.68625
 
@@ -5089,101 +5121,102 @@ Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=12 w=21.96 l=0.15 pd=3.96 ps=3
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=12 w=8.82 l=0.15 pd=1.77 ps=1.77 as=0.275625 ad=0.275625
 .ENDS pinv_24__4
 
-.SUBCKT buffer_stage_5__73_24__4_40_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_1 vdd gnd pinv_5__73
+.SUBCKT buffer_stage_5__74_24__4_40_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_5__74
 Xinv1 out_1 out vdd gnd pinv_24__4
 Xinv2 out out_inv vdd gnd pinv_40
-.ENDS buffer_stage_5__73_24__4_40_no_out_h_4
+.ENDS buffer_stage_5__74_24__4_40_no_out_h_4
 
-.SUBCKT logic_buffer_pnand3_5_73_24_4_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand3_5_74_24_4_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
 Xlogic A B C logic_out vdd gnd pnand3_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__73_24__4_40_no_out_h_4
-.ENDS logic_buffer_pnand3_5_73_24_4_40_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_5__74_24__4_40_no_out_h_4
+.ENDS logic_buffer_pnand3_5_74_24_4_40_no_in_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.48 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.49 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
 
 .SUBCKT pinv_3__87 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.48 l=0.15 pd=3.78 ps=3.78 as=0.6525 ad=0.6525
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.3900000000000001 l=0.15 pd=1.6900000000000002 ps=1.6900000000000002 as=0.260625 ad=0.260625
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=2 w=3.49 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=2 w=1.4000000000000001 l=0.15 pd=1.7000000000000002 ps=1.7000000000000002 as=0.2625 ad=0.2625
 .ENDS pinv_3__87
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.39 l=0.15 pd=3.4299999999999997 ps=3.4299999999999997 as=0.586875 ad=0.586875
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.42 l=0.15 pd=3.44 ps=3.44 as=0.58875 ad=0.58875
 
-.SUBCKT pinv_10__4 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.39 l=0.15 pd=3.4299999999999997 ps=3.4299999999999997 as=0.586875 ad=0.586875
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=3.75 l=0.15 pd=1.55 ps=1.55 as=0.234375 ad=0.234375
-.ENDS pinv_10__4
+.SUBCKT pinv_10__5 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=6 w=9.42 l=0.15 pd=3.44 ps=3.44 as=0.58875 ad=0.58875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=6 w=3.7800000000000002 l=0.15 pd=1.56 ps=1.56 as=0.23625000000000002 ad=0.23625000000000002
+.ENDS pinv_10__5
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.650000000000002 l=0.15 pd=3.83 ps=3.83 as=0.661875 ad=0.661875
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.7 l=0.15 pd=3.84 ps=3.84 as=0.6637500000000001 ad=0.6637500000000001
 
-.SUBCKT pinv_19__6 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.650000000000002 l=0.15 pd=3.83 ps=3.83 as=0.661875 ad=0.661875
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.05 l=0.15 pd=1.71 ps=1.71 as=0.26437499999999997 ad=0.26437499999999997
-.ENDS pinv_19__6
+.SUBCKT pinv_19__7 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=10 w=17.7 l=0.15 pd=3.84 ps=3.84 as=0.6637500000000001 ad=0.6637500000000001
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=10 w=7.1 l=0.15 pd=1.72 ps=1.72 as=0.26625 ad=0.26625
+.ENDS pinv_19__7
 
-.SUBCKT buffer_stage_3__87_10__4_19__6_no_out_h_4 in out_inv out vdd gnd
+.SUBCKT buffer_stage_3__87_10__5_19__7_no_out_h_4 in out_inv out vdd gnd
 Xinv0 in out_1 vdd gnd pinv_3__87
-Xinv1 out_1 out vdd gnd pinv_10__4
-Xinv2 out out_inv vdd gnd pinv_19__6
-.ENDS buffer_stage_3__87_10__4_19__6_no_out_h_4
+Xinv1 out_1 out vdd gnd pinv_10__5
+Xinv2 out out_inv vdd gnd pinv_19__7
+.ENDS buffer_stage_3__87_10__5_19__7_no_out_h_4
 
-.SUBCKT logic_buffer_pnand3_3_87_10_4_19_6_no_in_no_out_h_4 A B C out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand3_3_87_10_5_19_7_no_in_no_out_h_4 A B C out_inv out vdd gnd
 Xlogic A B C logic_out vdd gnd pnand3_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__87_10__4_19__6_no_out_h_4
-.ENDS logic_buffer_pnand3_3_87_10_4_19_6_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_3__87_10__5_19__7_no_out_h_4
+.ENDS logic_buffer_pnand3_3_87_10_5_19_7_no_in_no_out_h_4
 
 * ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.98 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
 
-.SUBCKT pinv_7__75 A Z vdd gnd
+.SUBCKT pinv_7__76 A Z vdd gnd
 Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.98 l=0.15 pd=3.79 ps=3.79 as=0.654375 ad=0.654375
 Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.8000000000000003 l=0.15 pd=1.7000000000000002 ps=1.7000000000000002 as=0.2625 ad=0.2625
-.ENDS pinv_7__75
+.ENDS pinv_7__76
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.25 l=0.15 pd=3.8 ps=3.8 as=0.65625 ad=0.65625
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.32 l=0.15 pd=3.82 ps=3.82 as=0.66 ad=0.66
 
-.SUBCKT pinv_13__6 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.25 l=0.15 pd=3.8 ps=3.8 as=0.65625 ad=0.65625
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=7 w=4.9 l=0.15 pd=1.7000000000000002 ps=1.7000000000000002 as=0.2625 ad=0.2625
-.ENDS pinv_13__6
+.SUBCKT pinv_13__7 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=7 w=12.32 l=0.15 pd=3.82 ps=3.82 as=0.66 ad=0.66
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=7 w=4.935 l=0.15 pd=1.71 ps=1.71 as=0.26437499999999997 ad=0.26437499999999997
+.ENDS pinv_13__7
 
-.SUBCKT buffer_stage_7__75_13__6_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_7__75
-Xinv1 out_inv out vdd gnd pinv_13__6
-.ENDS buffer_stage_7__75_13__6_no_out_h_4
+.SUBCKT buffer_stage_7__76_13__7_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_inv vdd gnd pinv_7__76
+Xinv1 out_inv out vdd gnd pinv_13__7
+.ENDS buffer_stage_7__76_13__7_no_out_h_4
 
-* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.8 l=0.15 pd=3.82 ps=3.82 as=0.66 ad=0.66
+* ptx X{0} {1} sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.26 l=0.15 pd=3.4299999999999997 ps=3.4299999999999997 as=0.586875 ad=0.586875
 
-.SUBCKT pinv_9__79 A Z vdd gnd
-Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=5 w=8.8 l=0.15 pd=3.82 ps=3.82 as=0.66 ad=0.66
-Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=5 w=3.525 l=0.15 pd=1.71 ps=1.71 as=0.26437499999999997 ad=0.26437499999999997
-.ENDS pinv_9__79
+.SUBCKT pinv_6__96 A Z vdd gnd
+Xpmos1 Z A vdd vdd sky130_fd_pr__pfet_01v8 m=1 nf=4 w=6.26 l=0.15 pd=3.4299999999999997 ps=3.4299999999999997 as=0.586875 ad=0.586875
+Xnmos2 Z A gnd gnd sky130_fd_pr__nfet_01v8 m=1 nf=4 w=2.5 l=0.15 pd=1.55 ps=1.55 as=0.234375 ad=0.234375
+.ENDS pinv_6__96
 
-.SUBCKT buffer_stage_9__79_40_no_out_h_4 in out_inv out vdd gnd
-Xinv0 in out_inv vdd gnd pinv_9__79
-Xinv1 out_inv out vdd gnd pinv_40
-.ENDS buffer_stage_9__79_40_no_out_h_4
+.SUBCKT buffer_stage_6__96_40_40_no_out_h_4 in out_inv out vdd gnd
+Xinv0 in out_1 vdd gnd pinv_6__96
+Xinv1 out_1 out vdd gnd pinv_40
+Xinv2 out out_inv vdd gnd pinv_40
+.ENDS buffer_stage_6__96_40_40_no_out_h_4
 
-.SUBCKT logic_buffer_pnand3_9_79_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
+.SUBCKT logic_buffer_pnand3_6_96_40_40_no_in_no_out_h_4 A B C out_inv out vdd gnd
 Xlogic A B C logic_out vdd gnd pnand3_1
-Xbuffer logic_out out out_inv vdd gnd buffer_stage_9__79_40_no_out_h_4
-.ENDS logic_buffer_pnand3_9_79_40_no_in_no_out_h_4
+Xbuffer logic_out out out_inv vdd gnd buffer_stage_6__96_40_40_no_out_h_4
+.ENDS logic_buffer_pnand3_6_96_40_40_no_in_no_out_h_4
 
-.SUBCKT control_buffers bank_sel read clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd
+.SUBCKT control_buffers bank_sel read clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd
 Xdecoder_clk bank_sel clk decoder_clk_bar decoder_clk vdd gnd logic_buffer_pnand2_2_42_no_in_no_out_h_4
 Xnor_read_clk read clk nor_read_clk vdd gnd pnor2_1
-Xbr_reset nor_read_clk bank_sel_bar br_reset br_reset_bar vdd gnd logic_buffer_pnor2_5_28_25_7_no_in_no_out_h_4
+Xbr_reset nor_read_clk bank_sel_bar br_reset br_reset_bar vdd gnd logic_buffer_pnor2_5_28_25_8_no_in_no_out_h_4
 Xclk_buf bank_sel clk clk_bar clk_buf vdd gnd logic_buffer_pnand2_5_94_28_8_40_no_in_no_out_h_4
-Xwrite_buf read bank_sel_cbar write_en write_en_bar vdd gnd logic_buffer_pnor2_7_11_40_40_no_in_no_out_h_4
-Xsense_amp_buf sample_bar_int sense_trig bank_sel sense_en_bar sense_en vdd gnd logic_buffer_pnand3_3_87_10_4_19_6_no_in_no_out_h_4
-Xtri_en_buf sample_bar_int sense_trig bank_sel tri_en_bar tri_en vdd gnd logic_buffer_pnand3_9_79_40_no_in_no_out_h_4
+Xwrite_buf read bank_sel_cbar write_en write_en_bar vdd gnd logic_buffer_pnor2_4_85_20_6_1_no_in_no_out_h_4
+Xsense_amp_buf sample_bar_int sense_trig bank_sel sense_en_bar sense_en vdd gnd logic_buffer_pnand3_3_87_10_5_19_7_no_in_no_out_h_4
+Xtri_en_buf sample_bar_int sense_trig bank_sel tri_en_bar tri_en vdd gnd logic_buffer_pnand3_6_96_40_40_no_in_no_out_h_4
 Xsense_trig_bar sense_trig sense_trig_bar vdd gnd pinv_1
 Xsample_bar_int bank_sel read sense_trig_bar sample_bar_int vdd gnd pnand3_1
-Xsample_bar sample_bar_int sample_en_buf sample_en_bar vdd gnd buffer_stage_7__75_13__6_no_out_h_4
+Xsample_bar sample_bar_int sample_en_buf sample_en_bar vdd gnd buffer_stage_7__76_13__7_no_out_h_4
 Xclk_bar clk clk_bar_int vdd gnd pinv_1
 Xbank_sel_cbar bank_sel clk_bar_int bank_sel_cbar vdd gnd pnand2_1
-Xwordline_buf sense_trig bank_sel_cbar wordline_en wordline_en_bar vdd gnd logic_buffer_pnor2_4_46_17_4_no_in_no_out_h_4
+Xwordline_buf sense_trig bank_sel_cbar wordline_en wordline_en_bar vdd gnd logic_buffer_pnor2_4_47_17_5_no_in_no_out_h_4
 Xread_bar read read_bar vdd gnd pinv_1
-Xbl_reset bank_sel clk read_bar bl_reset_bar bl_reset vdd gnd logic_buffer_pnand3_5_73_24_4_40_no_in_no_out_h_4
+Xbl_reset bank_sel clk read_bar bl_reset_bar bl_reset vdd gnd logic_buffer_pnand3_5_74_24_4_40_no_in_no_out_h_4
 Xbank_sel_bar bank_sel bank_sel_bar vdd gnd pinv_1
 .ENDS control_buffers
 
@@ -5219,12 +5252,12 @@ Xflop din flop_out flop_out_bar clk vdd gnd ms_flop_horz_pitch
 Xbuffer flop_out_bar dout dout_bar vdd gnd buffer_stage_3__28_no_out_no_nwell_cont_no_pwell_cont_h_3__2
 .ENDS flop_buffer_3__28
 
-.SUBCKT bank DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] dec_out[32] dec_out[33] dec_out[34] dec_out[35] dec_out[36] dec_out[37] dec_out[38] dec_out[39] dec_out[40] dec_out[41] dec_out[42] dec_out[43] dec_out[44] dec_out[45] dec_out[46] dec_out[47] dec_out[48] dec_out[49] dec_out[50] dec_out[51] dec_out[52] dec_out[53] dec_out[54] dec_out[55] dec_out[56] dec_out[57] dec_out[58] dec_out[59] dec_out[60] dec_out[61] dec_out[62] dec_out[63] Csb read clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write vdd_wordline
-Xcontrol_buffers bank_sel_buf read_buf clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en write_en_bar sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd control_buffers
+.SUBCKT bank DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] dec_out[32] dec_out[33] dec_out[34] dec_out[35] dec_out[36] dec_out[37] dec_out[38] dec_out[39] dec_out[40] dec_out[41] dec_out[42] dec_out[43] dec_out[44] dec_out[45] dec_out[46] dec_out[47] dec_out[48] dec_out[49] dec_out[50] dec_out[51] dec_out[52] dec_out[53] dec_out[54] dec_out[55] dec_out[56] dec_out[57] dec_out[58] dec_out[59] dec_out[60] dec_out[61] dec_out[62] dec_out[63] Csb read clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write_bl vdd_write_br vdd_wordline
+Xcontrol_buffers bank_sel_buf read_buf clk sense_trig decoder_clk clk_buf clk_bar wordline_en write_en sense_en tri_en tri_en_bar sample_en_bar bl_reset br_reset vdd gnd control_buffers
 Xtri_gate_array sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] sense_out_bar[8] sense_out_bar[9] sense_out_bar[10] sense_out_bar[11] sense_out_bar[12] sense_out_bar[13] sense_out_bar[14] sense_out_bar[15] sense_out_bar[16] sense_out_bar[17] sense_out_bar[18] sense_out_bar[19] sense_out_bar[20] sense_out_bar[21] sense_out_bar[22] sense_out_bar[23] sense_out_bar[24] sense_out_bar[25] sense_out_bar[26] sense_out_bar[27] sense_out_bar[28] sense_out_bar[29] sense_out_bar[30] sense_out_bar[31] sense_out_bar[32] sense_out_bar[33] sense_out_bar[34] sense_out_bar[35] sense_out_bar[36] sense_out_bar[37] sense_out_bar[38] sense_out_bar[39] sense_out_bar[40] sense_out_bar[41] sense_out_bar[42] sense_out_bar[43] sense_out_bar[44] sense_out_bar[45] sense_out_bar[46] sense_out_bar[47] sense_out_bar[48] sense_out_bar[49] sense_out_bar[50] sense_out_bar[51] sense_out_bar[52] sense_out_bar[53] sense_out_bar[54] sense_out_bar[55] sense_out_bar[56] sense_out_bar[57] sense_out_bar[58] sense_out_bar[59] sense_out_bar[60] sense_out_bar[61] sense_out_bar[62] sense_out_bar[63] DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] tri_en tri_en_bar vdd gnd tri_gate_array
 Xmask_in MASK[0] MASK[1] MASK[2] MASK[3] MASK[4] MASK[5] MASK[6] MASK[7] MASK[8] MASK[9] MASK[10] MASK[11] MASK[12] MASK[13] MASK[14] MASK[15] MASK[16] MASK[17] MASK[18] MASK[19] MASK[20] MASK[21] MASK[22] MASK[23] MASK[24] MASK[25] MASK[26] MASK[27] MASK[28] MASK[29] MASK[30] MASK[31] MASK[32] MASK[33] MASK[34] MASK[35] MASK[36] MASK[37] MASK[38] MASK[39] MASK[40] MASK[41] MASK[42] MASK[43] MASK[44] MASK[45] MASK[46] MASK[47] MASK[48] MASK[49] MASK[50] MASK[51] MASK[52] MASK[53] MASK[54] MASK[55] MASK[56] MASK[57] MASK[58] MASK[59] MASK[60] MASK[61] MASK[62] MASK[63] mask_in[0] mask_in_bar[0] mask_in[1] mask_in_bar[1] mask_in[2] mask_in_bar[2] mask_in[3] mask_in_bar[3] mask_in[4] mask_in_bar[4] mask_in[5] mask_in_bar[5] mask_in[6] mask_in_bar[6] mask_in[7] mask_in_bar[7] mask_in[8] mask_in_bar[8] mask_in[9] mask_in_bar[9] mask_in[10] mask_in_bar[10] mask_in[11] mask_in_bar[11] mask_in[12] mask_in_bar[12] mask_in[13] mask_in_bar[13] mask_in[14] mask_in_bar[14] mask_in[15] mask_in_bar[15] mask_in[16] mask_in_bar[16] mask_in[17] mask_in_bar[17] mask_in[18] mask_in_bar[18] mask_in[19] mask_in_bar[19] mask_in[20] mask_in_bar[20] mask_in[21] mask_in_bar[21] mask_in[22] mask_in_bar[22] mask_in[23] mask_in_bar[23] mask_in[24] mask_in_bar[24] mask_in[25] mask_in_bar[25] mask_in[26] mask_in_bar[26] mask_in[27] mask_in_bar[27] mask_in[28] mask_in_bar[28] mask_in[29] mask_in_bar[29] mask_in[30] mask_in_bar[30] mask_in[31] mask_in_bar[31] mask_in[32] mask_in_bar[32] mask_in[33] mask_in_bar[33] mask_in[34] mask_in_bar[34] mask_in[35] mask_in_bar[35] mask_in[36] mask_in_bar[36] mask_in[37] mask_in_bar[37] mask_in[38] mask_in_bar[38] mask_in[39] mask_in_bar[39] mask_in[40] mask_in_bar[40] mask_in[41] mask_in_bar[41] mask_in[42] mask_in_bar[42] mask_in[43] mask_in_bar[43] mask_in[44] mask_in_bar[44] mask_in[45] mask_in_bar[45] mask_in[46] mask_in_bar[46] mask_in[47] mask_in_bar[47] mask_in[48] mask_in_bar[48] mask_in[49] mask_in_bar[49] mask_in[50] mask_in_bar[50] mask_in[51] mask_in_bar[51] mask_in[52] mask_in_bar[52] mask_in[53] mask_in_bar[53] mask_in[54] mask_in_bar[54] mask_in[55] mask_in_bar[55] mask_in[56] mask_in_bar[56] mask_in[57] mask_in_bar[57] mask_in[58] mask_in_bar[58] mask_in[59] mask_in_bar[59] mask_in[60] mask_in_bar[60] mask_in[61] mask_in_bar[61] mask_in[62] mask_in_bar[62] mask_in[63] mask_in_bar[63] clk_buf vdd gnd flop_array_c64_w64_ms_flop_clk_buf_ms_flop_clk_buf_tap
 Xdata_in DATA[0] DATA[1] DATA[2] DATA[3] DATA[4] DATA[5] DATA[6] DATA[7] DATA[8] DATA[9] DATA[10] DATA[11] DATA[12] DATA[13] DATA[14] DATA[15] DATA[16] DATA[17] DATA[18] DATA[19] DATA[20] DATA[21] DATA[22] DATA[23] DATA[24] DATA[25] DATA[26] DATA[27] DATA[28] DATA[29] DATA[30] DATA[31] DATA[32] DATA[33] DATA[34] DATA[35] DATA[36] DATA[37] DATA[38] DATA[39] DATA[40] DATA[41] DATA[42] DATA[43] DATA[44] DATA[45] DATA[46] DATA[47] DATA[48] DATA[49] DATA[50] DATA[51] DATA[52] DATA[53] DATA[54] DATA[55] DATA[56] DATA[57] DATA[58] DATA[59] DATA[60] DATA[61] DATA[62] DATA[63] data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] data_in[8] data_in_bar[8] data_in[9] data_in_bar[9] data_in[10] data_in_bar[10] data_in[11] data_in_bar[11] data_in[12] data_in_bar[12] data_in[13] data_in_bar[13] data_in[14] data_in_bar[14] data_in[15] data_in_bar[15] data_in[16] data_in_bar[16] data_in[17] data_in_bar[17] data_in[18] data_in_bar[18] data_in[19] data_in_bar[19] data_in[20] data_in_bar[20] data_in[21] data_in_bar[21] data_in[22] data_in_bar[22] data_in[23] data_in_bar[23] data_in[24] data_in_bar[24] data_in[25] data_in_bar[25] data_in[26] data_in_bar[26] data_in[27] data_in_bar[27] data_in[28] data_in_bar[28] data_in[29] data_in_bar[29] data_in[30] data_in_bar[30] data_in[31] data_in_bar[31] data_in[32] data_in_bar[32] data_in[33] data_in_bar[33] data_in[34] data_in_bar[34] data_in[35] data_in_bar[35] data_in[36] data_in_bar[36] data_in[37] data_in_bar[37] data_in[38] data_in_bar[38] data_in[39] data_in_bar[39] data_in[40] data_in_bar[40] data_in[41] data_in_bar[41] data_in[42] data_in_bar[42] data_in[43] data_in_bar[43] data_in[44] data_in_bar[44] data_in[45] data_in_bar[45] data_in[46] data_in_bar[46] data_in[47] data_in_bar[47] data_in[48] data_in_bar[48] data_in[49] data_in_bar[49] data_in[50] data_in_bar[50] data_in[51] data_in_bar[51] data_in[52] data_in_bar[52] data_in[53] data_in_bar[53] data_in[54] data_in_bar[54] data_in[55] data_in_bar[55] data_in[56] data_in_bar[56] data_in[57] data_in_bar[57] data_in[58] data_in_bar[58] data_in[59] data_in_bar[59] data_in[60] data_in_bar[60] data_in[61] data_in_bar[61] data_in[62] data_in_bar[62] data_in[63] data_in_bar[63] clk_bar vdd gnd flop_array_c64_w64_ms_flop_clk_buf_ms_flop_clk_buf_tap
-Xwrite_driver_array data_in[0] data_in_bar[0] data_in[1] data_in_bar[1] data_in[2] data_in_bar[2] data_in[3] data_in_bar[3] data_in[4] data_in_bar[4] data_in[5] data_in_bar[5] data_in[6] data_in_bar[6] data_in[7] data_in_bar[7] data_in[8] data_in_bar[8] data_in[9] data_in_bar[9] data_in[10] data_in_bar[10] data_in[11] data_in_bar[11] data_in[12] data_in_bar[12] data_in[13] data_in_bar[13] data_in[14] data_in_bar[14] data_in[15] data_in_bar[15] data_in[16] data_in_bar[16] data_in[17] data_in_bar[17] data_in[18] data_in_bar[18] data_in[19] data_in_bar[19] data_in[20] data_in_bar[20] data_in[21] data_in_bar[21] data_in[22] data_in_bar[22] data_in[23] data_in_bar[23] data_in[24] data_in_bar[24] data_in[25] data_in_bar[25] data_in[26] data_in_bar[26] data_in[27] data_in_bar[27] data_in[28] data_in_bar[28] data_in[29] data_in_bar[29] data_in[30] data_in_bar[30] data_in[31] data_in_bar[31] data_in[32] data_in_bar[32] data_in[33] data_in_bar[33] data_in[34] data_in_bar[34] data_in[35] data_in_bar[35] data_in[36] data_in_bar[36] data_in[37] data_in_bar[37] data_in[38] data_in_bar[38] data_in[39] data_in_bar[39] data_in[40] data_in_bar[40] data_in[41] data_in_bar[41] data_in[42] data_in_bar[42] data_in[43] data_in_bar[43] data_in[44] data_in_bar[44] data_in[45] data_in_bar[45] data_in[46] data_in_bar[46] data_in[47] data_in_bar[47] data_in[48] data_in_bar[48] data_in[49] data_in_bar[49] data_in[50] data_in_bar[50] data_in[51] data_in_bar[51] data_in[52] data_in_bar[52] data_in[53] data_in_bar[53] data_in[54] data_in_bar[54] data_in[55] data_in_bar[55] data_in[56] data_in_bar[56] data_in[57] data_in_bar[57] data_in[58] data_in_bar[58] data_in[59] data_in_bar[59] data_in[60] data_in_bar[60] data_in[61] data_in_bar[61] data_in[62] data_in_bar[62] data_in[63] data_in_bar[63] bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] bl[32] br[32] bl[33] br[33] bl[34] br[34] bl[35] br[35] bl[36] br[36] bl[37] br[37] bl[38] br[38] bl[39] br[39] bl[40] br[40] bl[41] br[41] bl[42] br[42] bl[43] br[43] bl[44] br[44] bl[45] br[45] bl[46] br[46] bl[47] br[47] bl[48] br[48] bl[49] br[49] bl[50] br[50] bl[51] br[51] bl[52] br[52] bl[53] br[53] bl[54] br[54] bl[55] br[55] bl[56] br[56] bl[57] br[57] bl[58] br[58] bl[59] br[59] bl[60] br[60] bl[61] br[61] bl[62] br[62] bl[63] br[63] mask_in_bar[0] mask_in_bar[1] mask_in_bar[2] mask_in_bar[3] mask_in_bar[4] mask_in_bar[5] mask_in_bar[6] mask_in_bar[7] mask_in_bar[8] mask_in_bar[9] mask_in_bar[10] mask_in_bar[11] mask_in_bar[12] mask_in_bar[13] mask_in_bar[14] mask_in_bar[15] mask_in_bar[16] mask_in_bar[17] mask_in_bar[18] mask_in_bar[19] mask_in_bar[20] mask_in_bar[21] mask_in_bar[22] mask_in_bar[23] mask_in_bar[24] mask_in_bar[25] mask_in_bar[26] mask_in_bar[27] mask_in_bar[28] mask_in_bar[29] mask_in_bar[30] mask_in_bar[31] mask_in_bar[32] mask_in_bar[33] mask_in_bar[34] mask_in_bar[35] mask_in_bar[36] mask_in_bar[37] mask_in_bar[38] mask_in_bar[39] mask_in_bar[40] mask_in_bar[41] mask_in_bar[42] mask_in_bar[43] mask_in_bar[44] mask_in_bar[45] mask_in_bar[46] mask_in_bar[47] mask_in_bar[48] mask_in_bar[49] mask_in_bar[50] mask_in_bar[51] mask_in_bar[52] mask_in_bar[53] mask_in_bar[54] mask_in_bar[55] mask_in_bar[56] mask_in_bar[57] mask_in_bar[58] mask_in_bar[59] mask_in_bar[60] mask_in_bar[61] mask_in_bar[62] mask_in_bar[63] write_en write_en_bar vdd_write gnd write_driver_array
+Xwrite_driver_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] bl[32] bl[33] bl[34] bl[35] bl[36] bl[37] bl[38] bl[39] bl[40] bl[41] bl[42] bl[43] bl[44] bl[45] bl[46] bl[47] bl[48] bl[49] bl[50] bl[51] bl[52] bl[53] bl[54] bl[55] bl[56] bl[57] bl[58] bl[59] bl[60] bl[61] bl[62] bl[63] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] br[32] br[33] br[34] br[35] br[36] br[37] br[38] br[39] br[40] br[41] br[42] br[43] br[44] br[45] br[46] br[47] br[48] br[49] br[50] br[51] br[52] br[53] br[54] br[55] br[56] br[57] br[58] br[59] br[60] br[61] br[62] br[63] data_in[0] data_in[1] data_in[2] data_in[3] data_in[4] data_in[5] data_in[6] data_in[7] data_in[8] data_in[9] data_in[10] data_in[11] data_in[12] data_in[13] data_in[14] data_in[15] data_in[16] data_in[17] data_in[18] data_in[19] data_in[20] data_in[21] data_in[22] data_in[23] data_in[24] data_in[25] data_in[26] data_in[27] data_in[28] data_in[29] data_in[30] data_in[31] data_in[32] data_in[33] data_in[34] data_in[35] data_in[36] data_in[37] data_in[38] data_in[39] data_in[40] data_in[41] data_in[42] data_in[43] data_in[44] data_in[45] data_in[46] data_in[47] data_in[48] data_in[49] data_in[50] data_in[51] data_in[52] data_in[53] data_in[54] data_in[55] data_in[56] data_in[57] data_in[58] data_in[59] data_in[60] data_in[61] data_in[62] data_in[63] data_in_bar[0] data_in_bar[1] data_in_bar[2] data_in_bar[3] data_in_bar[4] data_in_bar[5] data_in_bar[6] data_in_bar[7] data_in_bar[8] data_in_bar[9] data_in_bar[10] data_in_bar[11] data_in_bar[12] data_in_bar[13] data_in_bar[14] data_in_bar[15] data_in_bar[16] data_in_bar[17] data_in_bar[18] data_in_bar[19] data_in_bar[20] data_in_bar[21] data_in_bar[22] data_in_bar[23] data_in_bar[24] data_in_bar[25] data_in_bar[26] data_in_bar[27] data_in_bar[28] data_in_bar[29] data_in_bar[30] data_in_bar[31] data_in_bar[32] data_in_bar[33] data_in_bar[34] data_in_bar[35] data_in_bar[36] data_in_bar[37] data_in_bar[38] data_in_bar[39] data_in_bar[40] data_in_bar[41] data_in_bar[42] data_in_bar[43] data_in_bar[44] data_in_bar[45] data_in_bar[46] data_in_bar[47] data_in_bar[48] data_in_bar[49] data_in_bar[50] data_in_bar[51] data_in_bar[52] data_in_bar[53] data_in_bar[54] data_in_bar[55] data_in_bar[56] data_in_bar[57] data_in_bar[58] data_in_bar[59] data_in_bar[60] data_in_bar[61] data_in_bar[62] data_in_bar[63] mask_in[0] mask_in[1] mask_in[2] mask_in[3] mask_in[4] mask_in[5] mask_in[6] mask_in[7] mask_in[8] mask_in[9] mask_in[10] mask_in[11] mask_in[12] mask_in[13] mask_in[14] mask_in[15] mask_in[16] mask_in[17] mask_in[18] mask_in[19] mask_in[20] mask_in[21] mask_in[22] mask_in[23] mask_in[24] mask_in[25] mask_in[26] mask_in[27] mask_in[28] mask_in[29] mask_in[30] mask_in[31] mask_in[32] mask_in[33] mask_in[34] mask_in[35] mask_in[36] mask_in[37] mask_in[38] mask_in[39] mask_in[40] mask_in[41] mask_in[42] mask_in[43] mask_in[44] mask_in[45] mask_in[46] mask_in[47] mask_in[48] mask_in[49] mask_in[50] mask_in[51] mask_in[52] mask_in[53] mask_in[54] mask_in[55] mask_in[56] mask_in[57] mask_in[58] mask_in[59] mask_in[60] mask_in[61] mask_in[62] mask_in[63] write_en vdd vdd_write_bl vdd_write_br gnd write_driver_array
 Xsense_amp_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] bl[32] bl[33] bl[34] bl[35] bl[36] bl[37] bl[38] bl[39] bl[40] bl[41] bl[42] bl[43] bl[44] bl[45] bl[46] bl[47] bl[48] bl[49] bl[50] bl[51] bl[52] bl[53] bl[54] bl[55] bl[56] bl[57] bl[58] bl[59] bl[60] bl[61] bl[62] bl[63] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] br[32] br[33] br[34] br[35] br[36] br[37] br[38] br[39] br[40] br[41] br[42] br[43] br[44] br[45] br[46] br[47] br[48] br[49] br[50] br[51] br[52] br[53] br[54] br[55] br[56] br[57] br[58] br[59] br[60] br[61] br[62] br[63] sense_out[0] sense_out[1] sense_out[2] sense_out[3] sense_out[4] sense_out[5] sense_out[6] sense_out[7] sense_out[8] sense_out[9] sense_out[10] sense_out[11] sense_out[12] sense_out[13] sense_out[14] sense_out[15] sense_out[16] sense_out[17] sense_out[18] sense_out[19] sense_out[20] sense_out[21] sense_out[22] sense_out[23] sense_out[24] sense_out[25] sense_out[26] sense_out[27] sense_out[28] sense_out[29] sense_out[30] sense_out[31] sense_out[32] sense_out[33] sense_out[34] sense_out[35] sense_out[36] sense_out[37] sense_out[38] sense_out[39] sense_out[40] sense_out[41] sense_out[42] sense_out[43] sense_out[44] sense_out[45] sense_out[46] sense_out[47] sense_out[48] sense_out[49] sense_out[50] sense_out[51] sense_out[52] sense_out[53] sense_out[54] sense_out[55] sense_out[56] sense_out[57] sense_out[58] sense_out[59] sense_out[60] sense_out[61] sense_out[62] sense_out[63] sense_out_bar[0] sense_out_bar[1] sense_out_bar[2] sense_out_bar[3] sense_out_bar[4] sense_out_bar[5] sense_out_bar[6] sense_out_bar[7] sense_out_bar[8] sense_out_bar[9] sense_out_bar[10] sense_out_bar[11] sense_out_bar[12] sense_out_bar[13] sense_out_bar[14] sense_out_bar[15] sense_out_bar[16] sense_out_bar[17] sense_out_bar[18] sense_out_bar[19] sense_out_bar[20] sense_out_bar[21] sense_out_bar[22] sense_out_bar[23] sense_out_bar[24] sense_out_bar[25] sense_out_bar[26] sense_out_bar[27] sense_out_bar[28] sense_out_bar[29] sense_out_bar[30] sense_out_bar[31] sense_out_bar[32] sense_out_bar[33] sense_out_bar[34] sense_out_bar[35] sense_out_bar[36] sense_out_bar[37] sense_out_bar[38] sense_out_bar[39] sense_out_bar[40] sense_out_bar[41] sense_out_bar[42] sense_out_bar[43] sense_out_bar[44] sense_out_bar[45] sense_out_bar[46] sense_out_bar[47] sense_out_bar[48] sense_out_bar[49] sense_out_bar[50] sense_out_bar[51] sense_out_bar[52] sense_out_bar[53] sense_out_bar[54] sense_out_bar[55] sense_out_bar[56] sense_out_bar[57] sense_out_bar[58] sense_out_bar[59] sense_out_bar[60] sense_out_bar[61] sense_out_bar[62] sense_out_bar[63] sense_en gnd sample_en_bar vclamp vclampp vdd vref sense_amp_array
 Xprecharge_array bl[0] bl[1] bl[2] bl[3] bl[4] bl[5] bl[6] bl[7] bl[8] bl[9] bl[10] bl[11] bl[12] bl[13] bl[14] bl[15] bl[16] bl[17] bl[18] bl[19] bl[20] bl[21] bl[22] bl[23] bl[24] bl[25] bl[26] bl[27] bl[28] bl[29] bl[30] bl[31] bl[32] bl[33] bl[34] bl[35] bl[36] bl[37] bl[38] bl[39] bl[40] bl[41] bl[42] bl[43] bl[44] bl[45] bl[46] bl[47] bl[48] bl[49] bl[50] bl[51] bl[52] bl[53] bl[54] bl[55] bl[56] bl[57] bl[58] bl[59] bl[60] bl[61] bl[62] bl[63] br[0] br[1] br[2] br[3] br[4] br[5] br[6] br[7] br[8] br[9] br[10] br[11] br[12] br[13] br[14] br[15] br[16] br[17] br[18] br[19] br[20] br[21] br[22] br[23] br[24] br[25] br[26] br[27] br[28] br[29] br[30] br[31] br[32] br[33] br[34] br[35] br[36] br[37] br[38] br[39] br[40] br[41] br[42] br[43] br[44] br[45] br[46] br[47] br[48] br[49] br[50] br[51] br[52] br[53] br[54] br[55] br[56] br[57] br[58] br[59] br[60] br[61] br[62] br[63] bl_reset br_reset gnd precharge_array
 Xbitcell_array bl[0] br[0] bl[1] br[1] bl[2] br[2] bl[3] br[3] bl[4] br[4] bl[5] br[5] bl[6] br[6] bl[7] br[7] bl[8] br[8] bl[9] br[9] bl[10] br[10] bl[11] br[11] bl[12] br[12] bl[13] br[13] bl[14] br[14] bl[15] br[15] bl[16] br[16] bl[17] br[17] bl[18] br[18] bl[19] br[19] bl[20] br[20] bl[21] br[21] bl[22] br[22] bl[23] br[23] bl[24] br[24] bl[25] br[25] bl[26] br[26] bl[27] br[27] bl[28] br[28] bl[29] br[29] bl[30] br[30] bl[31] br[31] bl[32] br[32] bl[33] br[33] bl[34] br[34] bl[35] br[35] bl[36] br[36] bl[37] br[37] bl[38] br[38] bl[39] br[39] bl[40] br[40] bl[41] br[41] bl[42] br[42] bl[43] br[43] bl[44] br[44] bl[45] br[45] bl[46] br[46] bl[47] br[47] bl[48] br[48] bl[49] br[49] bl[50] br[50] bl[51] br[51] bl[52] br[52] bl[53] br[53] bl[54] br[54] bl[55] br[55] bl[56] br[56] bl[57] br[57] bl[58] br[58] bl[59] br[59] bl[60] br[60] bl[61] br[61] bl[62] br[62] bl[63] br[63] wl[0] wl[1] wl[2] wl[3] wl[4] wl[5] wl[6] wl[7] wl[8] wl[9] wl[10] wl[11] wl[12] wl[13] wl[14] wl[15] wl[16] wl[17] wl[18] wl[19] wl[20] wl[21] wl[22] wl[23] wl[24] wl[25] wl[26] wl[27] wl[28] wl[29] wl[30] wl[31] wl[32] wl[33] wl[34] wl[35] wl[36] wl[37] wl[38] wl[39] wl[40] wl[41] wl[42] wl[43] wl[44] wl[45] wl[46] wl[47] wl[48] wl[49] wl[50] wl[51] wl[52] wl[53] wl[54] wl[55] wl[56] wl[57] wl[58] wl[59] wl[60] wl[61] wl[62] wl[63] vdd gnd bitcell_array
@@ -5233,7 +5266,7 @@ Xbank_sel_buf Csb clk bank_sel_buf vdd gnd flop_buffer_5__32_neg
 Xread_buf read clk read_buf vdd gnd flop_buffer_3__28
 .ENDS bank
 
-.SUBCKT r_64_w_64 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] Csb Web clk sense_trig vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write vdd_wordline ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] ADDR[5] vdd gnd
-Xbank0 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] dec_out[32] dec_out[33] dec_out[34] dec_out[35] dec_out[36] dec_out[37] dec_out[38] dec_out[39] dec_out[40] dec_out[41] dec_out[42] dec_out[43] dec_out[44] dec_out[45] dec_out[46] dec_out[47] dec_out[48] dec_out[49] dec_out[50] dec_out[51] dec_out[52] dec_out[53] dec_out[54] dec_out[55] dec_out[56] dec_out[57] dec_out[58] dec_out[59] dec_out[60] dec_out[61] dec_out[62] dec_out[63] Csb Web clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write vdd_wordline bank
+.SUBCKT r_64_w_64 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] Csb Web clk sense_trig vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write_bl vdd_write_br vdd_wordline ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] ADDR[5] vdd gnd
+Xbank0 DATA[0] MASK[0] DATA[1] MASK[1] DATA[2] MASK[2] DATA[3] MASK[3] DATA[4] MASK[4] DATA[5] MASK[5] DATA[6] MASK[6] DATA[7] MASK[7] DATA[8] MASK[8] DATA[9] MASK[9] DATA[10] MASK[10] DATA[11] MASK[11] DATA[12] MASK[12] DATA[13] MASK[13] DATA[14] MASK[14] DATA[15] MASK[15] DATA[16] MASK[16] DATA[17] MASK[17] DATA[18] MASK[18] DATA[19] MASK[19] DATA[20] MASK[20] DATA[21] MASK[21] DATA[22] MASK[22] DATA[23] MASK[23] DATA[24] MASK[24] DATA[25] MASK[25] DATA[26] MASK[26] DATA[27] MASK[27] DATA[28] MASK[28] DATA[29] MASK[29] DATA[30] MASK[30] DATA[31] MASK[31] DATA[32] MASK[32] DATA[33] MASK[33] DATA[34] MASK[34] DATA[35] MASK[35] DATA[36] MASK[36] DATA[37] MASK[37] DATA[38] MASK[38] DATA[39] MASK[39] DATA[40] MASK[40] DATA[41] MASK[41] DATA[42] MASK[42] DATA[43] MASK[43] DATA[44] MASK[44] DATA[45] MASK[45] DATA[46] MASK[46] DATA[47] MASK[47] DATA[48] MASK[48] DATA[49] MASK[49] DATA[50] MASK[50] DATA[51] MASK[51] DATA[52] MASK[52] DATA[53] MASK[53] DATA[54] MASK[54] DATA[55] MASK[55] DATA[56] MASK[56] DATA[57] MASK[57] DATA[58] MASK[58] DATA[59] MASK[59] DATA[60] MASK[60] DATA[61] MASK[61] DATA[62] MASK[62] DATA[63] MASK[63] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] dec_out[32] dec_out[33] dec_out[34] dec_out[35] dec_out[36] dec_out[37] dec_out[38] dec_out[39] dec_out[40] dec_out[41] dec_out[42] dec_out[43] dec_out[44] dec_out[45] dec_out[46] dec_out[47] dec_out[48] dec_out[49] dec_out[50] dec_out[51] dec_out[52] dec_out[53] dec_out[54] dec_out[55] dec_out[56] dec_out[57] dec_out[58] dec_out[59] dec_out[60] dec_out[61] dec_out[62] dec_out[63] Csb Web clk sense_trig decoder_clk vdd gnd vref vclamp vclampp DATA_OUT[0] DATA_OUT[1] DATA_OUT[2] DATA_OUT[3] DATA_OUT[4] DATA_OUT[5] DATA_OUT[6] DATA_OUT[7] DATA_OUT[8] DATA_OUT[9] DATA_OUT[10] DATA_OUT[11] DATA_OUT[12] DATA_OUT[13] DATA_OUT[14] DATA_OUT[15] DATA_OUT[16] DATA_OUT[17] DATA_OUT[18] DATA_OUT[19] DATA_OUT[20] DATA_OUT[21] DATA_OUT[22] DATA_OUT[23] DATA_OUT[24] DATA_OUT[25] DATA_OUT[26] DATA_OUT[27] DATA_OUT[28] DATA_OUT[29] DATA_OUT[30] DATA_OUT[31] DATA_OUT[32] DATA_OUT[33] DATA_OUT[34] DATA_OUT[35] DATA_OUT[36] DATA_OUT[37] DATA_OUT[38] DATA_OUT[39] DATA_OUT[40] DATA_OUT[41] DATA_OUT[42] DATA_OUT[43] DATA_OUT[44] DATA_OUT[45] DATA_OUT[46] DATA_OUT[47] DATA_OUT[48] DATA_OUT[49] DATA_OUT[50] DATA_OUT[51] DATA_OUT[52] DATA_OUT[53] DATA_OUT[54] DATA_OUT[55] DATA_OUT[56] DATA_OUT[57] DATA_OUT[58] DATA_OUT[59] DATA_OUT[60] DATA_OUT[61] DATA_OUT[62] DATA_OUT[63] vdd_write_bl vdd_write_br vdd_wordline bank
 Xrow_decoder ADDR[0] ADDR[1] ADDR[2] ADDR[3] ADDR[4] ADDR[5] dec_out[0] dec_out[1] dec_out[2] dec_out[3] dec_out[4] dec_out[5] dec_out[6] dec_out[7] dec_out[8] dec_out[9] dec_out[10] dec_out[11] dec_out[12] dec_out[13] dec_out[14] dec_out[15] dec_out[16] dec_out[17] dec_out[18] dec_out[19] dec_out[20] dec_out[21] dec_out[22] dec_out[23] dec_out[24] dec_out[25] dec_out[26] dec_out[27] dec_out[28] dec_out[29] dec_out[30] dec_out[31] dec_out[32] dec_out[33] dec_out[34] dec_out[35] dec_out[36] dec_out[37] dec_out[38] dec_out[39] dec_out[40] dec_out[41] dec_out[42] dec_out[43] dec_out[44] dec_out[45] dec_out[46] dec_out[47] dec_out[48] dec_out[49] dec_out[50] dec_out[51] dec_out[52] dec_out[53] dec_out[54] dec_out[55] dec_out[56] dec_out[57] dec_out[58] dec_out[59] dec_out[60] dec_out[61] dec_out[62] dec_out[63] decoder_clk vdd gnd hierarchical_decoder_64rows
 .ENDS r_64_w_64
